@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "984906843955",
+    "project_id": "stacompanion-a1286",
+    "storage_bucket": "stacompanion-a1286.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984906843955:android:dea0a3c1690bb7eb85a046",
+        "android_client_info": {
+          "package_name": "io.github.k3ssdev.stacompanion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJU9PovU4eOHxo0rKe7WI1h4kX12j_VZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

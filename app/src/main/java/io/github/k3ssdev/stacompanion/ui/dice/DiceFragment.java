@@ -1,6 +1,7 @@
 package io.github.k3ssdev.stacompanion.ui.dice;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import io.github.k3ssdev.stacompanion.R;
@@ -86,7 +89,7 @@ public class DiceFragment extends Fragment {
 
     private void decreaseNumberOfDice(EditText editText) {
         int currentValue = Integer.parseInt(editText.getText().toString());
-        if (currentValue > 1) {
+        if (currentValue >= 1) {
             editText.setText(String.valueOf(currentValue - 1));
         }
     }
@@ -97,48 +100,118 @@ public class DiceFragment extends Fragment {
     }
 
     private void rollDice() {
+        // Eliminar los resultados anteriores
+        textViewDiceResult.setText("");
+
         // Obtener la cantidad de dados a lanzar para d6
-        int numberOfDiceD6 = Integer.parseInt(editTextNumberOfDiceD6.getText().toString());
-        int totalResultD6 = rollDiceOfType(6, numberOfDiceD6);
+        int numberOfDiceD6 = getNumberOfDice(editTextNumberOfDiceD6);
+        rollSingleDiceType(6, numberOfDiceD6, "d6");
 
         // Obtener la cantidad de dados a lanzar para d20
-        int numberOfDiceD20 = Integer.parseInt(editTextNumberOfDiceD20.getText().toString());
-        int totalResultD20 = rollDiceOfType(20, numberOfDiceD20);
-
-        // Mostrar los resultados en el TextView
-        StringBuilder resultText = new StringBuilder("Resultados d6: " + totalResultD6 + "\n");
-        resultText.append("Resultados d20: " + totalResultD20);
-
-        textViewDiceResult.setText(resultText.toString());
+        int numberOfDiceD20 = getNumberOfDice(editTextNumberOfDiceD20);
+        rollSingleDiceType(20, numberOfDiceD20, "d20");
 
         // Agregar animación de lanzamiento de dado
         animateDiceRoll();
     }
 
-    private int rollDiceOfType(int diceType, int numberOfDice) {
-        int totalResult = 0;
-        StringBuilder resultText = new StringBuilder();
+    private int getNumberOfDice(EditText editText) {
+        try {
+            return Integer.parseInt(editText.getText().toString());
+        } catch (NumberFormatException e) {
+            // Manejar el caso en que el usuario ingresó un valor no válido
+            return 0;
+        }
+    }
+
+    private void rollSingleDiceType(int diceType, int numberOfDice, String diceTypeName) {
+        // Mostrar los resultados parciales en el TextView
+        StringBuilder resultText = new StringBuilder("Resultados " + diceTypeName + ": \n");
+        List<Integer> diceResultsList = new ArrayList<>();
 
         Random random = new Random();
         for (int i = 0; i < numberOfDice; i++) {
-            int diceResult = (diceType == 6) ? rollD6() : random.nextInt(diceType) + 1;
-            totalResult += diceResult;
-            resultText.append(diceResult).append(", ");
+            int diceResult = random.nextInt(diceType) + 1;
+            boolean specialEffect = false;
+
+            if (diceType == 6) {
+                // Lanzamiento de dado d6 especial
+                switch (diceResult) {
+                    case 1:
+                        // 1 Éxito
+                        diceResult = 1;
+                        break;
+                    case 2:
+                        // 2 Éxitos
+                        diceResult = 2;
+                        break;
+                    case 3:
+                    case 4:
+                        // 0 Éxitos
+                        diceResult = 0;
+                        break;
+                    case 5:
+                    case 6:
+                        // 1 Éxito y un Efecto Especial
+                        diceResult = 6;
+                        specialEffect = true;
+                        break;
+                }
+            }
+
+            diceResultsList.add(diceResult);
+
+
+            if (diceResult == 6) {
+                diceResult = 1;
+                resultText.append("*");
+            }
+            resultText.append(diceResult);
+
+            resultText.append(", ");
         }
 
-        resultText.append("\n");
+        resultText.delete(resultText.length() - 2, resultText.length()); // Eliminar la última coma y espacio
+        resultText.append("\n\n");
 
         // Mostrar los resultados parciales en el TextView
         textViewDiceResult.append(resultText.toString());
 
-        return totalResult;
+        Log.d("DiceFragment", "rollSingleDiceType: " + diceTypeName + diceResultsList.toString());
     }
 
-    private int rollD6() {
-        // Lanzamiento de un dado d6 especial
+
+
+
+
+/*    private int rollD6() {
+        // Lanzamiento de dado d6 especial
         int diceResult = new Random().nextInt(6) + 1;
-        return (diceResult >= 3 && diceResult <= 4) ? 0 : 1;
-    }
+
+        // Resultados dado desafio
+        switch (diceResult) {
+            case 1:
+                // 1 Éxito
+                diceResult = 1;
+                break;
+            case 2:
+                // 2 Éxitos
+                diceResult = 2;
+                break;
+            case 3:
+            case 4:
+                // 0 Éxitos
+                diceResult = 0;
+                break;
+            case 5:
+            case 6:
+                // 1 Éxito y un Efecto Especial
+                diceResult = 6;
+                break;
+        }
+
+        return diceResult;
+    }*/
 
     private void animateDiceRoll() {
         Animation rotateAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.rotate_animation);

@@ -133,6 +133,12 @@
 
             </LinearLayout>
 
+            <!-- Contenedor para resultado -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
             <Button
                 android:id="@+id/buttonRollDice"
                 android:layout_width="match_parent"
@@ -149,12 +155,17 @@
             <TextView
                 android:id="@+id/textViewDiceResult"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Resultado: "
-                android:textSize="22dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20sp"
+                android:layout_marginBottom="5dp"
+                android:text=""
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
+            </LinearLayout>
+
         </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>

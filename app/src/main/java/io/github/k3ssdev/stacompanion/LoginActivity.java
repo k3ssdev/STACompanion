@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -15,13 +16,19 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.IdpResponse;
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.Identity;
 import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.identity.SignInCredential;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
     // Constante para el mensaje extra
@@ -37,6 +44,28 @@ public class LoginActivity extends AppCompatActivity {
     private static final int REQ_ONE_TAP = 2;  // Can be any integer unique to the Activity.
     private boolean showOneTapUI = true;
     // ...
+
+    private final ActivityResultLauncher<Intent> signInLauncher =
+            registerForActivityResult(
+                    new ActivityResultContracts.StartActivityForResult(),
+                    result -> {
+                        IdpResponse response = IdpResponse.fromResultIntent(result.getData());
+
+                        if (result.getResultCode() == RESULT_OK) {
+                            // Successfully signed in
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            // Ir a MainActivity
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            // Sign in failed. If response is null the user canceled the
+                            // sign-in flow using the back button. Otherwise check
+                            // response.getError().getErrorCode() and handle the error.
+                            // ...
+                        }
+                    }
+            );
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -91,9 +120,9 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         // Obtiene referencias a los elementos de la interfaz de usuario
-        EditText editTextUsername = findViewById(R.id.editTextUsername);
-        EditText editTextPassword = findViewById(R.id.editTextPassword);
-        Button buttonLogin = findViewById(R.id.buttonLogin);
+        EditText editTextUsername = findViewById(R.id.username);
+        EditText editTextPassword = findViewById(R.id.password);
+        Button buttonLogin = findViewById(R.id.loginButton);
 
         buttonLogin.setOnClickListener(v -> {
             String email = editTextUsername.getText().toString();
@@ -126,29 +155,36 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         // Configurar un escuchador de clic para el botón de registro
-        Button buttonRegister = findViewById(R.id.buttonRegister);
+        TextView buttonRegister = findViewById(R.id.signupText);
         buttonRegister.setOnClickListener(v -> {
-            // Iniciar RegisterActivity
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
+            finish();
         });
 
         // Configurar un escuchador de clic para el botón de registro
 
+        SignInButton googleButton = findViewById(R.id.sign_in_button);
+
+        //on click do  new AuthUI.IdpConfig.GoogleBuilder().build()
+
+        googleButton.setOnClickListener(v -> {
+            // Choose authentication providers
+            List<AuthUI.IdpConfig> providers = Arrays.asList(
+
+                    new AuthUI.IdpConfig.GoogleBuilder().build()
+            );
+
+            // Create and launch sign-in intent
+            Intent signInIntent = AuthUI.getInstance()
+                    .createSignInIntentBuilder()
+                    .setAvailableProviders(providers)
+                    .build();
+
+            signInLauncher.launch(signInIntent);
+        });
 
     }
-
-    ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                try {
-                    SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(result.getData());
-                    handleSignInResult(credential);
-                } catch (ApiException e) {
-                    // Handle error
-                }
-            }
-    );
 
     private void handleSignInResult(SignInCredential credential) {
         // Handle sign in
@@ -212,4 +248,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

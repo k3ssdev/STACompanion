@@ -12,4 +12,8 @@
     <string name="title_notifications">Cuenta</string>
     <string name="register">Registrarse</string>
     <string name="register_activity_title">Registrarse</string>
+    <string name="server_client_id">1:984906843955:android:dea0a3c1690bb7eb85a046</string>
+    <string name="sign_out">Cerrar Sesión</string>
+    <string name="delete_account">Eliminar Cuenta</string>
+    <string name="registro">Registrarse</string>
 </resources>

@@ -21,5 +21,5 @@
         android:id="@+id/navigation_notifications"
         android:name="io.github.k3ssdev.stacompanion.ui.settings.SettingsFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_account" />
 </navigation>

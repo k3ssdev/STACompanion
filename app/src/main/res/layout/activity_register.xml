@@ -6,6 +6,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".RegisterActivity">
 
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="?android:attr/borderlessButtonStyle"
+        />
+
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="0dp"
@@ -15,7 +25,7 @@
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonBack" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -29,23 +39,29 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
 
     <Button
-        android:id="@+id/buttonRegister"
-        android:layout_width="0dp"
+        android:id="@+id/buttonGoogleSignIn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Registrarse"
+        android:text="Iniciar con Google"
+        android:drawableStart="@drawable/ic_google"
+        android:backgroundTint="@color/google_red"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
     <Button
-        android:id="@+id/buttonBack"
-        android:layout_width="0dp"
+        android:id="@+id/buttonEmailRegister"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Volver"
+        android:layout_marginTop="14dp"
+        android:text="Registrarse con email"
+        android:drawableStart="@drawable/ic_email"
+        android:backgroundTint="@color/email_blue"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonGoogleSignIn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

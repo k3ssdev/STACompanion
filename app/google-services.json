@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "984906843955-paa9u7idkmku0o4av0kjhh964tm7ghbm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.k3ssdev.stacompanion",
+            "certificate_hash": "521bcb14a0ddf8c6d146afa899dd515475d5f8fd"
+          }
+        },
+        {
           "client_id": "984906843955-rck0b7s3birvhtusrda6cam1g2etgr66.apps.googleusercontent.com",
           "client_type": 3
         }

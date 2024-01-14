@@ -180,39 +180,6 @@ public class DiceFragment extends Fragment {
         Log.d("DiceFragment", "rollSingleDiceType: " + diceTypeName + diceResultsList.toString());
     }
 
-
-
-
-
-/*    private int rollD6() {
-        // Lanzamiento de dado d6 especial
-        int diceResult = new Random().nextInt(6) + 1;
-
-        // Resultados dado desafio
-        switch (diceResult) {
-            case 1:
-                // 1 Éxito
-                diceResult = 1;
-                break;
-            case 2:
-                // 2 Éxitos
-                diceResult = 2;
-                break;
-            case 3:
-            case 4:
-                // 0 Éxitos
-                diceResult = 0;
-                break;
-            case 5:
-            case 6:
-                // 1 Éxito y un Efecto Especial
-                diceResult = 6;
-                break;
-        }
-
-        return diceResult;
-    }*/
-
     private void animateDiceRoll() {
         Animation rotateAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.rotate_animation);
         imageViewDice.startAnimation(rotateAnimation);

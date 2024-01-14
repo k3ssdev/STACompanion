@@ -2,6 +2,7 @@ package io.github.k3ssdev.stacompanion;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -45,68 +46,43 @@ public class LoginActivity extends AppCompatActivity {
         EditText editTextPassword_apr = findViewById(R.id.editTextPassword);
         Button buttonLogin_apr = findViewById(R.id.buttonLogin);
 
-        // Configura un escuchador de clic para el botón de inicio de sesión
-/*        buttonLogin_apr.setOnClickListener(v -> {
-            String usuario_apr = editTextUsername_apr.getText().toString();
-            String contrasena_apr = editTextPassword_apr.getText().toString();
-
-            // Valida que usuario y contraseña no estén vacíos
-            if (usuario_apr.isEmpty() || contrasena_apr.isEmpty()) {
-                // Comprueba que campo esté vacío y muestra un mensaje de error
-                if (usuario_apr.isEmpty()) {
-                    editTextUsername_apr.setError("El usuario no puede estar vacío");
-                }
-                if (contrasena_apr.isEmpty()) {
-                    editTextPassword_apr.setError("La contraseña no puede estar vacía");
-                }
-                // Muestra un mensaje toast
-                Toast.makeText(this, "¡Login incorrecto!", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            // Valida que usuario solo use letras y números
-            if (!usuario_apr.matches("[A-Za-z0-9]+")) {
-                // Muestra un mensaje de error
-                editTextUsername_apr.setError("El usuario solo puede contener letras y números");
-                // Muestra un mensaje toast
-                Toast.makeText(this, "¡Login incorrecto!", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            // Valida que usuario tenga entre 4 y 8 caracteres
-            if (contrasena_apr.length() < 4 || contrasena_apr.length() > 8) {
-                // Muestra un mensaje de error
-                editTextPassword_apr.setError("La contraseña debe tener entre 4 y 8 caracteres");
-                // Muestra un mensaje toast
-                Toast.makeText(this, "¡Login incorrecto!", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            // Crea una instancia de WebServiceHandler
-            //WebServiceHandler webServiceHandler_apr = new WebServiceHandler(this);
-
-            // Llama a la tarea ValidarUsuario con execute
-            //webServiceHandler_apr.new ValidarUsuario().execute(usuario_apr, contrasena_apr);
-        });*/
 
         buttonLogin_apr.setOnClickListener(v -> {
-            String usuario_apr = editTextUsername_apr.getText().toString();
-            String contrasena_apr = editTextPassword_apr.getText().toString();
+            String email = editTextUsername_apr.getText().toString();
+            String password = editTextPassword_apr.getText().toString();
 
-            mAuth.signInWithEmailAndPassword(usuario_apr, contrasena_apr)
+            if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+                // Manejar el caso en que el correo electrónico o la contraseña estén vacíos
+                Toast.makeText(LoginActivity.this, "¡Login incorrecto!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            try {
+            mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, task -> {
                         if (task.isSuccessful()) {
                             // Inicio de sesión exitoso
                             FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(LoginActivity.this, "¡Login correcto!", Toast.LENGTH_SHORT).show();
                             // Iniciar MainActivity
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
-                            // Si el inicio de sesión falla, muestra un mensaje al usuario.
                             Toast.makeText(LoginActivity.this, "¡Login incorrecto!", Toast.LENGTH_SHORT).show();
                         }
                     });
+            } catch (Exception e) {
+                Toast.makeText(LoginActivity.this, "¡Error!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Configurar un escuchador de clic para el botón de registro
+        Button buttonRegister = findViewById(R.id.buttonRegister);
+        buttonRegister.setOnClickListener(v -> {
+            // Iniciar RegisterActivity
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
         });
 
     }

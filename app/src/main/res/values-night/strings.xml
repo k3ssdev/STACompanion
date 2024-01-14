@@ -6,4 +6,10 @@
     <string name="timestamp">timestamp</string>
     <string name="Login">login</string>
     <string name="img">img</string>
+    <string name="app_name">STA Companion</string>
+    <string name="title_home">Fichas</string>
+    <string name="title_dashboard">Dados</string>
+    <string name="title_notifications">Cuenta</string>
+    <string name="register">Registrarse</string>
+    <string name="register_activity_title">Registrarse</string>
 </resources>

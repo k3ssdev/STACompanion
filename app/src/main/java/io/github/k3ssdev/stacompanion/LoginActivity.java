@@ -11,18 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.AuthResult;
-
-
-// autenticación con Firebase
-// https://firebase.google.com/docs/auth/android/start?hl=es-419
-// https://firebase.google.com/docs/auth/android/password-auth?hl=es-419
-// https://firebase.google.com/docs/auth/android/manage-users?hl=es-419
-// https://firebase.google.com/docs/auth/android/phone-auth?hl=es-419
-// https://firebase.google.com/docs/auth/android/google-signin?hl=es-419
-// https://firebase.google.com/docs/auth/android/facebook-login?hl=es-419
-
-import io.github.k3ssdev.stacompanion.R;
 
 public class LoginActivity extends AppCompatActivity {
     // Constante para el mensaje extra

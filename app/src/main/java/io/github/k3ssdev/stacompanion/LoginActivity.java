@@ -42,14 +42,14 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         // Obtiene referencias a los elementos de la interfaz de usuario
-        EditText editTextUsername_apr = findViewById(R.id.editTextUsername);
-        EditText editTextPassword_apr = findViewById(R.id.editTextPassword);
-        Button buttonLogin_apr = findViewById(R.id.buttonLogin);
+        EditText editTextUsername = findViewById(R.id.editTextUsername);
+        EditText editTextPassword = findViewById(R.id.editTextPassword);
+        Button buttonLogin = findViewById(R.id.buttonLogin);
 
 
-        buttonLogin_apr.setOnClickListener(v -> {
-            String email = editTextUsername_apr.getText().toString();
-            String password = editTextPassword_apr.getText().toString();
+        buttonLogin.setOnClickListener(v -> {
+            String email = editTextUsername.getText().toString();
+            String password = editTextPassword.getText().toString();
 
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
                 // Manejar el caso en que el correo electrónico o la contraseña estén vacíos

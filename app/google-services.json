@@ -12,7 +12,12 @@
           "package_name": "io.github.k3ssdev.stacompanion"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "984906843955-rck0b7s3birvhtusrda6cam1g2etgr66.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDJU9PovU4eOHxo0rKe7WI1h4kX12j_VZ4"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "984906843955-rck0b7s3birvhtusrda6cam1g2etgr66.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

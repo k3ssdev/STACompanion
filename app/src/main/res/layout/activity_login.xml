@@ -45,7 +45,6 @@
                 android:drawablePadding="8dp"
                 android:hint="Username"
                 android:padding="8dp"
-
                 android:textSize="15sp"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="40dp"

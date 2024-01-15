@@ -177,7 +177,7 @@ public class DiceFragment extends Fragment {
         // Mostrar los resultados parciales en el TextView
         textViewDiceResult.append(resultText.toString());
 
-        Log.d("DiceFragment", "rollSingleDiceType: " + diceTypeName + diceResultsList.toString());
+        Log.d("DiceFragment", "rollSingleDiceType: " + diceTypeName + diceResultsList);
     }
 
     private void animateDiceRoll() {

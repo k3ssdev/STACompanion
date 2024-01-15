@@ -16,4 +16,5 @@
     <string name="sign_out">Cerrar Sesión</string>
     <string name="delete_account">Eliminar Cuenta</string>
     <string name="registro">Registrarse</string>
+    <string name="add_sheet">añadir ficha</string>
 </resources>

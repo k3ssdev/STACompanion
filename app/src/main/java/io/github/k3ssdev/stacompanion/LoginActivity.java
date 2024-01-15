@@ -1,11 +1,8 @@
 package io.github.k3ssdev.stacompanion;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,38 +10,29 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
-import com.google.android.gms.auth.api.identity.BeginSignInRequest;
-import com.google.android.gms.auth.api.identity.Identity;
-import com.google.android.gms.auth.api.identity.SignInClient;
-import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.ApiException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
+/**
+ * LoginActivity es una clase que representa la pantalla de inicio de sesión de la aplicación.
+ * Esta clase se encarga de autenticar al usuario utilizando Firebase Auth y Google Sign-In.
+ */
 public class LoginActivity extends AppCompatActivity {
-    // Constante para el mensaje extra
-    //public static final String EXTRA_MESSAGE = "io.github.k3ssdev.loginformsqliteandroid.MESSAGE";
-
     // Atributos para la autenticación con Firebase
     FirebaseAuth mAuth;
 
-    // Atributos para Google One Tap
-    private SignInClient oneTapClient;
-    private BeginSignInRequest signInRequest;
-
-    private static final int REQ_ONE_TAP = 2;  // Can be any integer unique to the Activity.
-    private boolean showOneTapUI = true;
-    // ...
-
+    /**
+     * signInLauncher es un lanzador de actividad que maneja el resultado de la actividad de inicio de sesión.
+     * Si el inicio de sesión es exitoso, el usuario es redirigido a MainActivity.
+     */
     private final ActivityResultLauncher<Intent> signInLauncher =
             registerForActivityResult(
                     new ActivityResultContracts.StartActivityForResult(),
@@ -58,78 +46,42 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();
+
+                            // Mostrar mensaje de confirmación
+                            Toast.makeText(LoginActivity.this, "¡Login correcto!", Toast.LENGTH_SHORT).show();
+
                         } else {
                             // Sign in failed. If response is null the user canceled the
                             // sign-in flow using the back button. Otherwise check
                             // response.getError().getErrorCode() and handle the error.
                             // ...
+
+                            // Mostrar mensaje de error
+                            Toast.makeText(LoginActivity.this, "¡Error en login!", Toast.LENGTH_SHORT).show();
                         }
                     }
             );
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        switch (requestCode) {
-            case REQ_ONE_TAP:
-                try {
-                    SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(data);
-                    String idToken = credential.getGoogleIdToken();
-                    String username = credential.getId();
-                    String password = credential.getPassword();
-                    if (idToken != null) {
-                        // Got an ID token from Google. Use it to authenticate
-                        // with your backend.
-                        Log.d(TAG, "Got ID token.");
-                    } else if (password != null) {
-                        // Got a saved username and password. Use them to authenticate
-                        // with your backend.
-                        Log.d(TAG, "Got password.");
-                    }
-                } catch (ApiException e) {
-                    // ...
-                }
-                break;
-        }
-    }
-
-    // Método onCreate de la actividad
+    /**
+     * Método onCreate de la actividad.
+     * Este método se llama cuando se crea la actividad. Se encarga de inicializar Firebase Auth,
+     * configurar los escuchadores de clics para los botones de inicio de sesión y registro,
+     * y configurar Google Sign-In.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Forzar modo oscuro
-        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-
-        // Ocultar la barra de acción
-        getSupportActionBar().hide();
-
         // Inicializa Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-
-        // Inicializa Google One Tap
-        oneTapClient = Identity.getSignInClient(this);
-        signInRequest = BeginSignInRequest.builder()
-                .setPasswordRequestOptions(
-                        BeginSignInRequest.PasswordRequestOptions.builder()
-                                .setSupported(true)
-                                .build()
-                )
-                .setGoogleIdTokenRequestOptions(
-                        BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-                                .setSupported(true)
-                                .setServerClientId(getString(R.string.server_client_id)) // replace with your server client ID
-                                .build()
-                )
-                .build();
 
         // Obtiene referencias a los elementos de la interfaz de usuario
         EditText editTextUsername = findViewById(R.id.username);
         EditText editTextPassword = findViewById(R.id.password);
         Button buttonLogin = findViewById(R.id.loginButton);
 
+        // Configura el escuchador de clics para el botón de inicio de sesión
         buttonLogin.setOnClickListener(v -> {
             String email = editTextUsername.getText().toString();
             String password = editTextPassword.getText().toString();
@@ -140,6 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
+            // Intenta iniciar sesión con el correo electrónico y la contraseña proporcionados
             try {
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(this, task -> {
@@ -160,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // Configurar un escuchador de clic para el botón de registro
+        // Configura el escuchador de clics para el botón de registro
         TextView buttonRegister = findViewById(R.id.signupText);
         buttonRegister.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
@@ -168,16 +121,11 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         });
 
-        // Configurar un escuchador de clic para el botón de registro
-
+        // Configura el escuchador de clics para el botón de inicio de sesión de Google
         SignInButton googleButton = findViewById(R.id.sign_in_button);
-
-        //on click do  new AuthUI.IdpConfig.GoogleBuilder().build()
-
         googleButton.setOnClickListener(v -> {
             // Choose authentication providers
-            List<AuthUI.IdpConfig> providers = Arrays.asList(
-
+            List<AuthUI.IdpConfig> providers = Collections.singletonList(
                     new AuthUI.IdpConfig.GoogleBuilder().build()
             );
 
@@ -189,38 +137,12 @@ public class LoginActivity extends AppCompatActivity {
 
             signInLauncher.launch(signInIntent);
         });
-
     }
 
-    private void handleSignInResult(SignInCredential credential) {
-        // Handle sign in
-        // You can get the user's Google ID token with `credential.getGoogleIdToken()`
-        String googleIdToken = credential.getGoogleIdToken();
-
-        // You can get the user's email with `credential.getId()`
-        String email = credential.getId();
-
-        // Now you can use googleIdToken and email as needed
-        // For example, you can authenticate the user with Firebase
-        if (googleIdToken != null) {
-            mAuth.signInWithCustomToken(googleIdToken)
-                    .addOnCompleteListener(this, task -> {
-                        if (task.isSuccessful()) {
-                            // Sign in success
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(LoginActivity.this, "¡Login correcto!", Toast.LENGTH_SHORT).show();
-                            // Start MainActivity
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(LoginActivity.this, "¡Login incorrecto!", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        }
-    }
-
+    /**
+     * Este método se llama cuando la actividad se inicia.
+     * Comprueba si el usuario ya ha iniciado sesión y, en caso afirmativo, redirige al usuario a MainActivity.
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -229,6 +151,11 @@ public class LoginActivity extends AppCompatActivity {
         updateUI(currentUser);
     }
 
+    /**
+     * Este método actualiza la interfaz de usuario en función del estado de inicio de sesión del usuario.
+     * Si el usuario ha iniciado sesión, se redirige al usuario a MainActivity.
+     * Si el usuario no ha iniciado sesión, se muestra el formulario de inicio de sesión.
+     */
     private void updateUI(FirebaseUser currentUser) {
         if (currentUser != null) {
             // User is signed in, navigate to MainActivity
@@ -241,19 +168,4 @@ public class LoginActivity extends AppCompatActivity {
             // and the login form is always visible when the user is signed out
         }
     }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        // Sign out from One Tap
-        oneTapClient.signOut().addOnCompleteListener(this, task -> {
-            if (task.isSuccessful()) {
-                Log.d(TAG, "Signed out from One Tap");
-            } else {
-                Log.d(TAG, "Failed to sign out from One Tap");
-            }
-        });
-    }
-
-
 }

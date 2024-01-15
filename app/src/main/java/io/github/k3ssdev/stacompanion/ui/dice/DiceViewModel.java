@@ -10,7 +10,7 @@ public class DiceViewModel extends ViewModel {
 
     public DiceViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("This is dice tray fragment");
     }
 
     public LiveData<String> getText() {

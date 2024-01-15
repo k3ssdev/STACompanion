@@ -17,4 +17,5 @@
     <string name="delete_account">Eliminar Cuenta</string>
     <string name="registro">Registrarse</string>
     <string name="add_sheet">añadir ficha</string>
+    <string name="search">buscar</string>
 </resources>

@@ -11,6 +11,7 @@
     <color name="email_blue">#4285F4</color>
     <color name="purple">#8692f7</color>
     <color name="grey">#808080</color>
+    <color name="light_grey">#AAAAAA</color>
 
 
 </resources>

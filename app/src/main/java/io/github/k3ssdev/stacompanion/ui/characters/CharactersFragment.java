@@ -1,7 +1,5 @@
 package io.github.k3ssdev.stacompanion.ui.characters;
 
-import static android.content.ContentValues.TAG;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,19 +8,20 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.appcompat.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -38,20 +37,7 @@ public class CharactersFragment extends Fragment {
     private View view;
     private CharacterSheet sheet;
 
-/*    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // inflar la vista del fragmento y obtener una referencia al RecyclerView
-        recyclerView = view.findViewById(R.id.recycler_view);
-
-        // inicializar el adaptador y establecerlo en el RecyclerView
-        adapter = new CharacterSheetAdapter(*//* datos *//*);
-        recyclerView.setAdapter(adapter);
-
-        // usar un administrador de diseño lineal
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        return view;
-    }*/
+    private static final String TAG = "CharactersFragment";
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,41 +52,26 @@ public class CharactersFragment extends Fragment {
         // usar un administrador de diseño lineal
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Escuchar los cambios en Firebase
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("characterSheets");
-        ref.addChildEventListener(new ChildEventListener() {
+        // Obtener el ID del usuario actualmente autenticado
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        // Crear una referencia a la ubicación de los datos del personaje en Firebase Database
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("D de documento/" + userId);
+
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 CharacterSheet sheet = dataSnapshot.getValue(CharacterSheet.class);
                 // añadir la hoja de personaje a la lista y notificar al adaptador
                 adapter.addCharacterSheet(sheet);
             }
 
             @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            // otros métodos...
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled(DatabaseError databaseError) {
                 // Se produjo un error al leer los datos
                 Log.w(TAG, "Failed to read value.", databaseError.toException());
             }
         });
-
-
 
         return view;
     }
@@ -144,7 +115,7 @@ public class CharactersFragment extends Fragment {
     public void saveCharacterSheet(CharacterSheet sheet) {
         this.sheet = sheet;
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("characterSheets");
-        ref.child(sheet.getId()).setValue(sheet);
+        ref.child(sheet.getCharacterName()).setValue(sheet);
     }
 
 

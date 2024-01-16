@@ -1,9 +1,11 @@
 package io.github.k3ssdev.stacompanion.data;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,18 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.github.k3ssdev.stacompanion.R;
+
 public class CharacterSheetAdapter extends RecyclerView.Adapter<CharacterSheetAdapter.ViewHolder> implements Filterable {
     private List<CharacterSheet> characterSheets;
     private List<CharacterSheet> characterSheetsFull;
 
     public CharacterSheetAdapter(ArrayList<CharacterSheet> characterSheets) {
         this.characterSheets = characterSheets != null ? characterSheets : new ArrayList<>();
-        this.characterSheetsFull = new ArrayList<>(this.characterSheets); // Initialize characterSheetsFull with the data from characterSheets
+        this.characterSheetsFull = new ArrayList<>(this.characterSheets);
     }
 
-    // constructor y otros métodos...
-
-    // Métodos de Filterable
+    // Filterable methods
     @Override
     public Filter getFilter() {
         return new Filter() {
@@ -36,8 +38,7 @@ public class CharacterSheetAdapter extends RecyclerView.Adapter<CharacterSheetAd
                     String filterPattern = constraint.toString().toLowerCase().trim();
 
                     for (CharacterSheet item : characterSheetsFull) {
-                        // Aquí debes cambiar 'getName()' por el método que obtiene el campo que quieres buscar
-                        if (item.getName().toLowerCase().contains(filterPattern)) {
+                        if (item.getCharacterName().toLowerCase().contains(filterPattern)) {
                             filteredList.add(item);
                         }
                     }
@@ -63,14 +64,19 @@ public class CharacterSheetAdapter extends RecyclerView.Adapter<CharacterSheetAd
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // inflar la vista de cada elemento del RecyclerView
-        return null;
+        // Inflate the view for each item of the RecyclerView
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.character_sheet_item, parent, false);
+        return new ViewHolder(view);
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        // establecer los datos en la vista de cada elemento
+        // Get the character sheet at the current position
+        CharacterSheet sheet = characterSheets.get(position);
+
+        // Set the data in the views of the ViewHolder
+        holder.characterNameTextView.setText(sheet.getCharacterName());
+        // Continue for the rest of the views...
     }
 
     @Override
@@ -84,11 +90,14 @@ public class CharacterSheetAdapter extends RecyclerView.Adapter<CharacterSheetAd
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        // referencias a las vistas de cada elemento
+        // References to the views of each item
+        TextView characterNameTextView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            // inicializar las vistas
+            // Initialize the views
+            characterNameTextView = itemView.findViewById(R.id.characterName);
+            // Continue for the rest of the views...
         }
     }
 }

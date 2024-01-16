@@ -1,6 +1,7 @@
 <p align="center">
   <img src="images/stacompanion_blue.png" width="300" style="border-radius:50%;"/>
 </p>
+
 <p align="center">
     <h1 align="center">STA Companion App</h1>
 </p>

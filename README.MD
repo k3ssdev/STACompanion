@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/k3ssdev/STACompanion/blob/master/app/src/main/res/mipmap-hdpi/stacompanion_blue.png?raw=true" width="300" style="border-radius:50%;"/>
+  <img src="images/stacompanion_blue.png" width="300" style="border-radius:50%;"/>
 </p>
 <p align="center">
     <h1 align="center">STA Companion App</h1>

@@ -2,6 +2,12 @@ package io.github.k3ssdev.stacompanion.data;
 
 public class CharacterSheet {
 
+    private static final String TAG = "CharacterSheet";
+
+    private String id;
+
+    private String userId;
+
     // Atributos básicos del personaje
     private String characterName;
     private String species;
@@ -63,13 +69,15 @@ public class CharacterSheet {
         this.resistance = this.fitness;
     }
 
-    public CharacterSheet(String characterName, String species, String environment, String rank, String upbringing, String assignment, String traits,
+    public CharacterSheet(String id, String userId, String characterName, String species, String environment, String rank, String upbringing, String assignment, String traits,
                           int control, int fitness, int presence, int daring, int insight, int reason,
                           int command, int security, int science, int conn, int engineering, int medicine,
                           int age, String skin, String hair, int weight, int height, String eyes,
                           int reputation, int privilege, int responsibility, String focuses, int determination,
                           String values, String talents, String attacks, String equipment, int stress, int currentStress,
                           int maxStress, int resistance, String notesAndAwards, String injuries, String academy, String career, String event1, String event2) {
+        this.id = id;
+        this.userId = userId;
         this.characterName = characterName;
         this.species = species;
         this.environment = environment;
@@ -119,6 +127,22 @@ public class CharacterSheet {
 
 
     // Getters and setters
+
+    public CharacterSheet() {
+        // Default constructor required for calls to DataSnapshot.getValue(CharacterSheet.class)
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUserId() { return userId; }
+
+    public void setUserId(String userId) { this.userId = userId; }
 
     public String getCharacterName() {
         return characterName;

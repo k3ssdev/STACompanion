@@ -50,12 +50,14 @@ public class CharacterSheetAdapter extends RecyclerView.Adapter<CharacterSheetAd
                 return results;
             }
 
+
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
                 characterSheets.clear();
                 if (results.values != null) {
                     characterSheets.addAll((List) results.values);
                 }
+                characterSheetsFull = new ArrayList<>(characterSheets); // Actualizar characterSheetsFull
                 notifyDataSetChanged();
             }
         };
@@ -71,14 +73,15 @@ public class CharacterSheetAdapter extends RecyclerView.Adapter<CharacterSheetAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        // Get the character sheet at the current position
         CharacterSheet sheet = characterSheets.get(position);
-
-        // Set the data in the views of the ViewHolder
         holder.characterNameTextView.setText(sheet.getCharacterName());
-        // Continue for the rest of the views...
+        holder.speciesTextView.setText(sheet.getSpecies());
+
     }
 
+    public void clearCharacterSheets() {
+        this.characterSheets.clear();
+    }
     @Override
     public int getItemCount() {
         return characterSheets.size();
@@ -86,18 +89,19 @@ public class CharacterSheetAdapter extends RecyclerView.Adapter<CharacterSheetAd
 
     public void addCharacterSheet(CharacterSheet sheet) {
         characterSheets.add(sheet);
+        characterSheetsFull = new ArrayList<>(characterSheets); // Update characterSheetsFull
         notifyDataSetChanged();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        // References to the views of each item
         TextView characterNameTextView;
+        TextView speciesTextView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            // Initialize the views
             characterNameTextView = itemView.findViewById(R.id.characterName);
-            // Continue for the rest of the views...
+            speciesTextView = itemView.findViewById(R.id.species);
         }
     }
+
 }

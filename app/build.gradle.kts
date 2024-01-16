@@ -51,6 +51,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
 
+
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -64,6 +65,7 @@ dependencies {
     implementation("com.google.firebase:firebase-inappmessaging-display:20.4.0")
     implementation("com.firebaseui:firebase-ui-auth:8.0.2")
     implementation("com.google.android.gms:play-services-identity:18.0.1")
+    implementation("com.google.firebase:firebase-database:20.3.0")
 
 
     testImplementation("junit:junit:4.13.2")

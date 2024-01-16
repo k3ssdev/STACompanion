@@ -29,7 +29,6 @@ import io.github.k3ssdev.stacompanion.R;
 import io.github.k3ssdev.stacompanion.data.CharacterSheet;
 import io.github.k3ssdev.stacompanion.data.CharacterSheetAdapter;
 
-
 public class CharactersFragment extends Fragment {
 
     private RecyclerView recyclerView;
@@ -41,34 +40,90 @@ public class CharactersFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // inflar la vista del fragmento y obtener una referencia al RecyclerView
         view = inflater.inflate(R.layout.fragment_character, container, false);
         recyclerView = view.findViewById(R.id.recycler_view);
 
-        // inicializar el adaptador y establecerlo en el RecyclerView
         adapter = new CharacterSheetAdapter(new ArrayList<>());
         recyclerView.setAdapter(adapter);
 
-        // usar un administrador de diseño lineal
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Obtener el ID del usuario actualmente autenticado
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        // Crear una referencia a la ubicación de los datos del personaje en Firebase Database
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("D de documento/" + userId);
+       // String documentId = "Tx5ZOk7KScRUVStDeaLzDAmsi1U2";
+
+        CharacterSheet sheet = new CharacterSheet(
+                "2", // id
+                userId, // userId
+                "Jonh Connor", // characterName
+                "Human", // species
+                "Earth", // environment
+                "Captain", // rank
+                "Rural", // upbringing
+                "Starship Command", // assignment
+                "Brave", // traits
+                35, // control
+                7, // fitness
+                8, // presence
+                9, // daring
+                6, // insight
+                7, // reason
+                8, // command
+                9, // security
+                7, // science
+                6, // conn
+                8, // engineering
+                7, // medicine
+                35, // age
+                "Black", // skin
+                "Black", // hair
+                75, // weight
+                180, // height
+                "Blue", // eyes
+                6, // reputation
+                9, // privilege
+                8, // responsibility
+                "Starship Command", // focuses
+                7, // determination
+                "Duty, Honor, Loyalty", // values
+                "Leadership", // talents
+                "Phaser", // attacks
+                "Starship", // equipment
+                7, // stress
+                5, // currentStress
+                10, // maxStress
+                8, // resistance
+                "Starfleet Medal of Honor", // notesAndAwards
+                "None", // injuries
+                "Starfleet Academy", // academy
+                "Starfleet Officer", // career
+                "First Contact", // event1
+                "Promotion to Captain" // event2
+        );
+
+        // Conexión a la base de datos y guardado de la hoja de personaje de prueba
+        DatabaseReference ref = FirebaseDatabase.getInstance("https://stacompanion-a1286-default-rtdb.europe-west1.firebasedatabase.app/").getReference();
+        ref.child("characterSheets").child(sheet.getId().toString()).setValue(sheet);
+
+        // Lectura de la base de datos
+        ref = FirebaseDatabase.getInstance("https://stacompanion-a1286-default-rtdb.europe-west1.firebasedatabase.app/").getReference("characterSheets");
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                CharacterSheet sheet = dataSnapshot.getValue(CharacterSheet.class);
-                // añadir la hoja de personaje a la lista y notificar al adaptador
-                adapter.addCharacterSheet(sheet);
+                adapter.clearCharacterSheets(); // Limpia los datos del adaptador
+                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                    CharacterSheet sheet = childSnapshot.getValue(CharacterSheet.class);
+                    if (sheet.getUserId().equals(userId)) {
+                        adapter.addCharacterSheet(sheet);
+                        Log.d(TAG, "onDataChange: " + sheet.getId() + " " + sheet.getUserId() + " " + sheet.getCharacterName());
+                    }
+                }
+                adapter.notifyDataSetChanged(); // Notificar al adaptador que los datos han cambiado
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Se produjo un error al leer los datos
                 Log.w(TAG, "Failed to read value.", databaseError.toException());
             }
         });
@@ -79,7 +134,7 @@ public class CharactersFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true); // Esto hace que el fragmento reciba llamadas a onCreateOptionsMenu() y onOptionsItemSelected()
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -103,21 +158,20 @@ public class CharactersFragment extends Fragment {
             }
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_add) {
-            // Aquí manejas el clic en el botón de añadir ficha
-            // Por ejemplo, puedes abrir una nueva actividad o mostrar un diálogo
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
     public void saveCharacterSheet(CharacterSheet sheet) {
         this.sheet = sheet;
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("characterSheets");
         ref.child(sheet.getCharacterName()).setValue(sheet);
     }
-
 
     @Override
     public void onDestroyView() {

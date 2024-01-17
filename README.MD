@@ -17,7 +17,7 @@
 		<em>Developed with the software and tools below.</em>
 </p>
 <p align="center">
-	<img src="https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=black" alt="Android%20Studio">
+	<img src="https://img.shields.io/badge/Android%20Studio.svg?style=for-the-badge&logo=android-studio&logoColor=black" alt="Android%20Studio">
 	<img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=black" alt="Java">
 </p>
 <hr>

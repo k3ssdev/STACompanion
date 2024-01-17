@@ -55,11 +55,11 @@ public class CharactersFragment extends Fragment {
         CharacterSheet sheet = new CharacterSheet(
                 "2", // id
                 userId, // userId
-                "Jonh Connor", // characterName
-                "Human", // species
-                "Earth", // environment
-                "Captain", // rank
-                "Rural", // upbringing
+                "Spock", // characterName
+                "Vulcan", // species
+                "Vulcan", // environment
+                "Commander", // rank
+                "City", // upbringing
                 "Starship Command", // assignment
                 "Brave", // traits
                 35, // control
@@ -100,6 +100,8 @@ public class CharactersFragment extends Fragment {
                 "First Contact", // event1
                 "Promotion to Captain" // event2
         );
+
+
 
         // Conexión a la base de datos y guardado de la hoja de personaje de prueba
         DatabaseReference ref = FirebaseDatabase.getInstance("https://stacompanion-a1286-default-rtdb.europe-west1.firebasedatabase.app/").getReference();

@@ -375,6 +375,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 - List any resources, contributors, inspiration, etc. here. WIP
 
-[**Return**](#-quick-links)
+[**Return**](##-quick-links)
 
 ---

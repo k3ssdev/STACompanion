@@ -13,9 +13,13 @@
 	<img src="https://img.shields.io/github/last-commit/k3ssdev/STACompanion" alt="last-commit">
 	<img src="https://img.shields.io/github/languages/top/k3ssdev/STACompanion" alt="repo-top-language">
 	<img src="https://img.shields.io/github/languages/count/k3ssdev/STACompanion" alt="repo-language-count">
-<p>
 <p align="center">
-	<!-- default option, no dependency badges. -->
+		<em>Developed with the software and tools below.</em>
+</p>
+<p align="center">
+	<img src="https://img.shields.io/badge/GNU%20Bash-4EAA25.svg?style=flat&logo=GNU-Bash&logoColor=white" alt="GNU%20Bash">
+	<img src="https://img.shields.io/badge/Streamlit-FF4B4B.svg?style=flat&logo=Streamlit&logoColor=white" alt="Streamlit">
+	<img src="https://img.shields.io/badge/Python-3776AB.svg?style=flat&logo=Python&logoColor=white" alt="Python">
 </p>
 <hr>
 

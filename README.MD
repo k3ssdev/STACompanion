@@ -55,7 +55,7 @@ STA Companion App is a companion application for Android devices for the Star Tr
 ---
 
 <details closed>
-    <summary>Contributing Guidelines</summary>
+    <summary>Repository Structures</summary>
 
 ##  Repository Structure
 

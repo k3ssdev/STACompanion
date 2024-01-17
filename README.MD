@@ -38,17 +38,19 @@
 
 ##  Overview
 
-STA Companion App is a companion application for the Star Trek Adventures tabletop RPG. It is designed to enhance the gaming experience by providing useful features and tools for players and game masters alike.
+STA Companion App is a companion application for Android devices for the Star Trek Adventures tabletop RPG. It allows players to manage their characters and starships, perform special dice rolls, and export their character and starship sheets to PDF.
 
 ---
 
 ##  Features
 
-- **Character Management**: Keep track of your character's stats, inventory, and more.
-- **Game Master Tools**: Tools to help game masters manage their sessions, including NPC generation, story planning, and more.
-- **Interactive Star Map**: Explore the Star Trek universe with an interactive star map.
-- **Rules Reference**: Quick access to game rules and references.
-- **Cross-Platform**: Available on Android, iOS, and web.
+- **Character Sheets**: Manage your character's stats, inventory, and more.
+- **Starship Sheets**: Keep track of your starship's stats and inventory.
+- **Special Star Trek Adventures Dice Rolls**: Perform special dice rolls unique to Star Trek Adventures.
+- **Export Sheets to PDF**: Export your character and starship sheets to PDF for easy sharing and printing.
+- **Firebase Authentication**: Securely log in to the app using Firebase Authentication.
+- **Firebase Realtime Database**: Store and retrieve data in real time with Firebase's NoSQL cloud database.
+- **Selectable Design**: Choose between red, blue, and gold themes to customize the app's appearance.
 
 ---
 

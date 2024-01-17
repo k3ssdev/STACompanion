@@ -59,7 +59,7 @@ STA Companion App is a companion application for Android devices for the Star Tr
 ##  Repository Structure
 
 <details closed>
-    <summary>Repository Structures</summary>
+    <summary>Files & folders</summary>
 
 ```sh
 └── STACompanion/
@@ -190,7 +190,7 @@ STA Companion App is a companion application for Android devices for the Star Tr
     ├── local.properties
     └── settings.gradle.kts
 ```
-
+</details>
 ---
 
 ##  Modules

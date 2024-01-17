@@ -37,11 +37,17 @@
 
 ##  Overview
 
+STA Companion App is a companion application for the Star Trek Adventures tabletop RPG. It is designed to enhance the gaming experience by providing useful features and tools for players and game masters alike.
 
 ---
 
 ##  Features
 
+- **Character Management**: Keep track of your character's stats, inventory, and more.
+- **Game Master Tools**: Tools to help game masters manage their sessions, including NPC generation, story planning, and more.
+- **Interactive Star Map**: Explore the Star Trek universe with an interactive star map.
+- **Rules Reference**: Quick access to game rules and references.
+- **Cross-Platform**: Available on Android, iOS, and web.
 
 ---
 
@@ -55,38 +61,141 @@
     │   ├── proguard-rules.pro
     │   └── src
     │       ├── androidTest
+    │       │   └── java
+    │       │       └── io
+    │       │           └── github
+    │       │               └── k3ssdev
+    │       │                   └── stacompanion
+    │       │                       └── ExampleInstrumentedTest.java
     │       ├── main
     │       │   ├── AndroidManifest.xml
+    │       │   ├── ic_launcher-playstore.png
     │       │   ├── java
     │       │   │   └── io
     │       │   │       └── github
     │       │   │           └── k3ssdev
     │       │   │               └── stacompanion
+    │       │   │                   ├── data
+    │       │   │                   │   ├── CharacterSheetAdapter.java
+    │       │   │                   │   └── CharacterSheet.java
     │       │   │                   ├── LoginActivity.java
     │       │   │                   ├── MainActivity.java
-    │       │   │                   └── RegisterActivity.java
+    │       │   │                   ├── RegisterActivity.java
+    │       │   │                   └── ui
+    │       │   │                       ├── characters
+    │       │   │                       │   ├── CharactersFragment.java
+    │       │   │                       │   └── CharactersViewModel.java
+    │       │   │                       ├── dice
+    │       │   │                       │   ├── DiceFragment.java
+    │       │   │                       │   └── DiceViewModel.java
+    │       │   │                       └── settings
+    │       │   │                           ├── SettingsFragment.java
+    │       │   │                           └── SettingsViewModel.java
     │       │   └── res
+    │       │       ├── anim
+    │       │       │   └── rotate_animation.xml
     │       │       ├── drawable
-    │       │       ├── drawable-v24
+    │       │       │   ├── baseline_add_24.xml
+    │       │       │   ├── custom_edittext.xml
+    │       │       │   ├── ic_baseline_person_24.xml
+    │       │       │   ├── ic_dashboard_black_24dp.xml
+    │       │       │   ├── ic_email.xml
+    │       │       │   ├── ic_google.xml
+    │       │       │   ├── ic_home_black_24dp.xml
+    │       │       │   ├── ic_launcher_background.xml
+    │       │       │   ├── ic_launcher_foreground.xml
+    │       │       │   ├── ic_notifications_black_24dp.xml
+    │       │       │   ├── ic_search_black_24dp.xml
+    │       │       │   ├── lock_76.xml
+    │       │       │   └── rounded_button.xml
+    │       │       ├── drawable-night
+    │       │       │   ├── baseline_add_24.xml
+    │       │       │   ├── ic_baseline_person_24.xml
+    │       │       │   └── lock_76.xml
     │       │       ├── layout
+    │       │       │   ├── activity_login.xml
+    │       │       │   ├── activity_main.xml
+    │       │       │   ├── activity_register.xml
+    │       │       │   ├── fragment_account.xml
+    │       │       │   ├── fragment_character.xml
+    │       │       │   └── fragment_dice.xml
+    │       │       ├── menu
+    │       │       │   ├── bottom_nav_menu.xml
+    │       │       │   └── toolbar_menu.xml
     │       │       ├── mipmap-anydpi-v26
+    │       │       │   ├── ic_launcher_round.xml
+    │       │       │   └── ic_launcher.xml
     │       │       ├── mipmap-hdpi
+    │       │       │   ├── google_icon.png
+    │       │       │   ├── ic_launcher_foreground.webp
+    │       │       │   ├── ic_launcher_round.webp
+    │       │       │   ├── ic_launcher.webp
+    │       │       │   ├── stacompanion_blue.png
+    │       │       │   ├── stacompanion_logo2.png
+    │       │       │   ├── stacompanion_logo.png
+    │       │       │   ├── stacompanion_red.png
+    │       │       │   └── stacompanion_yellow.png
     │       │       ├── mipmap-mdpi
+    │       │       │   ├── ic_launcher_foreground.webp
+    │       │       │   ├── ic_launcher_round.webp
+    │       │       │   └── ic_launcher.webp
     │       │       ├── mipmap-xhdpi
+    │       │       │   ├── ic_launcher_foreground.webp
+    │       │       │   ├── ic_launcher_round.webp
+    │       │       │   └── ic_launcher.webp
     │       │       ├── mipmap-xxhdpi
+    │       │       │   ├── ic_launcher_foreground.webp
+    │       │       │   ├── ic_launcher_round.webp
+    │       │       │   └── ic_launcher.webp
     │       │       ├── mipmap-xxxhdpi
+    │       │       │   ├── ic_launcher_foreground.webp
+    │       │       │   ├── ic_launcher_round.webp
+    │       │       │   └── ic_launcher.webp
+    │       │       ├── navigation
+    │       │       │   └── mobile_navigation.xml
     │       │       ├── values
-    │       │       └── values-night
+    │       │       │   ├── colors.xml
+    │       │       │   ├── dimens.xml
+    │       │       │   ├── strings.xml
+    │       │       │   └── themes.xml
+    │       │       ├── values-night
+    │       │       │   ├── strings.xml
+    │       │       │   └── themes.xml
+    │       │       └── xml
+    │       │           ├── backup_rules.xml
+    │       │           └── data_extraction_rules.xml
     │       └── test
+    │           └── java
+    │               └── io
+    │                   └── github
+    │                       └── k3ssdev
+    │                           └── stacompanion
+    │                               └── ExampleUnitTest.java
     ├── build.gradle.kts
     ├── gradle
+    │   └── wrapper
+    │       ├── gradle-wrapper.jar
+    │       └── gradle-wrapper.properties
+    ├── gradle.properties
+    ├── gradlew
     ├── gradlew.bat
+    ├── local.properties
     └── settings.gradle.kts
 ```
 
 ---
 
 ##  Modules
+
+The STA Companion App is organized into several modules:
+
+- **app**: This is the main module of the application. It contains all the activities, fragments, view models, and other classes related to the user interface of the app.
+
+- **data**: This module contains classes related to data handling in the app, such as data models and data sources.
+
+- **ui**: This module contains classes related to the user interface of the app, such as custom views and adapters.
+
+Each module has its own `build.gradle.kts` file for configuration and dependencies specific to that module.
 
 ---
 
@@ -98,29 +207,56 @@
 
 ###  Installation
 
-1. Clone the STACompanion repository:
+To install the STA Companion App on your local machine for development and testing purposes, follow these steps:
 
-```sh
-git clone https://github.com/k3ssdev/STACompanion
-```
+1. **Clone the repository**
 
-2. Change to the project directory:
+   Open your terminal and use the following command to clone the repository:
 
-```sh
-cd STACompanion
-```
+   ```sh
+   git clone https://github.com/k3ssdev/STACompanion.git
+    ```
+2. **Navigate to the project directory**
 
-3. Install the dependencies:
+   Change your current directory to the project's directory:
 
-```sh
-mvn clean install
-```
+   ```sh
+   cd STACompanion
+   ```
+3. **Sync the project**
+
+   Open the project in Android Studio and sync the project with Gradle files. This can be done by clicking on the `Sync Project with Gradle Files` button in the toolbar or by using the `File > Sync Project with Gradle Files` option in the menu.
+
+4. **Build the project**
+
+   Build the project by clicking on the `Build > Make Project` option in the menu or by clicking on the `Make Project` button in the toolbar (the hammer icon).
+
+5. **Run the project**
+
+   Run the app by clicking on the `Run > Run 'app'` option in the menu or by clicking on the `Run` button in the toolbar (the green play icon).
+
+Please note that you need to have Android Studio and the Android SDK installed on your machine. Also, an Android device or emulator is required for running the app.
 
 ###  Running STACompanion
 
 
+1. **Select the Run Configuration**
+
+   In Android Studio, select the appropriate run configuration from the dropdown in the toolbar. For most cases, this will be the `app` configuration.
+
+2. **Select the Target Device**
+
+   Click on the `Select Target Device` button in the toolbar (next to the run configuration dropdown). This will open a dialog where you can select an Android device or emulator to run the app on. If you don't have a device connected or an emulator set up, you can create a new Android Virtual Device (AVD) from this dialog.
+
+3. **Run the App**
+
+   Click on the `Run` button in the toolbar (the green play icon). This will build and run the app on the selected device or emulator.
+
+Please note that the app requires Android 9.0 (API level 28) or higher to run.
 
 ###  Tests
+
+WIP
 
 ---
 

@@ -210,10 +210,11 @@ Each module has its own `build.gradle.kts` file for configuration and dependenci
 
 ##  Getting Started
 
-***Requirements***
+### Requirements
 
 
-###  Installation
+<details closed>
+    <summary>Installation</summary>
 
 To install the STA Companion App on your local machine for development and testing purposes, follow these steps:
 
@@ -245,8 +246,10 @@ To install the STA Companion App on your local machine for development and testi
 
 Please note that you need to have Android Studio and the Android SDK installed on your machine. Also, an Android device or emulator is required for running the app.
 
-###  Running STACompanion
+</details>
 
+<details closed>
+    <summary>Running STA Companion</summary>
 
 1. **Select the Run Configuration**
 
@@ -261,6 +264,8 @@ Please note that you need to have Android Studio and the Android SDK installed o
    Click on the `Run` button in the toolbar (the green play icon). This will build and run the app on the selected device or emulator.
 
 Please note that the app requires Android 9.0 (API level 28) or higher to run.
+
+</details>
 
 ###  Tests
 
@@ -312,8 +317,6 @@ Once your PR is reviewed and approved, it will be merged into the main branch.
 </details>
 
 ---
-
-##  License
 
 ##  License
 

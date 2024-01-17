@@ -9,10 +9,10 @@
     <h3 align="center">A companion app for the <a href="https://www.modiphius.net/collections/star-trek-adventures">Star Trek Adventures</a> tabletop RPG.</h3>
 </p>
 <p align="center">
-	<img src="https://img.shields.io/github/license/k3ssdev/STACompanion?style=default&color=0080ff" alt="license">
-	<img src="https://img.shields.io/github/last-commit/k3ssdev/STACompanion?style=default&color=0080ff" alt="last-commit">
-	<img src="https://img.shields.io/github/languages/top/k3ssdev/STACompanion?style=default&color=0080ff" alt="repo-top-language">
-	<img src="https://img.shields.io/github/languages/count/k3ssdev/STACompanion?style=default&color=0080ff" alt="repo-language-count">
+	<img src="https://img.shields.io/github/license/k3ssdev/STACompanion" alt="license">
+	<img src="https://img.shields.io/github/last-commit/k3ssdev/STACompanion" alt="last-commit">
+	<img src="https://img.shields.io/github/languages/top/k3ssdev/STACompanion" alt="repo-top-language">
+	<img src="https://img.shields.io/github/languages/count/k3ssdev/STACompanion" alt="repo-language-count">
 <p>
 <p align="center">
 	<!-- default option, no dependency badges. -->

@@ -54,6 +54,9 @@ STA Companion App is a companion application for Android devices for the Star Tr
 
 ---
 
+<details closed>
+    <summary>Contributing Guidelines</summary>
+
 ##  Repository Structure
 
 ```sh
@@ -185,7 +188,7 @@ STA Companion App is a companion application for Android devices for the Star Tr
     ├── local.properties
     └── settings.gradle.kts
 ```
-
+<details>
 ---
 
 ##  Modules
@@ -205,7 +208,6 @@ Each module has its own `build.gradle.kts` file for configuration and dependenci
 ##  Getting Started
 
 ***Requirements***
-
 
 
 ###  Installation

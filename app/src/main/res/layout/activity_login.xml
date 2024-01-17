@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        app:cardCornerRadius="30dp"
+        app:cardCornerRadius="21dp"
         app:cardElevation="20dp"
         android:background="@drawable/custom_edittext">
 
@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
+            android:background="@drawable/custom_edittext"
             android:padding="24dp">
 
 
@@ -46,7 +47,7 @@
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="10dp"
                 android:importantForAutofill="no"
-
+                app:cardCornerRadius="20dp"
                 />
 
             <EditText
@@ -60,7 +61,7 @@
                 android:padding="8dp"
                 android:textSize="15sp"
                 android:inputType="textPassword"
-
+                app:cardCornerRadius="20dp"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="20dp"
                 android:importantForAutofill="no"/>
@@ -72,7 +73,7 @@
                 android:text="Login"
                 android:textSize="18sp"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="@color/purple"
+                android:backgroundTint="@color/sta_blue"
                 app:cornerRadius = "20dp"/>
 
         </LinearLayout>
@@ -87,7 +88,7 @@
         android:textSize="14sp"
         android:textAlignment="center"
         android:id="@+id/signupText"
-        android:textColor="@color/purple"
+        android:textColor="@color/sta_blue"
         android:layout_marginBottom="20dp"/>
 
     <com.google.android.gms.common.SignInButton

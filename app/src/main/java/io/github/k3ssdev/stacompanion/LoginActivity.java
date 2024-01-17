@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
                         IdpResponse response = IdpResponse.fromResultIntent(result.getData());
 
                         if (result.getResultCode() == RESULT_OK) {
-                            // Successfully signed in
+                            // Inicio de sesión correcto
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             // Ir a MainActivity
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -51,11 +51,6 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "¡Login correcto!", Toast.LENGTH_SHORT).show();
 
                         } else {
-                            // Sign in failed. If response is null the user canceled the
-                            // sign-in flow using the back button. Otherwise check
-                            // response.getError().getErrorCode() and handle the error.
-                            // ...
-
                             // Mostrar mensaje de error
                             Toast.makeText(LoginActivity.this, "¡Error en login!", Toast.LENGTH_SHORT).show();
                         }

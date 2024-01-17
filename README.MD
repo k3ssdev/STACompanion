@@ -306,12 +306,12 @@ WIP
 
 ### Skill Rolls:
 
-- [ ] Simplify skill rolls directly from the fiche with a single touch.
+- [ ] Simplify skill rolls directly from the sheets with a single touch.
 - [ ] Display the roll result and any applied modifiers.
 
 ### Export to PDF:
 
-- [] Generate PDF files of fiches in the official game format.
+- [] Generate PDF files of sheets in the official game format.
 - [] Include all relevant information in the PDF, such as attributes, skills, and notes.
 
 ---

@@ -298,24 +298,24 @@ WIP
 
 ### Firebase Integration:
 
-- [X] Implement authentication system for user account management.
-- [X] Securely store character and ship data in Firebase for each user.
-- [ ] Implement a settings menu for viewing user's data, closing session and delete account.
-- [ ] Add a chat system between users.
+- [X] `►Implement authentication system for user account management.`
+- [X] `►Securely store character and ship data in Firebase for each user.`
+- [ ] `►Implement a settings menu for viewing user's data, closing session and delete account.`
+- [ ] `►Add a chat system between users.`
 
 ### Dice Rolling System:
 
-- [X] Perform rolls using special 6-sided dice used in Star Trek Adventures and 20-sided dices.
-- [X] Allow selection of the number of dice to roll and display the result.
-- [ ] Add animations during the dice roll.
+- [X] `►Perform rolls using special 6-sided dice used in Star Trek Adventures and 20-sided dices.`
+- [X] `►Allow selection of the number of dice to roll and display the result.`
+- [ ] `►Add animations during the dice roll.`
 
 ### Character sheets:
 
-- [X] Create, edit, and delete character sheets.
-- [] Create, edit, and delete ship sheets.
-- [] Assign specific game attributes to each sheet.
-- [] Add detailed notes and descriptions for each sheet.
-- [] Include images for both player and ship sheets.
+- [X] `►Create, edit, and delete character sheets.`
+- [] `►Create, edit, and delete ship sheets.`
+- [] `►Assign specific game attributes to each sheet.`
+- [] `►Add detailed notes and descriptions for each sheet.`
+- [] `►Include images for both player and ship sheets.`
 
 ### Skill Rolls:
 
@@ -369,6 +369,7 @@ Once your PR is reviewed and approved, it will be merged into the main branch.
 ##  License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
 ---
 
 ##  Acknowledgments

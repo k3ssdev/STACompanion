@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/stacompanion_blue.png" width="300" style="border-radius:50%;"/>
+  <img src="images/stacompanion_blue_rounded.png" width="350"/>
 </p>
 
 <p align="center">

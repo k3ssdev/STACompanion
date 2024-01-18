@@ -22,4 +22,13 @@
         android:name="io.github.k3ssdev.stacompanion.ui.settings.SettingsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_account" />
+
+    <fragment
+        android:id="@+id/characterSheetFragment"
+        android:name="io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetFragment"
+        android:label="character_sheet_fragment"
+        tools:layout="@layout/fragment_character_sheet"
+        >
+
+    </fragment>
 </navigation>

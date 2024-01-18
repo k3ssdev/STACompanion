@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,14 +30,14 @@ import java.util.ArrayList;
 
 import io.github.k3ssdev.stacompanion.R;
 import io.github.k3ssdev.stacompanion.data.CharacterSheet;
-import io.github.k3ssdev.stacompanion.data.CharacterSheetAdapter;
+import io.github.k3ssdev.stacompanion.data.CharacterFragmentAdapter;
 
 public class CharactersFragment extends Fragment {
 
     private static final String TAG = "CharactersFragment";
 
     private RecyclerView recyclerView;
-    private CharacterSheetAdapter adapter;
+    private CharacterFragmentAdapter adapter;
     private View view;
     private CharacterSheet sheet;
 
@@ -55,13 +57,41 @@ public class CharactersFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        adapter = new CharacterFragmentAdapter(new ArrayList<>());
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(sheetDetails -> {
+            Toast.makeText(getContext(), "Opening " + sheetDetails.getCharacterName(), Toast.LENGTH_SHORT).show();
+
+            // Crear una nueva instancia de CharacterSheetFragment
+            CharacterSheetFragment characterSheetFragment = CharacterSheetFragment.newInstance();
+            Bundle args = new Bundle();
+            args.putString("characterId", sheetDetails.getId()); // Suponiendo que getId() devuelve el ID del personaje
+            characterSheetFragment.setArguments(args);
+
+            // Utilizar NavController para navegar al CharacterSheetFragment
+            NavController navController = Navigation.findNavController(view);
+            navController.navigate(R.id.characterSheetFragment, args);
+        });
+    }
+/*    private void initializeRecyclerView() {
+        recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         adapter = new CharacterSheetAdapter(new ArrayList<>());
         recyclerView.setAdapter(adapter);
 
         adapter.setOnItemClickListener(sheetDestails -> {
             Toast.makeText(getContext(), "Opening " + sheetDestails.getCharacterName(), Toast.LENGTH_SHORT).show();
+
+            // TODO: Open sheet details
+
+            Intent intent = new Intent(getContext(), CharacterSheetDetails.class);
+            intent.putExtra("CharacterSheet", sheetDestails);
+            startActivity(intent);
+
         });
-    }
+    }*/
 
     private void setupDatabaseConnection() {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();

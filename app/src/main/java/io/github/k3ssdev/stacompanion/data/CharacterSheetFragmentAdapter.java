@@ -16,12 +16,12 @@ import java.util.List;
 import io.github.k3ssdev.stacompanion.R;
 import io.github.k3ssdev.stacompanion.ui.characters.CharactersFragment;
 
-public class CharacterSheetAdapter extends RecyclerView.Adapter<CharacterSheetAdapter.ViewHolder> implements Filterable {
+public class CharacterSheetFragmentAdapter extends RecyclerView.Adapter<CharacterSheetFragmentAdapter.ViewHolder> implements Filterable {
     private List<CharacterSheet> characterSheets;
     private List<CharacterSheet> characterSheetsFull;
 
     private CharactersFragment.OnItemClickListener listener;
-    public CharacterSheetAdapter(ArrayList<CharacterSheet> characterSheets) {
+    public CharacterSheetFragmentAdapter(ArrayList<CharacterSheet> characterSheets) {
         this.characterSheets = characterSheets != null ? characterSheets : new ArrayList<>();
         this.characterSheetsFull = new ArrayList<>(this.characterSheets);
     }
@@ -69,7 +69,7 @@ public class CharacterSheetAdapter extends RecyclerView.Adapter<CharacterSheetAd
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Inflate the view for each item of the RecyclerView
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.character_sheet_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_character_sheet, parent, false);
         return new ViewHolder(view);
     }
 
@@ -101,9 +101,20 @@ public class CharacterSheetAdapter extends RecyclerView.Adapter<CharacterSheetAd
         notifyDataSetChanged();
     }
 
+    public CharacterSheet getCharacterSheet(String characterId) {
+
+        for (CharacterSheet sheet : characterSheets) {
+            if (sheet.getId().equals(characterId)) {
+                return sheet;
+            }
+        }
+        return null;
+    }
+
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView characterNameTextView;
         TextView speciesTextView;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

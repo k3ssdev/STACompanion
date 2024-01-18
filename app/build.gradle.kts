@@ -66,6 +66,7 @@ dependencies {
     implementation("com.firebaseui:firebase-ui-auth:8.0.2")
     implementation("com.google.android.gms:play-services-identity:18.0.1")
     implementation("com.google.firebase:firebase-database:20.3.0")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
 
     testImplementation("junit:junit:4.13.2")

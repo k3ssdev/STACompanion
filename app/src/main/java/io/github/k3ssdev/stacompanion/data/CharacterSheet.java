@@ -1,6 +1,6 @@
 package io.github.k3ssdev.stacompanion.data;
 
-public class CharacterSheet {
+public class CharacterSheet implements java.io.Serializable{
 
     private static final String TAG = "CharacterSheet";
 

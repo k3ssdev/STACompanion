@@ -18,6 +18,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -111,24 +112,36 @@ public class LoginActivity extends AppCompatActivity {
         // Configura el escuchador de clics para el botón de registro
         TextView buttonRegister = findViewById(R.id.signupText);
         buttonRegister.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-            startActivity(intent);
-            finish();
+                List<AuthUI.IdpConfig> providers = Arrays.asList(
+                        new AuthUI.IdpConfig.EmailBuilder().build()
+                );
+
+                // Crear e iniciar el intento de inicio de sesión
+                Intent signInIntent = AuthUI.getInstance()
+                        .createSignInIntentBuilder()
+                        .setTheme(R.style.Theme_STA_Companion)
+                        .setAvailableProviders(providers)
+                        .build();
+
+                signInLauncher.launch(signInIntent);
+
         });
+
 
 
         // Configura el escuchador de clics para el botón de inicio de sesión de Google
         SignInButton googleButton = findViewById(R.id.sign_in_button);
         googleButton.setOnClickListener(v -> {
-            // Choose authentication providers
+            // Proveedores de inicio de sesión
             List<AuthUI.IdpConfig> providers = Collections.singletonList(
                     new AuthUI.IdpConfig.GoogleBuilder().build()
             );
 
 
-            // Create and launch sign-in intent with option to choose account
+            // Crear e iniciar el intento de inicio de sesión
             Intent signInIntent = AuthUI.getInstance()
                     .createSignInIntentBuilder()
+                    .setTheme(R.style.Theme_STA_Companion)
                     .setAvailableProviders(providers).setIsSmartLockEnabled(true)
                     //.setAlwaysShowSignInMethodScreen(true)  // Mostrar la pantalla de inicio de sesión para elegir la cuenta
                     .build();
@@ -144,7 +157,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
+        // Comprueba si el usuario ya ha iniciado sesión
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
     }
@@ -156,7 +169,7 @@ public class LoginActivity extends AppCompatActivity {
      */
     private void updateUI(FirebaseUser currentUser) {
         if (currentUser != null) {
-            // User is signed in, navigate to MainActivity
+            // Si el usuario ya ha iniciado sesión, redirigir al usuario a MainActivity
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
             finish();

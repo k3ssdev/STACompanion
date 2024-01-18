@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.STA_Companion"
+        android:theme="@style/Theme_STA_Companion"
         android:forceDarkAllowed="true"
         tools:targetApi="31">
 

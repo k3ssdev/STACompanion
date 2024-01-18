@@ -7,6 +7,10 @@ android {
     namespace = "io.github.k3ssdev.stacompanion"
     compileSdk = 34
 
+    dataBinding {
+        enable = true
+    }
+
     defaultConfig {
         applicationId = "io.github.k3ssdev.stacompanion"
         minSdk = 26

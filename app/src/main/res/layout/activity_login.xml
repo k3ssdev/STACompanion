@@ -41,13 +41,12 @@
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/ic_baseline_person_24"
                 android:drawablePadding="8dp"
-                android:hint="Username"
+                android:hint="Email"
                 android:padding="8dp"
                 android:textSize="15sp"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="10dp"
-                android:importantForAutofill="no"
-                app:cardCornerRadius="20dp"
+                android:theme="@style/AutofillEditText"
                 />
 
             <EditText
@@ -61,10 +60,9 @@
                 android:padding="8dp"
                 android:textSize="15sp"
                 android:inputType="textPassword"
-                app:cardCornerRadius="20dp"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="20dp"
-                android:importantForAutofill="no"/>
+                android:theme="@style/AutofillEditText"/>
 
             <Button
                 android:layout_width="match_parent"

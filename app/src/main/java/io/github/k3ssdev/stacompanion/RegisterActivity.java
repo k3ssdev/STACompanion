@@ -2,7 +2,7 @@ package io.github.k3ssdev.stacompanion;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -21,12 +21,6 @@ public class RegisterActivity extends AppCompatActivity {
     // Implementación de la autenticación con Firebase
     FirebaseAuth mAuth;
 
-    // Atributos para la autenticación con Firebase
-    private EditText mEmailField;
-    private EditText mPasswordField;
-    private EditText mConfirmPasswordField;
-
-    // ActivityResultLauncher para manejar el resultado del intento de inicio de sesión
     private final ActivityResultLauncher<Intent> signInLauncher =
             registerForActivityResult(
                     new ActivityResultContracts.StartActivityForResult(),
@@ -36,12 +30,10 @@ public class RegisterActivity extends AppCompatActivity {
                         if (result.getResultCode() == RESULT_OK) {
                             // Successfully signed in
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            // ...
+                            Toast.makeText(RegisterActivity.this, "¡Login correcto!", Toast.LENGTH_SHORT).show();
                         } else {
-                            // Sign in failed. If response is null the user canceled the
-                            // sign-in flow using the back button. Otherwise check
-                            // response.getError().getErrorCode() and handle the error.
-                            // ...
+                            // Mostrar mensaje de error
+                            Toast.makeText(RegisterActivity.this, "¡Error en login!", Toast.LENGTH_SHORT).show();
                         }
                     }
             );

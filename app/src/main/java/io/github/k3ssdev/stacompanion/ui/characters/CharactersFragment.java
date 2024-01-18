@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import io.github.k3ssdev.stacompanion.R;
 import io.github.k3ssdev.stacompanion.data.CharacterSheet;
 import io.github.k3ssdev.stacompanion.data.CharacterFragmentAdapter;
+import io.github.k3ssdev.stacompanion.ui.characters.charactersheet.CharacterSheetFragment;
 
 public class CharactersFragment extends Fragment {
 

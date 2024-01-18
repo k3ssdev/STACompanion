@@ -1,4 +1,4 @@
-package io.github.k3ssdev.stacompanion.ui.characters;
+package io.github.k3ssdev.stacompanion.ui.characters.charactersheet;
 
 import android.content.Intent;
 import android.os.Bundle;

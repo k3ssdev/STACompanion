@@ -1,4 +1,4 @@
-package io.github.k3ssdev.stacompanion.ui.characters;
+package io.github.k3ssdev.stacompanion.ui.characters.charactersheet;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 
 import io.github.k3ssdev.stacompanion.R;
+import io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetViewModel;
 
 public class CharacterSheetFragment extends Fragment {
 
@@ -85,7 +86,7 @@ public class CharacterSheetFragment extends Fragment {
         // Set up the ViewPager and TabLayout
         ViewPager viewPager = view.findViewById(R.id.view_pager);
         TabLayout tabLayout = view.findViewById(R.id.tab_layout);
-        viewPager.setAdapter(new CharacterSheetPagerAdapter(getChildFragmentManager()));
+        viewPager.setAdapter(new CharacterSheetPagerAdapter(getChildFragmentManager(), characterId));
         tabLayout.setupWithViewPager(viewPager);
 
         return view;
@@ -98,31 +99,29 @@ public class CharacterSheetFragment extends Fragment {
     }
 
     public class CharacterSheetPagerAdapter extends FragmentPagerAdapter {
+        private final String characterId;
+        private final String[] tabTitles = new String[]{"Datos", "Estado y equipo", "Atributos y Disciplinas", "Apariencia y otros"};
 
-        public CharacterSheetPagerAdapter(@NonNull FragmentManager fm) {
+        public CharacterSheetPagerAdapter(@NonNull FragmentManager fm, String characterId) {
             super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+            this.characterId = characterId;
         }
 
         @NonNull
         @Override
         public Fragment getItem(int position) {
-            // Return a new instance of the Fragment for the given position
-            // You can use a switch statement or if-else condition here to return different Fragments for different positions
-            return DatosTabFragment.newInstance("param1", "param2");
+            return DatosTabFragment.newInstance(characterId);
         }
 
         @Override
         public int getCount() {
-            // Return the total number of pages
-            return 4; // for example
+            return tabTitles.length;
         }
 
         @Nullable
         @Override
         public CharSequence getPageTitle(int position) {
-            // This method is used to set the titles of the tabs in the TabLayout
-            // You can return a different title for each position
-            return "Tab " + (position + 1);
+            return tabTitles[position];
         }
     }
 }

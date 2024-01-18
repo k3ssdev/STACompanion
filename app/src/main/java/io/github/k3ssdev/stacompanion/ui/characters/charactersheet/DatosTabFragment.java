@@ -1,4 +1,4 @@
-package io.github.k3ssdev.stacompanion.ui.characters;
+package io.github.k3ssdev.stacompanion.ui.characters.charactersheet;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,26 +13,20 @@ import androidx.lifecycle.ViewModelProvider;
 
 import io.github.k3ssdev.stacompanion.R;
 import io.github.k3ssdev.stacompanion.databinding.FragmentDatosTabBinding;
+import io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetViewModel;
 
 public class DatosTabFragment extends Fragment {
 
     private CharacterSheetViewModel viewModel;
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private String mParam1;
-    private String mParam2;
-
     public DatosTabFragment() {
         // Required empty public constructor
     }
 
-    public static DatosTabFragment newInstance(String param1, String param2) {
+    public static DatosTabFragment newInstance(String characterId) {
         DatosTabFragment fragment = new DatosTabFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString("characterId", characterId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -40,10 +34,6 @@ public class DatosTabFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -64,8 +54,29 @@ public class DatosTabFragment extends Fragment {
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(this);
 
-        // Rest of your code...
+        // Recuperar el ID del personaje del Bundle
+        String characterId = null;
+        if (getArguments() != null) {
+            characterId = getArguments().getString("characterId");
+        }
 
+        // Usar el ID del personaje para recuperar los detalles del personaje
+        if (characterId != null) {
+            viewModel.getCharacterSheetFromDatabase(characterId);
+        }
+
+        // Return the root view
         return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        // Observe the characterSheetLiveData
+        viewModel.getCharacterSheetLiveData().observe(getViewLifecycleOwner(), characterSheet -> {
+            // Update your UI here with the new characterSheet
+            // This will automatically update the TextView with the character's name when the data changes
+        });
     }
 }

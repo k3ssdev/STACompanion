@@ -30,7 +30,7 @@
         </activity>
 
         <!-- Keep the declaration for CharacterSheetDetails -->
-        <activity android:name=".ui.characters.CharacterSheetDetails" />
+        <activity android:name=".ui.characters.charactersheet.CharacterSheetDetails" />
 
     </application>
 

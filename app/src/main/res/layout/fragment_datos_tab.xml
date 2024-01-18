@@ -8,16 +8,262 @@
             type="io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetViewModel" />
     </data>
 
-    <FrameLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.characters.DatosTabFragment">
+        tools:context=".ui.characters.charactersheet.DatosTabFragment">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:columnCount="2"
+            android:layout_marginHorizontal="16sp"
+            android:padding="16sp">
 
-    </FrameLayout>
+            <!-- Character Name -->
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_row="0"
+                android:layout_marginTop="16sp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.characterSheetLiveData.characterName}" />
+            </LinearLayout>
+
+            <!-- Species -->
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_marginTop="16sp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Especie"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.characterSheetLiveData.species}" />
+            </LinearLayout>
+
+            <!-- Rank -->
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_marginTop="16sp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rango"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.characterSheetLiveData.rank}" />
+            </LinearLayout>
+
+            <!-- Environment -->
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_marginTop="16sp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Entorno"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.characterSheetLiveData.environment}" />
+            </LinearLayout>
+
+
+            <!-- Upbringing -->
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_marginTop="16sp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Educación"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.characterSheetLiveData.upbringing}" />
+
+            </LinearLayout>
+
+            <!-- Assignment -->
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_marginTop="16sp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Asignación"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.characterSheetLiveData.assignment}" />
+
+            </LinearLayout>
+
+            <!-- Academy -->
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_marginTop="16sp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Academia"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.characterSheetLiveData.academy}" />
+
+            </LinearLayout>
+
+            <!-- Career -->
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_marginTop="16sp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Carrera"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.characterSheetLiveData.career}" />
+
+            </LinearLayout>
+
+            <!-- Traits -->
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_marginTop="16sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rasgos"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.characterSheetLiveData.traits}" />
+
+            </LinearLayout>
+
+            <!-- Values -->
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_row="1"
+                android:layout_marginTop="16sp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Valores"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.characterSheetLiveData.values}" />
+
+            </LinearLayout>
+
+        </GridLayout>
+    </ScrollView>
 </layout>

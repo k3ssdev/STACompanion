@@ -116,6 +116,8 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         });
 
+        // No permite elegir cuenta de google
+        /*
         // Configura el escuchador de clics para el botón de inicio de sesión de Google
         SignInButton googleButton = findViewById(R.id.sign_in_button);
         googleButton.setOnClickListener(v -> {
@@ -128,6 +130,25 @@ public class LoginActivity extends AppCompatActivity {
             Intent signInIntent = AuthUI.getInstance()
                     .createSignInIntentBuilder()
                     .setAvailableProviders(providers)
+                    .build();
+
+            signInLauncher.launch(signInIntent);
+        });
+        */
+
+        // Configura el escuchador de clics para el botón de inicio de sesión de Google
+        SignInButton googleButton = findViewById(R.id.sign_in_button);
+        googleButton.setOnClickListener(v -> {
+            // Choose authentication providers
+            List<AuthUI.IdpConfig> providers = Collections.singletonList(
+                    new AuthUI.IdpConfig.GoogleBuilder().build()
+            );
+
+            // Create and launch sign-in intent with option to choose account
+            Intent signInIntent = AuthUI.getInstance()
+                    .createSignInIntentBuilder()
+                    .setAvailableProviders(providers)
+                    .setAlwaysShowSignInMethodScreen(true)  // Mostrar la pantalla de inicio de sesión para elegir la cuenta
                     .build();
 
             signInLauncher.launch(signInIntent);

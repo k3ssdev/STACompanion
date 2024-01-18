@@ -17,4 +17,6 @@
     <string name="registro">Registrarse</string>
     <string name="add_sheet">añadir ficha</string>
     <string name="search">buscar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

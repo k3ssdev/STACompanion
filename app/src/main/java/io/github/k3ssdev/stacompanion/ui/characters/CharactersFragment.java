@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -101,7 +102,16 @@ public class CharactersFragment extends Fragment {
                 "Promotion to Captain" // event2
         );
 
+        // Abrir la hoja de personaje al hacer clic en ella
 
+        adapter.setOnItemClickListener(sheetDestails -> {
+            // Abre la nueva actividad o fragmento aquí...
+            // Por ejemplo, si estás abriendo una nueva actividad:
+            //Intent intent = new Intent(getContext(), CharacterSheetActivity.class);
+            //intent.putExtra("characterSheet", sheet);
+            //startActivity(intent);
+            Toast.makeText(getContext(), "Opening " + sheetDestails.getCharacterName(), Toast.LENGTH_SHORT).show();
+        });
 
         // Conexión a la base de datos y guardado de la hoja de personaje de prueba
         DatabaseReference ref = FirebaseDatabase.getInstance("https://stacompanion-a1286-default-rtdb.europe-west1.firebasedatabase.app/").getReference();
@@ -173,6 +183,10 @@ public class CharactersFragment extends Fragment {
         this.sheet = sheet;
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("characterSheets");
         ref.child(sheet.getCharacterName()).setValue(sheet);
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(CharacterSheet sheet);
     }
 
     @Override

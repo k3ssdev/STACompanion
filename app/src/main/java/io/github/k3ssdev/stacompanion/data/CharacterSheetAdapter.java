@@ -14,11 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.github.k3ssdev.stacompanion.R;
+import io.github.k3ssdev.stacompanion.ui.characters.CharactersFragment;
 
 public class CharacterSheetAdapter extends RecyclerView.Adapter<CharacterSheetAdapter.ViewHolder> implements Filterable {
     private List<CharacterSheet> characterSheets;
     private List<CharacterSheet> characterSheetsFull;
 
+    private CharactersFragment.OnItemClickListener listener;
     public CharacterSheetAdapter(ArrayList<CharacterSheet> characterSheets) {
         this.characterSheets = characterSheets != null ? characterSheets : new ArrayList<>();
         this.characterSheetsFull = new ArrayList<>(this.characterSheets);
@@ -77,6 +79,12 @@ public class CharacterSheetAdapter extends RecyclerView.Adapter<CharacterSheetAd
         holder.characterNameTextView.setText(sheet.getCharacterName());
         holder.speciesTextView.setText(sheet.getSpecies());
 
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(sheet);
+            }
+        });
+
     }
 
     public void clearCharacterSheets() {
@@ -102,6 +110,12 @@ public class CharacterSheetAdapter extends RecyclerView.Adapter<CharacterSheetAd
             characterNameTextView = itemView.findViewById(R.id.characterName);
             speciesTextView = itemView.findViewById(R.id.species);
         }
+    }
+
+
+
+    public void setOnItemClickListener(CharactersFragment.OnItemClickListener listener) {
+        this.listener = listener;
     }
 
 }

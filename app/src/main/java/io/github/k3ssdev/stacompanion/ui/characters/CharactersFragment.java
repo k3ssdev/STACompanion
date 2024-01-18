@@ -32,98 +32,45 @@ import io.github.k3ssdev.stacompanion.data.CharacterSheetAdapter;
 
 public class CharactersFragment extends Fragment {
 
+    private static final String TAG = "CharactersFragment";
+
     private RecyclerView recyclerView;
     private CharacterSheetAdapter adapter;
     private View view;
     private CharacterSheet sheet;
 
-    private static final String TAG = "CharactersFragment";
+    public interface OnItemClickListener {
+        void onItemClick(CharacterSheet sheet);
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_character, container, false);
+        initializeRecyclerView();
+        setupDatabaseConnection();
+        return view;
+    }
+
+    private void initializeRecyclerView() {
         recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         adapter = new CharacterSheetAdapter(new ArrayList<>());
         recyclerView.setAdapter(adapter);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-       // String documentId = "Tx5ZOk7KScRUVStDeaLzDAmsi1U2";
-
-        CharacterSheet sheet = new CharacterSheet(
-                "2", // id
-                userId, // userId
-                "Spock", // characterName
-                "Vulcan", // species
-                "Vulcan", // environment
-                "Commander", // rank
-                "City", // upbringing
-                "Starship Command", // assignment
-                "Brave", // traits
-                35, // control
-                7, // fitness
-                8, // presence
-                9, // daring
-                6, // insight
-                7, // reason
-                8, // command
-                9, // security
-                7, // science
-                6, // conn
-                8, // engineering
-                7, // medicine
-                35, // age
-                "Black", // skin
-                "Black", // hair
-                75, // weight
-                180, // height
-                "Blue", // eyes
-                6, // reputation
-                9, // privilege
-                8, // responsibility
-                "Starship Command", // focuses
-                7, // determination
-                "Duty, Honor, Loyalty", // values
-                "Leadership", // talents
-                "Phaser", // attacks
-                "Starship", // equipment
-                7, // stress
-                5, // currentStress
-                10, // maxStress
-                8, // resistance
-                "Starfleet Medal of Honor", // notesAndAwards
-                "None", // injuries
-                "Starfleet Academy", // academy
-                "Starfleet Officer", // career
-                "First Contact", // event1
-                "Promotion to Captain" // event2
-        );
-
-        // Abrir la hoja de personaje al hacer clic en ella
-
         adapter.setOnItemClickListener(sheetDestails -> {
-            // Abre la nueva actividad o fragmento aquí...
-            // Por ejemplo, si estás abriendo una nueva actividad:
-            //Intent intent = new Intent(getContext(), CharacterSheetActivity.class);
-            //intent.putExtra("characterSheet", sheet);
-            //startActivity(intent);
             Toast.makeText(getContext(), "Opening " + sheetDestails.getCharacterName(), Toast.LENGTH_SHORT).show();
         });
+    }
 
-        // Conexión a la base de datos y guardado de la hoja de personaje de prueba
-        DatabaseReference ref = FirebaseDatabase.getInstance("https://stacompanion-a1286-default-rtdb.europe-west1.firebasedatabase.app/").getReference();
-        ref.child("characterSheets").child(sheet.getId().toString()).setValue(sheet);
-
-        // Lectura de la base de datos
-        ref = FirebaseDatabase.getInstance("https://stacompanion-a1286-default-rtdb.europe-west1.firebasedatabase.app/").getReference("characterSheets");
+    private void setupDatabaseConnection() {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance("https://stacompanion-a1286-default-rtdb.europe-west1.firebasedatabase.app/").getReference("characterSheets");
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                adapter.clearCharacterSheets(); // Limpia los datos del adaptador
+                adapter.clearCharacterSheets();
                 for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                     CharacterSheet sheet = childSnapshot.getValue(CharacterSheet.class);
                     if (sheet.getUserId().equals(userId)) {
@@ -131,7 +78,7 @@ public class CharactersFragment extends Fragment {
                         Log.d(TAG, "onDataChange: " + sheet.getId() + " " + sheet.getUserId() + " " + sheet.getCharacterName());
                     }
                 }
-                adapter.notifyDataSetChanged(); // Notificar al adaptador que los datos han cambiado
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -139,8 +86,6 @@ public class CharactersFragment extends Fragment {
                 Log.w(TAG, "Failed to read value.", databaseError.toException());
             }
         });
-
-        return view;
     }
 
     @Override
@@ -183,10 +128,6 @@ public class CharactersFragment extends Fragment {
         this.sheet = sheet;
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("characterSheets");
         ref.child(sheet.getCharacterName()).setValue(sheet);
-    }
-
-    public interface OnItemClickListener {
-        void onItemClick(CharacterSheet sheet);
     }
 
     @Override

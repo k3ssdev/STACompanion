@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+
 /**
  * LoginActivity es una clase que representa la pantalla de inicio de sesión de la aplicación.
  * Esta clase se encarga de autenticar al usuario utilizando Firebase Auth y Google Sign-In.
@@ -38,14 +39,18 @@ public class LoginActivity extends AppCompatActivity {
             registerForActivityResult(
                     new ActivityResultContracts.StartActivityForResult(),
                     result -> {
+                        // Obtiene la respuesta del intento de inicio de sesión
                         IdpResponse response = IdpResponse.fromResultIntent(result.getData());
 
                         if (result.getResultCode() == RESULT_OK) {
                             // Inicio de sesión correcto
+                            // Obtiene el usuario actual
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            // Ir a MainActivity
+                            // Crea un intent para iniciar MainActivity
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            // Inicia MainActivity
                             startActivity(intent);
+                            // Finaliza LoginActivity
                             finish();
 
                             // Mostrar mensaje de confirmación
@@ -79,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Configura el escuchador de clics para el botón de inicio de sesión
         buttonLogin.setOnClickListener(v -> {
+            // Obtiene el correo electrónico y la contraseña del usuario
             String email = editTextUsername.getText().toString();
             String password = editTextPassword.getText().toString();
 
@@ -94,17 +100,23 @@ public class LoginActivity extends AppCompatActivity {
                         .addOnCompleteListener(this, task -> {
                             if (task.isSuccessful()) {
                                 // Inicio de sesión exitoso
+                                // Obtiene el usuario actual
                                 FirebaseUser user = mAuth.getCurrentUser();
+                                // Muestra un mensaje de confirmación
                                 Toast.makeText(LoginActivity.this, "¡Login correcto!", Toast.LENGTH_SHORT).show();
-                                // Iniciar MainActivity
+                                // Crea un intent para iniciar MainActivity
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                // Inicia MainActivity
                                 startActivity(intent);
+                                // Finaliza LoginActivity
                                 finish();
                             } else {
+                                // Muestra un mensaje de error
                                 Toast.makeText(LoginActivity.this, "¡Login incorrecto!", Toast.LENGTH_SHORT).show();
                             }
                         });
             } catch (Exception e) {
+                // Muestra un mensaje de error
                 Toast.makeText(LoginActivity.this, "¡Error!", Toast.LENGTH_SHORT).show();
             }
         });
@@ -112,40 +124,39 @@ public class LoginActivity extends AppCompatActivity {
         // Configura el escuchador de clics para el botón de registro
         TextView buttonRegister = findViewById(R.id.signupText);
         buttonRegister.setOnClickListener(v -> {
-                List<AuthUI.IdpConfig> providers = Arrays.asList(
-                        new AuthUI.IdpConfig.EmailBuilder().build()
-                );
+            // Define los proveedores de inicio de sesión
+            List<AuthUI.IdpConfig> providers = Arrays.asList(
+                    new AuthUI.IdpConfig.EmailBuilder().build()
+            );
 
-                // Crear e iniciar el intento de inicio de sesión
-                Intent signInIntent = AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setTheme(R.style.Theme_STA_Companion)
-                        .setAvailableProviders(providers)
-                        .build();
+            // Crea el intento de inicio de sesión
+            Intent signInIntent = AuthUI.getInstance()
+                    .createSignInIntentBuilder()
+                    .setTheme(R.style.Theme_STA_Companion)
+                    .setAvailableProviders(providers)
+                    .build();
 
-                signInLauncher.launch(signInIntent);
-
+            // Inicia el intento de inicio de sesión
+            signInLauncher.launch(signInIntent);
         });
-
-
 
         // Configura el escuchador de clics para el botón de inicio de sesión de Google
         SignInButton googleButton = findViewById(R.id.sign_in_button);
         googleButton.setOnClickListener(v -> {
-            // Proveedores de inicio de sesión
+            // Define los proveedores de inicio de sesión
             List<AuthUI.IdpConfig> providers = Collections.singletonList(
                     new AuthUI.IdpConfig.GoogleBuilder().build()
             );
 
-
-            // Crear e iniciar el intento de inicio de sesión
+            // Crea el intento de inicio de sesión
             Intent signInIntent = AuthUI.getInstance()
                     .createSignInIntentBuilder()
                     .setTheme(R.style.Theme_STA_Companion)
-                    .setAvailableProviders(providers).setIsSmartLockEnabled(true)
-                    //.setAlwaysShowSignInMethodScreen(true)  // Mostrar la pantalla de inicio de sesión para elegir la cuenta
+                    .setAvailableProviders(providers)
+                    .setIsSmartLockEnabled(true)
                     .build();
 
+            // Inicia el intento de inicio de sesión
             signInLauncher.launch(signInIntent);
         });
     }
@@ -159,6 +170,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         // Comprueba si el usuario ya ha iniciado sesión
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        // Actualiza la interfaz de usuario en función del estado de inicio de sesión del usuario
         updateUI(currentUser);
     }
 
@@ -171,12 +183,14 @@ public class LoginActivity extends AppCompatActivity {
         if (currentUser != null) {
             // Si el usuario ya ha iniciado sesión, redirigir al usuario a MainActivity
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            // Inicia MainActivity
             startActivity(intent);
+            // Finaliza LoginActivity
             finish();
         } else {
-            // User is signed out, show login form
-            // This might be unnecessary if you're already in LoginActivity
-            // and the login form is always visible when the user is signed out
+            // El usuario no ha iniciado sesión, mostrar el formulario de inicio de sesión
+            // Esto puede ser innecesario si ya estás en LoginActivity
+            // y el formulario de inicio de sesión siempre es visible cuando el usuario no ha iniciado sesión
         }
     }
 }

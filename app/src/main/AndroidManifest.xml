@@ -30,10 +30,7 @@
         </activity>
 
         <!-- Keep the declaration for RegisterActivity -->
-        <activity
-            android:name=".RegisterActivity"
-            android:label="@string/register_activity_title">
-        </activity>
+
 
     </application>
 

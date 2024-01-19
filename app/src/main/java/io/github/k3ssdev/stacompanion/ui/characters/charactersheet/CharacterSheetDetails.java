@@ -29,6 +29,10 @@ public class CharacterSheetDetails extends AppCompatActivity {
         Intent intent = getIntent();
         characterSheet = (CharacterSheet) intent.getSerializableExtra("CharacterSheet");
 
+        // Set up the appbar with the character's name
+
+            getSupportActionBar().setTitle(characterSheet.getCharacterName());
+
         // Set up the ViewPager and TabLayout
         ViewPager viewPager = findViewById(R.id.view_pager);
         TabLayout tabLayout = findViewById(R.id.tab_layout);

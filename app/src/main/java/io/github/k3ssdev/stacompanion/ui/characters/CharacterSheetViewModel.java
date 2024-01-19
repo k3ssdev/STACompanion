@@ -50,4 +50,8 @@ public class CharacterSheetViewModel extends ViewModel {
                         }
                     });
         }
+
+    public CharSequence getCharacterName() {
+        return null;
     }
+}

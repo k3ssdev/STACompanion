@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="io.github.k3ssdev.stacompanion.ui.characters.CharactersFragment"
-        android:label="@string/title_home"
+        android:label="Fichas"
         tools:layout="@layout/fragment_character" />
 
     <fragment
@@ -26,7 +26,6 @@
     <fragment
         android:id="@+id/characterSheetFragment"
         android:name="io.github.k3ssdev.stacompanion.ui.characters.charactersheet.CharacterSheetFragment"
-        android:label="character_sheet_fragment"
         tools:layout="@layout/fragment_character_sheet"
         >
 

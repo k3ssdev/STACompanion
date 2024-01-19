@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         // Ocultar la barra de acción
         //getSupportActionBar().hide();
 

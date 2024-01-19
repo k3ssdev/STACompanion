@@ -7,15 +7,18 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
 import io.github.k3ssdev.stacompanion.R;
+import io.github.k3ssdev.stacompanion.data.CharacterSheet;
 import io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetViewModel;
 
 public class CharacterSheetFragment extends Fragment {
@@ -25,43 +28,6 @@ public class CharacterSheetFragment extends Fragment {
     public static CharacterSheetFragment newInstance() {
         return new CharacterSheetFragment();
     }
-
-    /*@Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_character_sheet, container, false);
-
-        // Initialize the ViewModel
-        mViewModel = new ViewModelProvider(this).get(CharacterSheetViewModel.class);
-
-        // Recuperar el ID del personaje del Bundle
-        String characterId = null;
-        if (getArguments() != null) {
-            characterId = getArguments().getString("characterId");
-        }
-
-        // Usar el ID del personaje para recuperar los detalles del personaje
-        if (characterId != null) {
-            mViewModel.getCharacterSheetFromDatabase(characterId);
-            mViewModel.getCharacterSheetLiveData().observe(getViewLifecycleOwner(), new Observer<CharacterSheet>() {
-                @Override
-                public void onChanged(CharacterSheet characterSheet) {
-                    // Ahora puedes usar characterSheet para rellenar tus vistas
-                    Log.d(TAG, "CharacterSheetLiveData changed: " + characterSheet);
-                    TextView characterNameTextView = view.findViewById(R.id.characterNameValue);
-                    if (characterSheet != null) {
-                        characterNameTextView.setText(characterSheet.getCharacterName());
-                    } else {
-                        characterNameTextView.setText("Character not found");
-                    }
-
-                    // Haz lo mismo para las demás vistas en tu fragmento
-                }
-            });
-        }
-
-        return view;
-    }*/
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -82,6 +48,17 @@ public class CharacterSheetFragment extends Fragment {
         if (characterId != null) {
             mViewModel.getCharacterSheetFromDatabase(characterId);
         }
+
+        // Poner el nombre del personaje en el appbar
+        mViewModel.getCharacterSheetLiveData().observe(getViewLifecycleOwner(), new Observer<CharacterSheet>() {
+            @Override
+            public void onChanged(@Nullable final CharacterSheet characterSheet) {
+                // Update the UI, in this case, set the title of the app bar.
+                if (characterSheet != null) {
+                    ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(characterSheet.getCharacterName());
+                }
+            }
+        });
 
         // Set up the ViewPager and TabLayout
         ViewPager viewPager = view.findViewById(R.id.view_pager);

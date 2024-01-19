@@ -38,18 +38,21 @@ public class CharacterSheetFragment extends Fragment {
         // Initialize the ViewModel
         mViewModel = new ViewModelProvider(this).get(CharacterSheetViewModel.class);
 
-        // Recuperar el ID del personaje del Bundle
+        // Set a default title or loading indicator
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Cargando...");
+
+        // Retrieve the character ID from the Bundle
         String characterId = null;
         if (getArguments() != null) {
             characterId = getArguments().getString("characterId");
         }
 
-        // Usar el ID del personaje para recuperar los detalles del personaje
+        // Use the character ID to retrieve the character details
         if (characterId != null) {
             mViewModel.getCharacterSheetFromDatabase(characterId);
         }
 
-        // Poner el nombre del personaje en el appbar
+        // Set the Toolbar title to the character's name
         mViewModel.getCharacterSheetLiveData().observe(getViewLifecycleOwner(), new Observer<CharacterSheet>() {
             @Override
             public void onChanged(@Nullable final CharacterSheet characterSheet) {

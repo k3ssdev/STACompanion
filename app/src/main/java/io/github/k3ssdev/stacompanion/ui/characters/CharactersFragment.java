@@ -8,7 +8,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,8 +28,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import io.github.k3ssdev.stacompanion.R;
-import io.github.k3ssdev.stacompanion.data.CharacterSheet;
 import io.github.k3ssdev.stacompanion.data.CharacterFragmentAdapter;
+import io.github.k3ssdev.stacompanion.data.CharacterSheet;
 import io.github.k3ssdev.stacompanion.ui.characters.charactersheet.CharacterSheetFragment;
 
 public class CharactersFragment extends Fragment {
@@ -62,7 +61,7 @@ public class CharactersFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         adapter.setOnItemClickListener(sheetDetails -> {
-            Toast.makeText(getContext(), "Opening " + sheetDetails.getCharacterName(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), "Opening " + sheetDetails.getCharacterName(), Toast.LENGTH_SHORT).show();
 
             // Crear una nueva instancia de CharacterSheetFragment
             CharacterSheetFragment characterSheetFragment = CharacterSheetFragment.newInstance();

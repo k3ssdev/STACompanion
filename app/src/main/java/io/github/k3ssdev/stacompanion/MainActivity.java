@@ -12,25 +12,24 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import io.github.k3ssdev.stacompanion.databinding.ActivityMainBinding;
 
+// Esta clase representa la actividad principal de la aplicación.
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
 
+    // Este método se llama cuando se crea la actividad.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Forzar modo oscuro
-        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
+        // Infla el diseño para esta actividad
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Ocultar la barra de acción
-        //getSupportActionBar().hide();
-
+        // Configura la barra de navegación inferior
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
+        // Configura la barra de aplicaciones con el controlador de navegación
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();
@@ -39,8 +38,10 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
+    // Este método se llama cuando se destruye la actividad.
     @Override
     public boolean onSupportNavigateUp() {
+        // Configura el controlador de navegación
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         return navController.navigateUp() || super.onSupportNavigateUp();
     }

@@ -18,17 +18,20 @@ import com.google.firebase.auth.FirebaseUser;
 
 import io.github.k3ssdev.stacompanion.LoginActivity;
 
+// Esta clase representa el fragmento de configuración en la aplicación.
 public class SettingsFragment extends Fragment {
 
     private io.github.k3ssdev.stacompanion.databinding.FragmentAccountBinding binding;
     private FirebaseAuth mAuth;
 
+    // Este método se llama cuando se crea el fragmento.
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
     }
 
+    // Este método se llama para inflar el diseño del fragmento.
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         SettingsViewModel notificationsViewModel =
@@ -37,19 +40,19 @@ public class SettingsFragment extends Fragment {
         binding = io.github.k3ssdev.stacompanion.databinding.FragmentAccountBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        // Display user information
+        // Mostrar información del usuario
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             String name = currentUser.getDisplayName();
             String email = currentUser.getEmail();
-            // Update your UI with the user information
+            // Actualizar la interfaz de usuario con la información del usuario
             TextView userNameTextView = binding.userName;
             TextView userEmailTextView = binding.userEmail;
             userNameTextView.setText(name);
             userEmailTextView.setText(email);
         }
 
-        // Set up sign out button
+        // Configurar el botón de cierre de sesión
         Button signOutButton = binding.signOutButton;
         signOutButton.setOnClickListener(v -> {
             mAuth.signOut();
@@ -63,13 +66,13 @@ public class SettingsFragment extends Fragment {
 
         });
 
-        // Set up delete account button
+        // Configurar el botón de eliminar cuenta
         Button deleteAccountButton = binding.deleteAccountButton;
         deleteAccountButton.setOnClickListener(v -> {
             currentUser.delete()
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            // Update your UI for the account deleted state
+                            // Actualizar la interfaz de usuario para el estado de cuenta eliminada
                             Intent intent = new Intent(getActivity(), LoginActivity.class);
                             startActivity(intent);
                             getActivity().finish();
@@ -82,6 +85,7 @@ public class SettingsFragment extends Fragment {
         return root;
     }
 
+    // Este método se llama cuando se destruye la vista del fragmento.
     @Override
     public void onDestroyView() {
         super.onDestroyView();

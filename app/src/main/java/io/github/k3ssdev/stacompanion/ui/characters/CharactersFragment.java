@@ -32,6 +32,7 @@ import io.github.k3ssdev.stacompanion.data.CharacterFragmentAdapter;
 import io.github.k3ssdev.stacompanion.data.CharacterSheet;
 import io.github.k3ssdev.stacompanion.ui.characters.charactersheet.CharacterSheetFragment;
 
+// Esta clase representa el fragmento de personajes en la aplicación.
 public class CharactersFragment extends Fragment {
 
     private static final String TAG = "CharactersFragment";
@@ -41,10 +42,12 @@ public class CharactersFragment extends Fragment {
     private View view;
     private CharacterSheet sheet;
 
+    // Esta interfaz define un método para manejar los clics en los elementos de la lista.
     public interface OnItemClickListener {
         void onItemClick(CharacterSheet sheet);
     }
 
+    // Este método se llama para inflar el diseño del fragmento.
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_character, container, false);
@@ -53,6 +56,7 @@ public class CharactersFragment extends Fragment {
         return view;
     }
 
+    // Este método inicializa el RecyclerView que muestra la lista de personajes.
     private void initializeRecyclerView() {
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -61,8 +65,6 @@ public class CharactersFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         adapter.setOnItemClickListener(sheetDetails -> {
-            //Toast.makeText(getContext(), "Opening " + sheetDetails.getCharacterName(), Toast.LENGTH_SHORT).show();
-
             // Crear una nueva instancia de CharacterSheetFragment
             CharacterSheetFragment characterSheetFragment = CharacterSheetFragment.newInstance();
             Bundle args = new Bundle();
@@ -74,25 +76,8 @@ public class CharactersFragment extends Fragment {
             navController.navigate(R.id.characterSheetFragment, args);
         });
     }
-/*    private void initializeRecyclerView() {
-        recyclerView = view.findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        adapter = new CharacterSheetAdapter(new ArrayList<>());
-        recyclerView.setAdapter(adapter);
-
-        adapter.setOnItemClickListener(sheetDestails -> {
-            Toast.makeText(getContext(), "Opening " + sheetDestails.getCharacterName(), Toast.LENGTH_SHORT).show();
-
-            // TODO: Open sheet details
-
-            Intent intent = new Intent(getContext(), CharacterSheetDetails.class);
-            intent.putExtra("CharacterSheet", sheetDestails);
-            startActivity(intent);
-
-        });
-    }*/
-
+    // Este método establece la conexión con la base de datos y recupera los datos de los personajes.
     private void setupDatabaseConnection() {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference ref = FirebaseDatabase.getInstance("https://stacompanion-a1286-default-rtdb.europe-west1.firebasedatabase.app/").getReference("characterSheets");
@@ -118,12 +103,14 @@ public class CharactersFragment extends Fragment {
         });
     }
 
+    // Este método se llama cuando se crea el fragmento.
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
 
+    // Este método se llama para inflar el menú de opciones.
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -146,6 +133,7 @@ public class CharactersFragment extends Fragment {
         });
     }
 
+    // Este método se llama cuando se selecciona un elemento del menú de opciones.
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_add) {
@@ -154,12 +142,14 @@ public class CharactersFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
+    // Este método guarda la hoja de personaje en la base de datos.
     public void saveCharacterSheet(CharacterSheet sheet) {
         this.sheet = sheet;
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("characterSheets");
         ref.child(sheet.getCharacterName()).setValue(sheet);
     }
 
+    // Este método se llama cuando se destruye la vista del fragmento.
     @Override
     public void onDestroyView() {
         super.onDestroyView();

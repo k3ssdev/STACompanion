@@ -16,17 +16,21 @@ import java.util.List;
 import io.github.k3ssdev.stacompanion.R;
 import io.github.k3ssdev.stacompanion.ui.characters.CharactersFragment;
 
+// Esta clase es un adaptador para el RecyclerView en CharactersFragment.
+// Implementa Filterable para permitir la búsqueda de personajes.
 public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFragmentAdapter.ViewHolder> implements Filterable {
-    private List<CharacterSheet> characterSheets;
+    private final List<CharacterSheet> characterSheets;
     private List<CharacterSheet> characterSheetsFull;
 
     private CharactersFragment.OnItemClickListener listener;
+
+    // Constructor que inicializa la lista de hojas de personajes.
     public CharacterFragmentAdapter(ArrayList<CharacterSheet> characterSheets) {
         this.characterSheets = characterSheets != null ? characterSheets : new ArrayList<>();
         this.characterSheetsFull = new ArrayList<>(this.characterSheets);
     }
 
-    // Filterable methods
+    // Implementación de los métodos de Filterable para filtrar la lista de personajes.
     @Override
     public Filter getFilter() {
         return new Filter() {
@@ -52,12 +56,11 @@ public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFrag
                 return results;
             }
 
-
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
                 characterSheets.clear();
                 if (results.values != null) {
-                    characterSheets.addAll((List) results.values);
+                    characterSheets.addAll((List<? extends CharacterSheet>) results.values);
                 }
                 characterSheetsFull = new ArrayList<>(characterSheets); // Actualizar characterSheetsFull
                 notifyDataSetChanged();
@@ -65,14 +68,15 @@ public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFrag
         };
     }
 
+    // Método para crear ViewHolder para cada elemento en el RecyclerView.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Inflate the view for each item of the RecyclerView
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.character_sheet_item, parent, false);
         return new ViewHolder(view);
     }
 
+    // Método para vincular los datos de la hoja de personaje con el ViewHolder.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CharacterSheet sheet = characterSheets.get(position);
@@ -84,27 +88,30 @@ public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFrag
                 listener.onItemClick(sheet);
             }
         });
-
     }
 
+    // Método para limpiar la lista de hojas de personajes.
     public void clearCharacterSheets() {
         this.characterSheets.clear();
     }
+
+    // Método para obtener el número de elementos en la lista de hojas de personajes.
     @Override
     public int getItemCount() {
         return characterSheets.size();
     }
 
+    // Método para agregar una hoja de personaje a la lista.
     public void addCharacterSheet(CharacterSheet sheet) {
         characterSheets.add(sheet);
-        characterSheetsFull = new ArrayList<>(characterSheets); // Update characterSheetsFull
+        characterSheetsFull = new ArrayList<>(characterSheets); // Actualizar characterSheetsFull
         notifyDataSetChanged();
     }
 
+    // ViewHolder que contiene las vistas para cada elemento en el RecyclerView.
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView characterNameTextView;
         TextView speciesTextView;
-
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -113,10 +120,8 @@ public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFrag
         }
     }
 
-
-
+    // Método para establecer el listener de clic en el elemento.
     public void setOnItemClickListener(CharactersFragment.OnItemClickListener listener) {
         this.listener = listener;
     }
-
 }

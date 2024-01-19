@@ -4,22 +4,25 @@
     >
 
     <data>
+        <!-- Define las variables que se utilizarán en este archivo de diseño. -->
         <variable
             name="viewModel"
             type="io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetViewModel" />
     </data>
 
-
+    <!-- El CoordinatorLayout es un diseño superpuesto que coordina el comportamiento de sus vistas secundarias. -->
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
 
+        <!-- AppBarLayout es un contenedor vertical para otros componentes de Material Design. -->
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
 
+            <!-- TabLayout proporciona una implementación horizontal de pestañas. -->
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
@@ -28,6 +31,7 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+        <!-- ViewPager es un componente que permite al usuario deslizar hacia la izquierda y hacia la derecha para ver diferentes vistas. -->
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"

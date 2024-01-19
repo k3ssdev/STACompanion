@@ -15,14 +15,18 @@ import io.github.k3ssdev.stacompanion.R;
 import io.github.k3ssdev.stacompanion.databinding.FragmentDatosTabBinding;
 import io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetViewModel;
 
+// Esta clase representa el fragmento de datos en la aplicación.
 public class DatosTabFragment extends Fragment {
 
+    // ViewModel para este fragmento
     private CharacterSheetViewModel viewModel;
 
+    // Constructor vacío requerido
     public DatosTabFragment() {
-        // Required empty public constructor
+        // Constructor público vacío requerido
     }
 
+    // Método para crear una nueva instancia de este fragmento
     public static DatosTabFragment newInstance(String characterId) {
         DatosTabFragment fragment = new DatosTabFragment();
         Bundle args = new Bundle();
@@ -39,18 +43,18 @@ public class DatosTabFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        // Use Data Binding to inflate the view
+        // Utilizar Data Binding para inflar la vista
         FragmentDatosTabBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_datos_tab, container, false);
 
-        // Check if binding is null
+        // Comprobar si la vinculación es nula
         if (binding == null) {
-            throw new RuntimeException("Data Binding error occurred!");
+            throw new RuntimeException("¡Ocurrió un error de Data Binding!");
         }
 
-        // Initialize the ViewModel
+        // Inicializar el ViewModel
         viewModel = new ViewModelProvider(this).get(CharacterSheetViewModel.class);
 
-        // Set the ViewModel in your binding
+        // Establecer el ViewModel en su binding
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(this);
 
@@ -65,7 +69,7 @@ public class DatosTabFragment extends Fragment {
             viewModel.getCharacterSheetFromDatabase(characterId);
         }
 
-        // Return the root view
+        // Devolver la vista raíz
         return binding.getRoot();
     }
 
@@ -73,10 +77,10 @@ public class DatosTabFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Observe the characterSheetLiveData
+        // Observar el characterSheetLiveData
         viewModel.getCharacterSheetLiveData().observe(getViewLifecycleOwner(), characterSheet -> {
-            // Update your UI here with the new characterSheet
-            // This will automatically update the TextView with the character's name when the data changes
+            // Actualizar la interfaz de usuario aquí con la nueva hoja de personaje
+            // Esto actualizará automáticamente el TextView con el nombre del personaje cuando los datos cambien
         });
     }
 }

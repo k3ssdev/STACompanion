@@ -15,36 +15,39 @@ import com.google.android.material.tabs.TabLayout;
 import io.github.k3ssdev.stacompanion.R;
 import io.github.k3ssdev.stacompanion.data.CharacterSheet;
 
+// Esta clase representa los detalles de la hoja de personaje en la aplicación.
 public class CharacterSheetDetails extends AppCompatActivity {
     private CharacterSheet characterSheet;
     private Bundle savedInstanceState;
 
+    // Este método se llama cuando se crea la actividad.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.savedInstanceState = savedInstanceState;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_character_sheet);
 
-        // Retrieve the CharacterSheet object from the Intent
+        // Recupera el objeto CharacterSheet del Intent
         Intent intent = getIntent();
         characterSheet = (CharacterSheet) intent.getSerializableExtra("CharacterSheet");
 
-        // Set up the appbar with the character's name
+        // Configura la barra de aplicaciones con el nombre del personaje
+        getSupportActionBar().setTitle(characterSheet.getCharacterName());
 
-            getSupportActionBar().setTitle(characterSheet.getCharacterName());
-
-        // Set up the ViewPager and TabLayout
+        // Configura el ViewPager y TabLayout
         ViewPager viewPager = findViewById(R.id.view_pager);
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         viewPager.setAdapter(new CharacterSheetPagerAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
     }
 
+    // Esta clase interna representa el adaptador de páginas para la hoja de personaje.
     private class CharacterSheetPagerAdapter extends FragmentPagerAdapter {
         public CharacterSheetPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
+        // Este método devuelve el fragmento correspondiente a la posición dada.
         @Override
         public Fragment getItem(int position) {
             switch (position) {
@@ -61,11 +64,13 @@ public class CharacterSheetDetails extends AppCompatActivity {
             }
         }
 
+        // Este método devuelve el número total de páginas.
         @Override
         public int getCount() {
             return 4;
         }
 
+        // Este método devuelve el título de la página correspondiente a la posición dada.
         @Nullable
         @Override
         public CharSequence getPageTitle(int position) {

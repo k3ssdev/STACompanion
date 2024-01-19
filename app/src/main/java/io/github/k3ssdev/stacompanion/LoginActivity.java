@@ -3,6 +3,7 @@ package io.github.k3ssdev.stacompanion;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,7 +14,6 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.auth.IdpResponse;
 import com.google.android.gms.common.SignInButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -40,12 +40,12 @@ public class LoginActivity extends AppCompatActivity {
                     new ActivityResultContracts.StartActivityForResult(),
                     result -> {
                         // Obtiene la respuesta del intento de inicio de sesión
-                        IdpResponse response = IdpResponse.fromResultIntent(result.getData());
+                        //IdpResponse response = IdpResponse.fromResultIntent(result.getData());
 
                         if (result.getResultCode() == RESULT_OK) {
                             // Inicio de sesión correcto
                             // Obtiene el usuario actual
-                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             // Crea un intent para iniciar MainActivity
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             // Inicia MainActivity
@@ -101,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 // Inicio de sesión exitoso
                                 // Obtiene el usuario actual
-                                FirebaseUser user = mAuth.getCurrentUser();
+                                //FirebaseUser user = mAuth.getCurrentUser();
                                 // Muestra un mensaje de confirmación
                                 Toast.makeText(LoginActivity.this, "¡Login correcto!", Toast.LENGTH_SHORT).show();
                                 // Crea un intent para iniciar MainActivity
@@ -188,9 +188,9 @@ public class LoginActivity extends AppCompatActivity {
             // Finaliza LoginActivity
             finish();
         } else {
-            // El usuario no ha iniciado sesión, mostrar el formulario de inicio de sesión
-            // Esto puede ser innecesario si ya estás en LoginActivity
-            // y el formulario de inicio de sesión siempre es visible cuando el usuario no ha iniciado sesión
+
+            // Mensaje de depuración
+            Log.d("LoginActivity", "updateUI: currentUser is null");
         }
     }
 }

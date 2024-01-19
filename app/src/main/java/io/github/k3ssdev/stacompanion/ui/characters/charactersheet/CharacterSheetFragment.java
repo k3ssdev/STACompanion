@@ -21,49 +21,52 @@ import io.github.k3ssdev.stacompanion.R;
 import io.github.k3ssdev.stacompanion.data.CharacterSheet;
 import io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetViewModel;
 
+// Esta clase representa el fragmento de la hoja de personaje en la aplicación.
 public class CharacterSheetFragment extends Fragment {
 
     private CharacterSheetViewModel mViewModel;
 
+    // Este método crea una nueva instancia del fragmento de la hoja de personaje.
     public static CharacterSheetFragment newInstance() {
         return new CharacterSheetFragment();
     }
 
+    // Este método se llama para inflar el diseño del fragmento.
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Infla el diseño para este fragmento
         View view = inflater.inflate(R.layout.fragment_character_sheet, container, false);
 
-        // Initialize the ViewModel
+        // Inicializa el ViewModel
         mViewModel = new ViewModelProvider(this).get(CharacterSheetViewModel.class);
 
-        // Set a default title or loading indicator
+        // Establece un título predeterminado o indicador de carga
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Cargando...");
 
-        // Retrieve the character ID from the Bundle
+        // Recupera el ID del personaje del Bundle
         String characterId = null;
         if (getArguments() != null) {
             characterId = getArguments().getString("characterId");
         }
 
-        // Use the character ID to retrieve the character details
+        // Usa el ID del personaje para recuperar los detalles del personaje
         if (characterId != null) {
             mViewModel.getCharacterSheetFromDatabase(characterId);
         }
 
-        // Set the Toolbar title to the character's name
+        // Establece el título de la barra de herramientas con el nombre del personaje
         mViewModel.getCharacterSheetLiveData().observe(getViewLifecycleOwner(), new Observer<CharacterSheet>() {
             @Override
             public void onChanged(@Nullable final CharacterSheet characterSheet) {
-                // Update the UI, in this case, set the title of the app bar.
+                // Actualiza la interfaz de usuario, en este caso, establece el título de la barra de aplicaciones.
                 if (characterSheet != null) {
                     ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(characterSheet.getCharacterName());
                 }
             }
         });
 
-        // Set up the ViewPager and TabLayout
+        // Configura el ViewPager y TabLayout
         ViewPager viewPager = view.findViewById(R.id.view_pager);
         TabLayout tabLayout = view.findViewById(R.id.tab_layout);
         viewPager.setAdapter(new CharacterSheetPagerAdapter(getChildFragmentManager(), characterId));
@@ -72,32 +75,38 @@ public class CharacterSheetFragment extends Fragment {
         return view;
     }
 
+    // Este método se llama cuando la actividad del fragmento ha sido creada.
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        // TODO: Use the ViewModel
+        // TODO: Usa el ViewModel
     }
 
+    // Esta clase representa el adaptador de páginas para la hoja de personaje.
     public class CharacterSheetPagerAdapter extends FragmentPagerAdapter {
         private final String characterId;
         private final String[] tabTitles = new String[]{"Datos", "Estado y equipo", "Atributos y Disciplinas", "Apariencia y otros"};
 
+        // Constructor del adaptador de páginas.
         public CharacterSheetPagerAdapter(@NonNull FragmentManager fm, String characterId) {
             super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
             this.characterId = characterId;
         }
 
+        // Este método devuelve el fragmento correspondiente a la posición dada.
         @NonNull
         @Override
         public Fragment getItem(int position) {
             return DatosTabFragment.newInstance(characterId);
         }
 
+        // Este método devuelve el número total de páginas.
         @Override
         public int getCount() {
             return tabTitles.length;
         }
 
+        // Este método devuelve el título de la página correspondiente a la posición dada.
         @Nullable
         @Override
         public CharSequence getPageTitle(int position) {

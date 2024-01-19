@@ -15,42 +15,56 @@ import com.google.firebase.database.ValueEventListener;
 
 import io.github.k3ssdev.stacompanion.data.CharacterSheet;
 
+// Esta clase representa el modelo de vista para la hoja de personaje.
 public class CharacterSheetViewModel extends ViewModel {
 
-        private static final String TAG = "CharacterSheetViewModel";
+    // Etiqueta para los mensajes de registro.
+    private static final String TAG = "CharacterSheetViewModel";
 
-        private MutableLiveData<CharacterSheet> characterSheetLiveData = new MutableLiveData<>();
+    // LiveData que contiene la hoja de personaje.
+    private MutableLiveData<CharacterSheet> characterSheetLiveData = new MutableLiveData<>();
 
-        public LiveData<CharacterSheet> getCharacterSheetLiveData() {
-            return characterSheetLiveData;
-        }
+    // Este método devuelve la LiveData que contiene la hoja de personaje.
+    public LiveData<CharacterSheet> getCharacterSheetLiveData() {
+        return characterSheetLiveData;
+    }
 
-        public void getCharacterSheetFromDatabase(String characterId) {
+    // Este método recupera la hoja de personaje de la base de datos utilizando el ID del personaje.
+    public void getCharacterSheetFromDatabase(String characterId) {
 
-            Log.d(TAG, "getCharacterSheetFromDatabase called with characterId: " + characterId);
+        // Registro de la llamada al método.
+        Log.d(TAG, "getCharacterSheetFromDatabase called with characterId: " + characterId);
 
-            DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
+        // Referencia a la base de datos.
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
 
-            dbRef.child("characterSheets").child(characterId)
-                    .addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.exists()) {
-                                CharacterSheet characterSheet = dataSnapshot.getValue(CharacterSheet.class);
-                                Log.d(TAG, "CharacterSheet obtained from database: " + characterSheet);
-                                characterSheetLiveData.setValue(characterSheet);
-                            } else {
-                                Log.d(TAG, "No such document");
-                            }
+        // Consulta a la base de datos para obtener la hoja de personaje.
+        dbRef.child("characterSheets").child(characterId)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            // Si la hoja de personaje existe, se recupera y se establece en la LiveData.
+                            CharacterSheet characterSheet = dataSnapshot.getValue(CharacterSheet.class);
+                            Log.d(TAG, "CharacterSheet obtained from database: " + characterSheet);
+                            characterSheetLiveData.setValue(characterSheet);
+                        } else {
+                            // Si la hoja de personaje no existe, se registra un mensaje.
+                            Log.d(TAG, "No such document");
                         }
+                    }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-                            Log.d(TAG, "get failed with ", databaseError.toException());
-                        }
-                    });
-        }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // Si la consulta a la base de datos falla, se registra el error.
+                        Log.d(TAG, "get failed with ", databaseError.toException());
+                    }
+                });
+    }
 
+    // Este método devuelve el nombre del personaje.
+    // Actualmente, este método no está implementado y siempre devuelve null.
+    // TODO: Implementar este método para que devuelva el nombre del personaje.
     public CharSequence getCharacterName() {
         return null;
     }

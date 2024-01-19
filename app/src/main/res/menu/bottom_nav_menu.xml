@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Este es el archivo de recursos del menú para la barra de navegación inferior de la aplicación. -->
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Este es el elemento de navegación de inicio. Tiene un ID de 'navigation_home', un icono de 'baseline_contact_page_24', y un título de 'Fichas'. -->
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/baseline_contact_page_24"
         android:title="Fichas" />
 
+    <!-- Este es el elemento de navegación del tablero. Tiene un ID de 'navigation_dashboard', un icono de 'baseline_casino_24', y un título que se referencia desde el archivo de recursos de cadena con la clave 'title_dashboard'. -->
     <item
         android:id="@+id/navigation_dashboard"
         android:icon="@drawable/baseline_casino_24"
         android:title="@string/title_dashboard" />
 
+    <!-- Este es el elemento de navegación de notificaciones. Tiene un ID de 'navigation_notifications', un icono de 'baseline_manage_accounts_24', y un título que se referencia desde el archivo de recursos de cadena con la clave 'title_notifications'. -->
     <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/baseline_manage_accounts_24"

@@ -1,12 +1,16 @@
 package io.github.k3ssdev.stacompanion.ui.dice;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -16,14 +20,11 @@ import java.util.List;
 import java.util.Random;
 
 import io.github.k3ssdev.stacompanion.R;
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-//import io.github.k3ssdev.myapplication.databinding.FragmentDashboardBinding;
 
+// Esta clase representa el fragmento de dados en la aplicación.
 public class DiceFragment extends Fragment {
 
+    // Definición de los elementos de la interfaz de usuario.
     private EditText editTextNumberOfDiceD6;
     private EditText editTextNumberOfDiceD20;
     private Button buttonMinusD6;
@@ -34,11 +35,12 @@ public class DiceFragment extends Fragment {
     private TextView textViewDiceResult;
     private ImageView imageViewDice;
 
-
+    // Este método se llama para inflar el diseño del fragmento.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dice, container, false);
 
+        // Inicialización de los elementos de la interfaz de usuario.
         editTextNumberOfDiceD6 = view.findViewById(R.id.editTextNumberOfDiceD6);
         editTextNumberOfDiceD20 = view.findViewById(R.id.editTextNumberOfDiceD20);
         buttonMinusD6 = view.findViewById(R.id.buttonMinusD6);
@@ -49,6 +51,7 @@ public class DiceFragment extends Fragment {
         textViewDiceResult = view.findViewById(R.id.textViewDiceResult);
         imageViewDice = view.findViewById(R.id.imageViewDice);
 
+        // Configuración de los listeners de los botones.
         buttonRollDice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +90,7 @@ public class DiceFragment extends Fragment {
         return view;
     }
 
+    // Este método disminuye el número de dados en el EditText proporcionado.
     private void decreaseNumberOfDice(EditText editText) {
         int currentValue = Integer.parseInt(editText.getText().toString());
         if (currentValue >= 1) {
@@ -94,11 +98,13 @@ public class DiceFragment extends Fragment {
         }
     }
 
+    // Este método aumenta el número de dados en el EditText proporcionado.
     private void increaseNumberOfDice(EditText editText) {
         int currentValue = Integer.parseInt(editText.getText().toString());
         editText.setText(String.valueOf(currentValue + 1));
     }
 
+    // Este método maneja el lanzamiento de los dados.
     private void rollDice() {
         // Eliminar los resultados anteriores
         textViewDiceResult.setText("");
@@ -115,6 +121,7 @@ public class DiceFragment extends Fragment {
         animateDiceRoll();
     }
 
+    // Este método obtiene el número de dados del EditText proporcionado.
     private int getNumberOfDice(EditText editText) {
         try {
             return Integer.parseInt(editText.getText().toString());
@@ -124,6 +131,7 @@ public class DiceFragment extends Fragment {
         }
     }
 
+    // Este método maneja el lanzamiento de un solo tipo de dado.
     private void rollSingleDiceType(int diceType, int numberOfDice, String diceTypeName) {
         // Mostrar los resultados parciales en el TextView
         StringBuilder resultText = new StringBuilder("Resultados " + diceTypeName + ": \n");
@@ -161,7 +169,6 @@ public class DiceFragment extends Fragment {
 
             diceResultsList.add(diceResult);
 
-
             if (diceResult == 6) {
                 diceResult = 1;
                 resultText.append("*");
@@ -180,6 +187,7 @@ public class DiceFragment extends Fragment {
         Log.d("DiceFragment", "rollSingleDiceType: " + diceTypeName + diceResultsList);
     }
 
+    // Este método agrega una animación de rotación a la imagen del dado.
     private void animateDiceRoll() {
         Animation rotateAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.rotate_animation);
         imageViewDice.startAnimation(rotateAnimation);
@@ -194,6 +202,7 @@ public class DiceFragment extends Fragment {
         }, diceRollDelay);
     }
 
+    // Este método detiene la animación de rotación del dado.
     private void stopDiceAnimation() {
         imageViewDice.clearAnimation();
 

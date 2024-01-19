@@ -71,6 +71,7 @@ dependencies {
     implementation("com.google.android.gms:play-services-identity:18.0.1")
     implementation("com.google.firebase:firebase-database:20.3.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.media3:media3-common:1.2.1")
 
 
     testImplementation("junit:junit:4.13.2")

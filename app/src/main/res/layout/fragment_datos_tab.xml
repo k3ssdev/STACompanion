@@ -2,6 +2,26 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+<!--
+    Datos
+    characterName, species, environment, rank, upbringing, assignment, academy, career , traits
+
+    Estado y equipo
+    stress, currentStress, maxStress, resistance,
+
+    attacks, equipment, injuries,reputation, privilege, responsibility, focuses, determination
+
+    Atributos y Disciplinas
+    control, fitness, presence, daring, insight,reason
+    command, security, science, conn, engineering, medicine
+    values, talents
+
+    Apariencia y otros
+    age, skin, hair, weight, height, eyes,notesAndAwards, event1, event2&ndash;&gt;
+-->
+
+
+
     <data>
         <variable
             name="viewModel"

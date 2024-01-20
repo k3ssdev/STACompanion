@@ -27,9 +27,10 @@ public class DatosTabFragment extends Fragment {
     }
 
     // Método para crear una nueva instancia de este fragmento
-    public static DatosTabFragment newInstance(String characterId) {
+    public static DatosTabFragment newInstance(String userId, String characterId) {
         DatosTabFragment fragment = new DatosTabFragment();
         Bundle args = new Bundle();
+        args.putString("userId", userId);
         args.putString("characterId", characterId);
         fragment.setArguments(args);
         return fragment;
@@ -58,15 +59,17 @@ public class DatosTabFragment extends Fragment {
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(this);
 
-        // Recuperar el ID del personaje del Bundle
+        // Recuperar el ID del usuario y del personaje del Bundle
+        String userId = null;
         String characterId = null;
         if (getArguments() != null) {
+            userId = getArguments().getString("userId");
             characterId = getArguments().getString("characterId");
         }
 
-        // Usar el ID del personaje para recuperar los detalles del personaje
-        if (characterId != null) {
-            viewModel.getCharacterSheetFromDatabase(characterId);
+        // Usar el ID del usuario y del personaje para recuperar los detalles del personaje
+        if (userId != null && characterId != null) {
+            viewModel.getCharacterSheetFromDatabase(userId, characterId);
         }
 
         // Devolver la vista raíz

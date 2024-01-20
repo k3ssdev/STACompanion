@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -66,9 +67,11 @@ public class CharactersFragment extends Fragment {
 
         adapter.setOnItemClickListener(sheetDetails -> {
             // Crear una nueva instancia de CharacterSheetFragment
-            CharacterSheetFragment characterSheetFragment = CharacterSheetFragment.newInstance();
+            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            CharacterSheetFragment characterSheetFragment = CharacterSheetFragment.newInstance(userId, sheetDetails.getId());
             Bundle args = new Bundle();
-            args.putString("characterId", sheetDetails.getId()); // Suponiendo que getId() devuelve el ID del personaje
+            args.putString("userId", userId);
+            args.putString("characterId", sheetDetails.getId());
             characterSheetFragment.setArguments(args);
 
             // Utilizar NavController para navegar al CharacterSheetFragment
@@ -77,31 +80,6 @@ public class CharactersFragment extends Fragment {
         });
     }
 
-    // Este método establece la conexión con la base de datos y recupera los datos de los personajes.
-    private void setupDatabaseConnection() {
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference ref = FirebaseDatabase.getInstance("https://stacompanion-a1286-default-rtdb.europe-west1.firebasedatabase.app/").getReference("characterSheets");
-
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                adapter.clearCharacterSheets();
-                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                    CharacterSheet sheet = childSnapshot.getValue(CharacterSheet.class);
-                    if (sheet.getUserId().equals(userId)) {
-                        adapter.addCharacterSheet(sheet);
-                        Log.d(TAG, "onDataChange: " + sheet.getId() + " " + sheet.getUserId() + " " + sheet.getCharacterName());
-                    }
-                }
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.w(TAG, "Failed to read value.", databaseError.toException());
-            }
-        });
-    }
 
     // Este método se llama cuando se crea el fragmento.
     @Override
@@ -137,19 +115,116 @@ public class CharactersFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_add) {
+
+            Toast.makeText(getContext(), "Añadir personaje", Toast.LENGTH_SHORT).show();
+
+            // Crear un nuevo objeto CharacterSheet con los datos del personaje
+            CharacterSheet newCharacter = new CharacterSheet();
+            // Obtener el ID del usuario actual
+            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+            // Crear una referencia a la base de datos
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users/" + userId + "/characterSheets");
+            //ref.child(sheet.getId()).setValue(sheet); // Actualiza la hoja de personaje existente
+
+            String newId = ref.push().getKey(); // Genera un ID único
+
+
+            // Establecer los valores del personaje
+            newCharacter.setId("Uhura");
+            newCharacter.setUserId(userId);
+            newCharacter.setCharacterName("Uhura");
+            newCharacter.setSpecies("Human");
+            newCharacter.setEnvironment("Earth");
+            newCharacter.setRank("Lieutenant");
+            newCharacter.setUpbringing("Scientific");
+            newCharacter.setAssignment("Communications Officer");
+            newCharacter.setTraits("Linguist");
+            newCharacter.setAge(28);
+            newCharacter.setSkin("Dark");
+            newCharacter.setHair("Black");
+            newCharacter.setWeight(60);
+            newCharacter.setHeight(170);
+            newCharacter.setEyes("Brown");
+            newCharacter.setControl(5);
+            newCharacter.setFitness(5);
+            newCharacter.setPresence(5);
+            newCharacter.setDaring(5);
+            newCharacter.setInsight(5);
+            newCharacter.setReason(5);
+            newCharacter.setCommand(5);
+            newCharacter.setSecurity(5);
+            newCharacter.setScience(5);
+            newCharacter.setConn(5);
+            newCharacter.setEngineering(5);
+            newCharacter.setMedicine(5);
+            newCharacter.setDetermination(5);
+            newCharacter.setReputation(5);
+            newCharacter.setPrivilege(5);
+            newCharacter.setResponsibility(5);
+            newCharacter.setFocuses("Linguistics");
+            newCharacter.setValues("Duty");
+            newCharacter.setTalents("Communications Expert");
+            newCharacter.setAttacks("Phaser");
+            newCharacter.setEquipment("Communicator");
+            newCharacter.setStress(10);
+            newCharacter.setCurrentStress(5);
+            newCharacter.setMaxStress(15);
+            newCharacter.setResistance(5);
+            newCharacter.setNotesAndAwards("Starfleet Medal of Honor");
+            newCharacter.setInjuries("None");
+            newCharacter.setAcademy("Starfleet Academy");
+            newCharacter.setCareer("Starfleet Officer");
+            newCharacter.setEvent1("First Contact");
+            newCharacter.setEvent2("Promotion to Lieutenant");
+            // Establece los demás campos del personaje aquí...
+
+            // Añadir la hoja de personaje a la base de datos
+            addCharacterSheet(newCharacter);
+
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    // Este método guarda la hoja de personaje en la base de datos.
-    public void saveCharacterSheet(CharacterSheet sheet) {
+    // Este método establece la conexión con la base de datos y recupera los datos de los personajes.
+    private void setupDatabaseConnection() {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance("https://stacompanion-a1286-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("users/" + userId + "/characterSheets");
+
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                adapter.clearCharacterSheets();
+                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                    CharacterSheet sheet = childSnapshot.getValue(CharacterSheet.class);
+                    if (sheet.getUserId().equals(userId)) {
+                        adapter.addCharacterSheet(sheet);
+                        Log.d(TAG, "onDataChange: " + sheet.getId() + " " + sheet.getUserId() + " " + sheet.getCharacterName());
+                    }
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "Failed to read value.", databaseError.toException());
+            }
+        });
+    }
+
+
+    // Metodo para añadir un personaje a la base de datos
+    public void addCharacterSheet(CharacterSheet sheet) {
         this.sheet = sheet;
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("characterSheets");
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users/" + userId + "/characterSheets");
         ref.child(sheet.getCharacterName()).setValue(sheet);
     }
 
-    // Este método se llama cuando se destruye la vista del fragmento.
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

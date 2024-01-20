@@ -30,7 +30,7 @@ public class CharacterSheetViewModel extends ViewModel {
     }
 
     // Este método recupera la hoja de personaje de la base de datos utilizando el ID del personaje.
-    public void getCharacterSheetFromDatabase(String characterId) {
+    public void getCharacterSheetFromDatabase(String userId, String characterId) {
 
         // Registro de la llamada al método.
         Log.d(TAG, "getCharacterSheetFromDatabase called with characterId: " + characterId);
@@ -39,7 +39,7 @@ public class CharacterSheetViewModel extends ViewModel {
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
 
         // Consulta a la base de datos para obtener la hoja de personaje.
-        dbRef.child("characterSheets").child(characterId)
+        dbRef.child("users").child(userId).child("characterSheets").child(characterId)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

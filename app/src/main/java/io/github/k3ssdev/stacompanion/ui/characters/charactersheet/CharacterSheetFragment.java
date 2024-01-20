@@ -27,8 +27,13 @@ public class CharacterSheetFragment extends Fragment {
     private CharacterSheetViewModel mViewModel;
 
     // Este método crea una nueva instancia del fragmento de la hoja de personaje.
-    public static CharacterSheetFragment newInstance() {
-        return new CharacterSheetFragment();
+    public static CharacterSheetFragment newInstance(String userId, String characterId) {
+        CharacterSheetFragment fragment = new CharacterSheetFragment();
+        Bundle args = new Bundle();
+        args.putString("userId", userId);
+        args.putString("characterId", characterId);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     // Este método se llama para inflar el diseño del fragmento.
@@ -44,15 +49,17 @@ public class CharacterSheetFragment extends Fragment {
         // Establece un título predeterminado o indicador de carga
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Cargando...");
 
-        // Recupera el ID del personaje del Bundle
+        // Recupera el ID del usuario y del personaje del Bundle
+        String userId = null;
         String characterId = null;
         if (getArguments() != null) {
+            userId = getArguments().getString("userId");
             characterId = getArguments().getString("characterId");
         }
 
-        // Usa el ID del personaje para recuperar los detalles del personaje
-        if (characterId != null) {
-            mViewModel.getCharacterSheetFromDatabase(characterId);
+        // Usa el ID del usuario y del personaje para recuperar los detalles del personaje
+        if (userId != null && characterId != null) {
+            mViewModel.getCharacterSheetFromDatabase(userId, characterId);
         }
 
         // Establece el título de la barra de herramientas con el nombre del personaje
@@ -69,7 +76,7 @@ public class CharacterSheetFragment extends Fragment {
         // Configura el ViewPager y TabLayout
         ViewPager viewPager = view.findViewById(R.id.view_pager);
         TabLayout tabLayout = view.findViewById(R.id.tab_layout);
-        viewPager.setAdapter(new CharacterSheetPagerAdapter(getChildFragmentManager(), characterId));
+        viewPager.setAdapter(new CharacterSheetPagerAdapter(getChildFragmentManager(), userId, characterId));
         tabLayout.setupWithViewPager(viewPager);
 
         return view;
@@ -84,12 +91,14 @@ public class CharacterSheetFragment extends Fragment {
 
     // Esta clase representa el adaptador de páginas para la hoja de personaje.
     public class CharacterSheetPagerAdapter extends FragmentPagerAdapter {
+        private final String userId;
         private final String characterId;
         private final String[] tabTitles = new String[]{"Datos", "Estado y equipo", "Atributos y Disciplinas", "Apariencia y otros"};
 
         // Constructor del adaptador de páginas.
-        public CharacterSheetPagerAdapter(@NonNull FragmentManager fm, String characterId) {
+        public CharacterSheetPagerAdapter(@NonNull FragmentManager fm, String userId, String characterId) {
             super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+            this.userId = userId;
             this.characterId = characterId;
         }
 
@@ -97,7 +106,7 @@ public class CharacterSheetFragment extends Fragment {
         @NonNull
         @Override
         public Fragment getItem(int position) {
-            return DatosTabFragment.newInstance(characterId);
+            return DatosTabFragment.newInstance(userId, characterId);
         }
 
         // Este método devuelve el número total de páginas.

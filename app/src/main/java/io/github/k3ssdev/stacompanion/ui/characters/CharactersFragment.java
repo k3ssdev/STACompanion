@@ -125,13 +125,13 @@ public class CharactersFragment extends Fragment {
 
             // Crear una referencia a la base de datos
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users/" + userId + "/characterSheets");
-            //ref.child(sheet.getId()).setValue(sheet); // Actualiza la hoja de personaje existente
 
-            String newId = ref.push().getKey(); // Genera un ID único
-
+            // Genera un ID único para la nueva hoja de personaje
+            String newId = ref.push().getKey();
 
             // Establecer los valores del personaje
-            newCharacter.setId("Uhura");
+
+            newCharacter.setId(newId);
             newCharacter.setUserId(userId);
             newCharacter.setCharacterName("Uhura");
             newCharacter.setSpecies("Human");
@@ -181,7 +181,6 @@ public class CharactersFragment extends Fragment {
 
             // Añadir la hoja de personaje a la base de datos
             addCharacterSheet(newCharacter);
-
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -200,7 +199,7 @@ public class CharactersFragment extends Fragment {
                 adapter.clearCharacterSheets();
                 for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                     CharacterSheet sheet = childSnapshot.getValue(CharacterSheet.class);
-                    if (sheet.getUserId().equals(userId)) {
+                    if (sheet.getUserId() != null && sheet.getUserId().equals(userId)) {
                         adapter.addCharacterSheet(sheet);
                         Log.d(TAG, "onDataChange: " + sheet.getId() + " " + sheet.getUserId() + " " + sheet.getCharacterName());
                     }
@@ -221,7 +220,7 @@ public class CharactersFragment extends Fragment {
         this.sheet = sheet;
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users/" + userId + "/characterSheets");
-        ref.child(sheet.getCharacterName()).setValue(sheet);
+        ref.child(sheet.getId()).setValue(sheet);
     }
 
 

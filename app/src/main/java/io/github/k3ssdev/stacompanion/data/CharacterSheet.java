@@ -71,13 +71,14 @@ public class CharacterSheet implements java.io.Serializable{
         this.resistance = this.fitness;
     }
 
-    public CharacterSheet(String id, String userId, String characterName, String species, String environment, String rank, String upbringing, String assignment, String traits,
+    public CharacterSheet( long creationTimestamp, String id, String userId, String characterName, String species, String environment, String rank, String upbringing, String assignment, String traits,
                           int control, int fitness, int presence, int daring, int insight, int reason,
                           int command, int security, int science, int conn, int engineering, int medicine,
                           int age, String skin, String hair, int weight, int height, String eyes,
                           int reputation, int privilege, int responsibility, String focuses, int determination,
                           String values, String talents, String attacks, String equipment, int stress, int currentStress,
-                          int maxStress, int resistance, String notesAndAwards, String injuries, String academy, String career, String event1, String event2, long creationTimestamp) {
+                          int maxStress, int resistance, String notesAndAwards, String injuries, String academy, String career, String event1, String event2) {
+        this.creationTimestamp = creationTimestamp;
         this.id = id;
         this.userId = userId;
         this.characterName = characterName;
@@ -124,7 +125,7 @@ public class CharacterSheet implements java.io.Serializable{
         this.career = career;
         this.event1 = event1;
         this.event2 = event2;
-        this.creationTimestamp = creationTimestamp;
+;
     }
 
 

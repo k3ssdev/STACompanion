@@ -16,19 +16,19 @@ import io.github.k3ssdev.stacompanion.databinding.FragmentDatosTabBinding;
 import io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetViewModel;
 
 // Esta clase representa el fragmento de datos en la aplicación.
-public class DatosTabFragment extends Fragment {
+public class DataTabFragment extends Fragment {
 
     // ViewModel para este fragmento
     private CharacterSheetViewModel viewModel;
 
     // Constructor vacío requerido
-    public DatosTabFragment() {
+    public DataTabFragment() {
         // Constructor público vacío requerido
     }
 
     // Método para crear una nueva instancia de este fragmento
-    public static DatosTabFragment newInstance(String userId, String characterId) {
-        DatosTabFragment fragment = new DatosTabFragment();
+    public static DataTabFragment newInstance(String userId, String characterId) {
+        DataTabFragment fragment = new DataTabFragment();
         Bundle args = new Bundle();
         args.putString("userId", userId);
         args.putString("characterId", characterId);

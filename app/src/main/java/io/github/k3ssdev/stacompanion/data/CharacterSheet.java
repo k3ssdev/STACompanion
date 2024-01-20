@@ -60,6 +60,8 @@ public class CharacterSheet implements java.io.Serializable{
     private String event1;
     private String event2;
 
+    private long creationTimestamp;
+
     // Métodos para calcular los atributos
     public void calculateStress() {
         this.stress = this.fitness + this.security;
@@ -75,7 +77,7 @@ public class CharacterSheet implements java.io.Serializable{
                           int age, String skin, String hair, int weight, int height, String eyes,
                           int reputation, int privilege, int responsibility, String focuses, int determination,
                           String values, String talents, String attacks, String equipment, int stress, int currentStress,
-                          int maxStress, int resistance, String notesAndAwards, String injuries, String academy, String career, String event1, String event2) {
+                          int maxStress, int resistance, String notesAndAwards, String injuries, String academy, String career, String event1, String event2, long creationTimestamp) {
         this.id = id;
         this.userId = userId;
         this.characterName = characterName;
@@ -122,8 +124,8 @@ public class CharacterSheet implements java.io.Serializable{
         this.career = career;
         this.event1 = event1;
         this.event2 = event2;
+        this.creationTimestamp = creationTimestamp;
     }
-
 
 
     // Getters and setters
@@ -143,6 +145,11 @@ public class CharacterSheet implements java.io.Serializable{
     public String getUserId() { return userId; }
 
     public void setUserId(String userId) { this.userId = userId; }
+
+
+    public long getCreationTimestamp() { return creationTimestamp; }
+
+    public void setCreationTimestamp(long creationTimestamp) { this.creationTimestamp = creationTimestamp; }
 
     public String getCharacterName() {
         return characterName;

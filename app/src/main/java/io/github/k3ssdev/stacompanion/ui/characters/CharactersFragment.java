@@ -133,6 +133,7 @@ public class CharactersFragment extends Fragment {
 
             newCharacter.setId(newId);
             newCharacter.setUserId(userId);
+            newCharacter.setCreationTimestamp(System.currentTimeMillis());
             newCharacter.setCharacterName("Uhura");
             newCharacter.setSpecies("Human");
             newCharacter.setEnvironment("Earth");

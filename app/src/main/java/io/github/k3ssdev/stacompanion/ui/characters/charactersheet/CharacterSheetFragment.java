@@ -106,7 +106,7 @@ public class CharacterSheetFragment extends Fragment {
         @NonNull
         @Override
         public Fragment getItem(int position) {
-            return DatosTabFragment.newInstance(userId, characterId);
+            return DataTabFragment.newInstance(userId, characterId);
         }
 
         // Este método devuelve el número total de páginas.

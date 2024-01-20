@@ -52,7 +52,7 @@ public class CharacterSheetDetails extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new DatosTabFragment();
+                    return new DataTabFragment();
                 case 1:
                     return new EstadoYEquipoFragment();
                 case 2:

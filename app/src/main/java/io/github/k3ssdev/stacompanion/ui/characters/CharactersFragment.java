@@ -129,12 +129,22 @@ public class CharactersFragment extends Fragment {
             // Genera un ID único para la nueva hoja de personaje
             String newId = ref.push().getKey();
 
-            // Establecer los valores del personaje
+            newCharacter.setId(newId);
+            newCharacter.setUserId(userId);
+            newCharacter.setCreationTimestamp(System.currentTimeMillis());
+            newCharacter.setCharacterName("Nombre del personaje");
+            newCharacter.setPronouns("Pronombres");
+            newCharacter.setSpecies("Especie");
 
+
+
+            /*
+            // Establecer los valores del personaje
             newCharacter.setId(newId);
             newCharacter.setUserId(userId);
             newCharacter.setCreationTimestamp(System.currentTimeMillis());
             newCharacter.setCharacterName("Uhura");
+            newCharacter.setPronouns("She/Her");
             newCharacter.setSpecies("Human");
             newCharacter.setEnvironment("Earth");
             newCharacter.setRank("Lieutenant");
@@ -178,7 +188,7 @@ public class CharactersFragment extends Fragment {
             newCharacter.setCareer("Starfleet Officer");
             newCharacter.setEvent1("First Contact");
             newCharacter.setEvent2("Promotion to Lieutenant");
-            // Establece los demás campos del personaje aquí...
+            */
 
             // Añadir la hoja de personaje a la base de datos
             addCharacterSheet(newCharacter);

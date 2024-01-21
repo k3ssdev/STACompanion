@@ -4,7 +4,7 @@
 
     <data>
         <variable
-            name="skillsViewModel"
+            name="othersViewModel"
             type="io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetViewModel" />
     </data>
 
@@ -29,7 +29,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.characters.charactersheet.SkillsFragment">
+        tools:context=".ui.characters.charactersheet.OthersFragment">
 
         <GridLayout
             android:layout_width="match_parent"
@@ -54,14 +54,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="16sp"
-                    android:text="@string/attributes"
+                    android:text="@string/appearance"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
-
-            <!-- Control -->
+            <!-- Pronouns -->
             <LinearLayout
                 android:layout_width="0sp"
                 android:layout_height="wrap_content"
@@ -73,7 +72,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/control"
+                    android:text="@string/pronoouns"
                     android:textStyle="bold"
                     android:paddingHorizontal="16sp"/>
 
@@ -83,11 +82,11 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(skillsViewModel.characterSheetLiveData.control)}"/>
+                    android:text="@{String.valueOf(othersViewModel.characterSheetLiveData.pronouns)}"/>
             </LinearLayout>
 
-            <!-- Fitness -->
 
+            <!-- Age -->
             <LinearLayout
                 android:layout_width="0sp"
                 android:layout_height="wrap_content"
@@ -99,7 +98,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/fitness"
+                    android:text="@string/age"
                     android:textStyle="bold"
                     android:paddingHorizontal="16sp"/>
 
@@ -109,36 +108,10 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(skillsViewModel.characterSheetLiveData.fitness)}"/>
+                    android:text="@{String.valueOf(othersViewModel.characterSheetLiveData.age)}"/>
             </LinearLayout>
 
-            <!-- Presence -->
-
-            <LinearLayout
-                android:layout_width="0sp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:layout_row="0"
-                android:layout_marginTop="16sp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/presence"
-                    android:textStyle="bold"
-                    android:paddingHorizontal="16sp"/>
-
-                <TextView
-                    android:layout_marginTop="5sp"
-                    android:layout_marginLeft="5sp"
-                    android:paddingHorizontal="16sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(skillsViewModel.characterSheetLiveData.presence)}"/>
-            </LinearLayout>
-
-            <!-- Daring -->
+            <!-- Skin -->
 
             <LinearLayout
                 android:layout_width="0sp"
@@ -151,7 +124,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/daring"
+                    android:text="@string/skin"
                     android:textStyle="bold"
                     android:paddingHorizontal="16sp"/>
 
@@ -161,10 +134,11 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(skillsViewModel.characterSheetLiveData.daring)}"/>
+                    android:text="@{othersViewModel.characterSheetLiveData.skin}"/>
+
             </LinearLayout>
 
-            <!-- Insight -->
+            <!-- Hair -->
 
             <LinearLayout
                 android:layout_width="0sp"
@@ -177,7 +151,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/insight"
+                    android:text="@string/hair"
                     android:textStyle="bold"
                     android:paddingHorizontal="16sp"/>
 
@@ -187,10 +161,11 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(skillsViewModel.characterSheetLiveData.insight)}"/>
+                    android:text="@{othersViewModel.characterSheetLiveData.hair}"/>
+
             </LinearLayout>
 
-            <!-- Reason -->
+            <!-- Weight -->
 
             <LinearLayout
                 android:layout_width="0sp"
@@ -203,7 +178,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/reason"
+                    android:text="@string/weight"
                     android:textStyle="bold"
                     android:paddingHorizontal="16sp"/>
 
@@ -213,10 +188,65 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(skillsViewModel.characterSheetLiveData.reason)}"/>
+                    android:text="@{String.valueOf(othersViewModel.characterSheetLiveData.weight)}"/>
+
             </LinearLayout>
 
-            <!-- Titulo bloque disciplinas-->
+            <!-- Height -->
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_row="0"
+                android:layout_marginTop="16sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/height"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="16sp"/>
+
+                <TextView
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:paddingHorizontal="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(othersViewModel.characterSheetLiveData.height)}"/>
+
+            </LinearLayout>
+
+            <!-- Eyes -->
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_row="0"
+                android:layout_marginTop="16sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/eyes"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="16sp"/>
+
+                <TextView
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:paddingHorizontal="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{othersViewModel.characterSheetLiveData.eyes}"/>
+
+            </LinearLayout>
+
+            <!-- Titulo bloque otros-->
 
             <LinearLayout
                 android:layout_width="0sp"
@@ -231,26 +261,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="16sp"
-                    android:text="@string/disciplines"
+                    android:text="@string/others"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
-            <!-- Command -->
+            <!-- Event 1 -->
 
             <LinearLayout
                 android:layout_width="0sp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
+                android:layout_columnSpan="2"
                 android:orientation="vertical"
                 android:layout_row="0"
-                android:layout_marginTop="16sp">
+                android:layout_marginTop="16sp"
+                android:layout_marginBottom="16sp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/command"
+                    android:text="@string/event_1"
                     android:textStyle="bold"
                     android:paddingHorizontal="16sp"/>
 
@@ -260,16 +292,16 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(skillsViewModel.characterSheetLiveData.command)}"/>
+                    android:text="@{othersViewModel.characterSheetLiveData.event1}"/>
 
             </LinearLayout>
-
-            <!-- Security -->
+            <!-- Notes and Awards -->
 
             <LinearLayout
                 android:layout_width="0sp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
+                android:layout_columnSpan="2"
                 android:orientation="vertical"
                 android:layout_row="0"
                 android:layout_marginTop="16sp">
@@ -277,7 +309,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/security"
+                    android:text="@string/notes_and_awards"
                     android:textStyle="bold"
                     android:paddingHorizontal="16sp"/>
 
@@ -287,118 +319,16 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(skillsViewModel.characterSheetLiveData.security)}"/>
+                    android:text="@{othersViewModel.characterSheetLiveData.notesAndAwards}"/>
 
             </LinearLayout>
 
-            <!-- Science -->
 
-            <LinearLayout
-                android:layout_width="0sp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:layout_row="0"
-                android:layout_marginTop="16sp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/science"
-                    android:textStyle="bold"
-                    android:paddingHorizontal="16sp"/>
-
-                <TextView
-                    android:layout_marginTop="5sp"
-                    android:layout_marginLeft="5sp"
-                    android:paddingHorizontal="16sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(skillsViewModel.characterSheetLiveData.science)}"/>
-
-            </LinearLayout>
-
-            <!-- Conn -->
-
-            <LinearLayout
-                android:layout_width="0sp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:layout_row="0"
-                android:layout_marginTop="16sp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/conn"
-                    android:textStyle="bold"
-                    android:paddingHorizontal="16sp"/>
-
-                <TextView
-                    android:layout_marginTop="5sp"
-                    android:layout_marginLeft="5sp"
-                    android:paddingHorizontal="16sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(skillsViewModel.characterSheetLiveData.conn)}"/>
-
-            </LinearLayout>
-
-            <!-- Engineering -->
-
-            <LinearLayout
-                android:layout_width="0sp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:layout_row="0"
-                android:layout_marginTop="16sp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/engineering"
-                    android:textStyle="bold"
-                    android:paddingHorizontal="16sp"/>
-
-                <TextView
-                    android:layout_marginTop="5sp"
-                    android:layout_marginLeft="5sp"
-                    android:paddingHorizontal="16sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(skillsViewModel.characterSheetLiveData.engineering)}"/>
-
-            </LinearLayout>
-
-            <!-- Medicine -->
-
-            <LinearLayout
-                android:layout_width="0sp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:layout_row="0"
-                android:layout_marginTop="16sp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/medicine"
-                    android:textStyle="bold"
-                    android:paddingHorizontal="16sp"/>
-
-                <TextView
-                    android:layout_marginTop="5sp"
-                    android:layout_marginLeft="5sp"
-                    android:paddingHorizontal="16sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(skillsViewModel.characterSheetLiveData.medicine)}"/>
-
-            </LinearLayout>
 
         </GridLayout>
+
     </ScrollView>
+
 </layout>
+

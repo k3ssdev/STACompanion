@@ -10,6 +10,8 @@ public class CharacterSheet implements java.io.Serializable{
 
     // Atributos básicos del personaje
     private String characterName;
+
+    private String pronouns;
     private String species;
     private String environment;
     private String rank;
@@ -71,7 +73,7 @@ public class CharacterSheet implements java.io.Serializable{
         this.resistance = this.fitness;
     }
 
-    public CharacterSheet( long creationTimestamp, String id, String userId, String characterName, String species, String environment, String rank, String upbringing, String assignment, String traits,
+    public CharacterSheet( long creationTimestamp, String id, String userId, String characterName, String pronouns, String species, String environment, String rank, String upbringing, String assignment, String traits,
                           int control, int fitness, int presence, int daring, int insight, int reason,
                           int command, int security, int science, int conn, int engineering, int medicine,
                           int age, String skin, String hair, int weight, int height, String eyes,
@@ -82,6 +84,7 @@ public class CharacterSheet implements java.io.Serializable{
         this.id = id;
         this.userId = userId;
         this.characterName = characterName;
+        this.pronouns = pronouns;
         this.species = species;
         this.environment = environment;
         this.rank = rank;
@@ -158,6 +161,14 @@ public class CharacterSheet implements java.io.Serializable{
 
     public void setCharacterName(String characterName) {
         this.characterName = characterName;
+    }
+
+    public String getPronouns() {
+        return pronouns;
+    }
+
+    public void setPronouns(String pronouns) {
+        this.pronouns = pronouns;
     }
 
     public String getSpecies() {

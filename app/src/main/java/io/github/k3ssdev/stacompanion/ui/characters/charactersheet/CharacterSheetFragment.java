@@ -115,9 +115,9 @@ public class CharacterSheetFragment extends Fragment {
                 case 1:
                     return StatusFragment.newInstance(userId, characterId);
                 case 2:
-                    return DataTabFragment.newInstance(userId, characterId);
+                    return SkillsFragment.newInstance(userId, characterId);
                 case 3:
-                    return DataTabFragment.newInstance(userId, characterId);
+                    return OthersFragment.newInstance(userId, characterId);
                 default:
                     return null;
             }

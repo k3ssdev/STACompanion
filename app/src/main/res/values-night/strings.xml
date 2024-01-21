@@ -17,4 +17,27 @@
     <string name="registro">Registrarse</string>
     <string name="add_sheet">añadir ficha</string>
     <string name="search">buscar</string>
+    <string name="stress">Estrés</string>
+    <string name="determination">Determinación</string>
+    <string name="focuses">Focus</string>
+    <string name="responsibility">Responsabilidad</string>
+    <string name="privilege">Privilegio</string>
+    <string name="reputation">Reputación</string>
+    <string name="injuries">Heridas</string>
+    <string name="equipment">Equipo</string>
+    <string name="attacks">Ataques</string>
+    <string name="resistance">Resistencia</string>
+    <string name="max_stress">Estrés max.</string>
+    <string name="current_stress">Estrés actual</string>
+    <string name="nombre">Nombre</string>
+    <string name="species">Especie</string>
+    <string name="rank">Rango</string>
+    <string name="environment">Entorno</string>
+    <string name="education">Educación</string>
+    <string name="assignment">Asignación</string>
+    <string name="academy">Academia</string>
+    <string name="career">Carrera</string>
+    <string name="traits">Rasgos</string>
+    <string name="values">Valores</string>
+    <string name="control">Control</string>
 </resources>

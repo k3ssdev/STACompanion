@@ -21,7 +21,6 @@
 -->
 
 
-
     <data>
         <variable
             name="viewModel"
@@ -54,7 +53,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nombre"
+                    android:text="@string/nombre"
                     android:textStyle="bold" />
 
                 <TextView
@@ -77,7 +76,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Especie"
+                    android:text="@string/species"
                     android:textStyle="bold" />
 
                 <TextView
@@ -100,7 +99,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Rango"
+                    android:text="@string/rank"
                     android:textStyle="bold" />
 
                 <TextView
@@ -123,7 +122,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Entorno"
+                    android:text="@string/environment"
                     android:textStyle="bold" />
 
                 <TextView
@@ -147,7 +146,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Educación"
+                    android:text="@string/education"
                     android:textStyle="bold" />
 
                 <TextView
@@ -172,7 +171,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Asignación"
+                    android:text="@string/assignment"
                     android:textStyle="bold" />
 
                 <TextView
@@ -197,7 +196,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Academia"
+                    android:text="@string/academy"
                     android:textStyle="bold" />
 
                 <TextView
@@ -222,7 +221,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Carrera"
+                    android:text="@string/career"
                     android:textStyle="bold" />
 
                 <TextView
@@ -246,7 +245,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Rasgos"
+                    android:text="@string/traits"
                     android:textStyle="bold" />
 
                 <TextView
@@ -272,7 +271,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Valores"
+                    android:text="@string/values"
                     android:textStyle="bold" />
 
                 <TextView

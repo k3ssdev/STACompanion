@@ -36,6 +36,8 @@ public class CharacterSheetFragment extends Fragment {
         return fragment;
     }
 
+
+
     // Este método se llama para inflar el diseño del fragmento.
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -93,7 +95,7 @@ public class CharacterSheetFragment extends Fragment {
     public class CharacterSheetPagerAdapter extends FragmentPagerAdapter {
         private final String userId;
         private final String characterId;
-        private final String[] tabTitles = new String[]{"Datos", "Estado y equipo", "Atributos y Disciplinas", "Apariencia y otros"};
+        private final String[] tabTitles = new String[]{"Datos", "Estado/Equipo", "Atributos/Disciplinas", "Otros"};
 
         // Constructor del adaptador de páginas.
         public CharacterSheetPagerAdapter(@NonNull FragmentManager fm, String userId, String characterId) {
@@ -104,9 +106,21 @@ public class CharacterSheetFragment extends Fragment {
 
         // Este método devuelve el fragmento correspondiente a la posición dada.
         @NonNull
+        // Este método devuelve el fragmento correspondiente a la posición dada.
         @Override
         public Fragment getItem(int position) {
-            return DataTabFragment.newInstance(userId, characterId);
+            switch (position) {
+                case 0:
+                    return DataTabFragment.newInstance(userId, characterId);
+                case 1:
+                    return StatusFragment.newInstance(userId, characterId);
+                case 2:
+                    return DataTabFragment.newInstance(userId, characterId);
+                case 3:
+                    return DataTabFragment.newInstance(userId, characterId);
+                default:
+                    return null;
+            }
         }
 
         // Este método devuelve el número total de páginas.

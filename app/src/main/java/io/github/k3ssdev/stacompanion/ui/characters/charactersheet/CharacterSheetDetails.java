@@ -54,11 +54,11 @@ public class CharacterSheetDetails extends AppCompatActivity {
                 case 0:
                     return new DataTabFragment();
                 case 1:
-                    return new EstadoYEquipoFragment();
+                    return new StatusFragment();
                 case 2:
-                    return new AtributosYDisciplinasFragment();
+                    return new SkillsFragment();
                 case 3:
-                    return new AparienciaYOtrosFragment();
+                    return new OthersFragment();
                 default:
                     return null;
             }
@@ -78,11 +78,11 @@ public class CharacterSheetDetails extends AppCompatActivity {
                 case 0:
                     return "Datos";
                 case 1:
-                    return "Estado y equipo";
+                    return "Estado/Equipo";
                 case 2:
-                    return "Atributos y Disciplinas";
+                    return "Atributos/Disciplinas";
                 case 3:
-                    return "Apariencia y otros";
+                    return "Otros";
                 default:
                     return null;
             }

@@ -1,24 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="volver">volver</string>
-    <string name="contrasena">contrasena</string>
-    <string name="usuario">usuario</string>
-    <string name="timestamp">timestamp</string>
-    <string name="Login">login</string>
-    <string name="img">img</string>
-    <string name="app_name">STA Companion</string>
-
-    <string name="title_dashboard">Dados</string>
-    <string name="title_notifications">Cuenta</string>
-    <string name="register">Registrarse</string>
-    <string name="register_activity_title">Registrarse</string>
-    <string name="sign_out">Cerrar Sesión</string>
-    <string name="delete_account">Eliminar Cuenta</string>
-    <string name="registro">Registrarse</string>
-    <string name="add_sheet">añadir ficha</string>
-    <string name="search">buscar</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="stress">Estrés</string>
     <string name="determination">Determinación</string>
     <string name="focuses">Focus</string>

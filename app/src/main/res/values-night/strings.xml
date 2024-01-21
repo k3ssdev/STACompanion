@@ -63,4 +63,6 @@
     <string name="skin">Piel</string>
     <string name="pronoouns">Pronombres</string>
     <string name="others">Otros</string>
+    <string name="sort">A-Z</string>
+    <string name="edit">Editar</string>
 </resources>

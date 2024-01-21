@@ -136,8 +136,6 @@ public class CharactersFragment extends Fragment {
             newCharacter.setPronouns("Pronombres");
             newCharacter.setSpecies("Especie");
 
-
-
             /*
             // Establecer los valores del personaje
             newCharacter.setId(newId);
@@ -234,6 +232,14 @@ public class CharactersFragment extends Fragment {
         ref.child(sheet.getId()).setValue(sheet);
     }
 
+
+    // Editar un personaje
+    public void editCharacterSheet(CharacterSheet sheet) {
+        this.sheet = sheet;
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users/" + userId + "/characterSheets");
+        ref.child(sheet.getId()).setValue(sheet);
+    }
 
     @Override
     public void onDestroyView() {

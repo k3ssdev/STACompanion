@@ -2,6 +2,9 @@ package io.github.k3ssdev.stacompanion.ui.characters.charactersheet;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -36,7 +39,26 @@ public class CharacterSheetFragment extends Fragment {
         return fragment;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true); // Indica que este fragmento tiene un menú de opciones
+    }
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.character_sheet_toolbar_menu, menu); // Infla el menú
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(@NonNull Menu menu) {
+        MenuItem item = menu.findItem(R.id.action_edit);
+        if (item != null) {
+            item.setVisible(true); // Muestra el ítem de menú "edit"
+        }
+        super.onPrepareOptionsMenu(menu);
+    }
 
     // Este método se llama para inflar el diseño del fragmento.
     @Override
@@ -65,7 +87,7 @@ public class CharacterSheetFragment extends Fragment {
         }
 
         // Establece el título de la barra de herramientas con el nombre del personaje
-        mViewModel.getCharacterSheetLiveData().observe(getViewLifecycleOwner(), new Observer<CharacterSheet>() {
+         mViewModel.getCharacterSheetLiveData().observe(getViewLifecycleOwner(), new Observer<CharacterSheet>() {
             @Override
             public void onChanged(@Nullable final CharacterSheet characterSheet) {
                 // Actualiza la interfaz de usuario, en este caso, establece el título de la barra de aplicaciones.
@@ -74,6 +96,8 @@ public class CharacterSheetFragment extends Fragment {
                 }
             }
         });
+
+
 
         // Configura el ViewPager y TabLayout
         ViewPager viewPager = view.findViewById(R.id.view_pager);

@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="statusViewModel"
+            type="io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetViewModel" />
+    </data>
+
+    <!--
+        Datos
+        characterName, species, environment, rank, upbringing, assignment, academy, career , traits
+
+        Estado y equipo
+        stress, currentStress, maxStress, resistance,
+
+        attacks, equipment, injuries,reputation, privilege, responsibility, focuses, determination
+
+        Atributos y Disciplinas
+        control, fitness, presence, daring, insight,reason
+        command, security, science, conn, engineering, medicine
+        values, talents
+
+        Apariencia y otros
+        age, skin, hair, weight, height, eyes,notesAndAwards, event1, event2&ndash;&gt;
+    -->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.characters.charactersheet.EditableStatusFragment">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:columnCount="2"
+                android:layout_marginHorizontal="16sp"
+                android:padding="16sp">
+
+                <!-- Stress -->
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:layout_row="0"
+                    android:layout_marginTop="16sp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stress"
+                        android:textStyle="bold"
+                        android:paddingHorizontal="16sp"/>
+
+                    <EditText
+                        android:layout_marginTop="5sp"
+                        android:layout_marginLeft="5sp"
+                        android:paddingHorizontal="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        
+                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.stress)}" />
+                </LinearLayout>
+
+                <!-- Max Stress -->
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:layout_row="0"
+                    android:layout_marginTop="16sp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="16sp"
+                        android:text="@string/max_stress"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:layout_marginTop="5sp"
+                        android:layout_marginLeft="5sp"
+                        android:paddingHorizontal="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.maxStress)}" />
+                </LinearLayout>
+
+                <!-- Resistance -->
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:layout_row="0"
+                    android:layout_marginTop="16sp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="16sp"
+                        android:text="@string/resistance"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:layout_marginTop="5sp"
+                        android:layout_marginLeft="5sp"
+                        android:paddingHorizontal="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        
+                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.resistance)}" />
+                </LinearLayout>
+
+
+                <!-- Injuries -->
+
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:layout_row="1"
+                    android:layout_marginTop="16sp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="16sp"
+                        android:text="@string/injuries"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:layout_marginTop="5sp"
+                        android:layout_marginLeft="5sp"
+                        android:paddingHorizontal="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        
+                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.injuries)}" />
+
+                </LinearLayout>
+
+                <!-- Reputation -->
+
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:layout_row="1"
+                    android:layout_marginTop="16sp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="16sp"
+                        android:text="@string/reputation"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:layout_marginTop="5sp"
+                        android:layout_marginLeft="5sp"
+                        android:paddingHorizontal="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        
+                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.reputation)}" />
+
+                </LinearLayout>
+
+                <!-- Privilege -->
+
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:layout_row="1"
+                    android:layout_marginTop="16sp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="16sp"
+                        android:text="@string/privilege"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:layout_marginTop="5sp"
+                        android:layout_marginLeft="5sp"
+                        android:paddingHorizontal="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        
+                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.privilege)}" />
+
+                </LinearLayout>
+
+                <!-- Responsibility -->
+
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:layout_row="1"
+                    android:layout_marginTop="16sp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="16sp"
+                        android:text="@string/responsibility"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:layout_marginTop="5sp"
+                        android:layout_marginLeft="5sp"
+                        android:paddingHorizontal="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        
+                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.responsibility)}" />
+
+                </LinearLayout>
+
+                <!-- Determination -->
+
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:layout_row="1"
+                    android:layout_marginTop="16sp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="16sp"
+                        android:text="@string/determination"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:layout_marginTop="5sp"
+                        android:layout_marginLeft="5sp"
+                        android:paddingHorizontal="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        
+                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.determination)}" />
+
+                </LinearLayout>
+
+                <!-- Attacks -->
+
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="2"
+                    android:orientation="vertical"
+                    android:layout_row="2"
+                    android:layout_marginTop="16sp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/attacks"
+                        android:textStyle="bold"
+                        android:paddingHorizontal="16sp"/>
+
+                    <EditText
+                        android:layout_marginTop="5sp"
+                        android:layout_marginLeft="5sp"
+                        android:paddingHorizontal="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        
+                        tools:text="@{String.valueOf(statusViewModel.characterSheetLiveData.attacks)}" />
+
+                </LinearLayout>
+
+                <!-- Equipment -->
+
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_columnSpan="2"
+                    android:orientation="vertical"
+                    android:layout_row="2"
+                    android:layout_marginTop="16sp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        
+                        android:text="@string/equipment"
+                        android:textStyle="bold"
+                        android:paddingHorizontal="16sp"/>
+
+                    <EditText
+                        android:layout_marginTop="5sp"
+                        android:layout_marginLeft="5sp"
+                        android:paddingHorizontal="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="@{String.valueOf(statusViewModel.characterSheetLiveData.equipment)}" />
+
+                </LinearLayout>
+
+            </GridLayout>
+        </ScrollView>
+</layout>

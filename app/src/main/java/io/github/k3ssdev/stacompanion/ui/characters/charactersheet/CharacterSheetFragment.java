@@ -235,7 +235,7 @@ public class CharacterSheetFragment extends Fragment {
                     }
                 case 1:
                     if (editMode) {
-                        return StatusFragment.newInstance(userId, characterId);
+                        return EditableStatusFragment.newInstance(userId, characterId);
                     } else {
                         return StatusFragment.newInstance(userId, characterId);
                     }

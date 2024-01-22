@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -65,10 +64,9 @@ public class EditableDataTabFragment extends Fragment {
         FragmentTabSheetEditDataBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tab_sheet_edit_data, container, false);
 
         // Ocultar boton de volver
-        // Ocultar boton de volver
-        if (getActivity() != null && getActivity() instanceof AppCompatActivity) {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        }
+//        if (getActivity() != null && getActivity() instanceof AppCompatActivity) {
+//            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+//        }
 
 
         // Comprobar si la vinculación es nula

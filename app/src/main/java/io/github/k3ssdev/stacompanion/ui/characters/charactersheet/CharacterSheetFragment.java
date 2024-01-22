@@ -55,9 +55,7 @@ public class CharacterSheetFragment extends Fragment {
                     .commit();
             return true;
         } else if (itemId == R.id.action_save) {
-
             saveData();
-
             // Vuelve al modo normal
             fragmentManager.beginTransaction()
                     .replace(R.id.container, CharacterSheetFragment.newInstance(getArguments().getString("userId"), getArguments().getString("characterId"), false))
@@ -113,10 +111,6 @@ public class CharacterSheetFragment extends Fragment {
 
         EditText editTextValues = rootView.findViewById(R.id.editTextValues);
         characterSheet.setValues(editTextValues.getText().toString());
-
-
-
-
 
         // Save the data in the Firebase Realtime Database
         mViewModel.saveCharacterSheetToDatabase(userId, characterId, characterSheet);
@@ -193,9 +187,9 @@ public class CharacterSheetFragment extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
 
         // Muestra el botón de volver si no estás en modo de edición
-        if (!editMode && getActivity() != null && getActivity() instanceof AppCompatActivity) {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+//        if (!editMode && getActivity() != null && getActivity() instanceof AppCompatActivity) {
+//            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        }
 
         return view;
     }

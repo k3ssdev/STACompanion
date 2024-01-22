@@ -18,32 +18,32 @@ public class CharacterSheet implements java.io.Serializable{
     private String upbringing;
     private String assignment;
     private String traits;
-    private int age;
+    private String age;
     private String skin;
     private String hair;
-    private int weight;
-    private int height;
+    private String weight;
+    private String height;
     private String eyes;
 
     // Habilidades del personaje
-    private int control;
-    private int fitness;
-    private int presence;
-    private int daring;
-    private int insight;
-    private int reason;
-    private int command;
-    private int security;
-    private int science;
-    private int conn;
-    private int engineering;
-    private int medicine;
-    private int determination;
+    private String control;
+    private String fitness;
+    private String presence;
+    private String daring;
+    private String insight;
+    private String reason;
+    private String command;
+    private String security;
+    private String science;
+    private String conn;
+    private String engineering;
+    private String medicine;
+    private String determination;
 
     // Rasgos del personaje
-    private int reputation;
-    private int privilege;
-    private int responsibility;
+    private String reputation;
+    private String privilege;
+    private String responsibility;
     private String focuses;
     private String values;
     private String talents;
@@ -51,36 +51,27 @@ public class CharacterSheet implements java.io.Serializable{
     private String equipment;
 
     // Datos básicos del personaje
-    private int stress; // Atributo calculado
-    private int currentStress; // Atributo calculado
-    private int maxStress; // Atributo calculado
-    private int resistance; // Atributo calculado
+    private String stress; // Atributo calculado
+    private String maxStress; // Atributo calculado
+    private String resistance; // Atributo calculado
     private String notesAndAwards;
     private String injuries;
     private String academy;
     private String career;
     private String event1;
-    private String event2;
 
-    private long creationTimestamp;
 
-    // Métodos para calcular los atributos
-    public void calculateStress() {
-        this.stress = this.fitness + this.security;
-    }
+    private long modificationTimestamp;
 
-    public void calculateResistance() {
-        this.resistance = this.fitness;
-    }
 
-    public CharacterSheet( long creationTimestamp, String id, String userId, String characterName, String pronouns, String species, String environment, String rank, String upbringing, String assignment, String traits,
-                          int control, int fitness, int presence, int daring, int insight, int reason,
-                          int command, int security, int science, int conn, int engineering, int medicine,
-                          int age, String skin, String hair, int weight, int height, String eyes,
-                          int reputation, int privilege, int responsibility, String focuses, int determination,
-                          String values, String talents, String attacks, String equipment, int stress, int currentStress,
-                          int maxStress, int resistance, String notesAndAwards, String injuries, String academy, String career, String event1, String event2) {
-        this.creationTimestamp = creationTimestamp;
+    public CharacterSheet(long modificationTimestamp, String id, String userId, String characterName, String pronouns, String species, String environment, String rank, String upbringing, String assignment, String traits,
+                          String control, String fitness, String presence, String daring, String insight, String reason,
+                          String command, String security, String science, String conn, String engineering, String medicine,
+                          String age, String skin, String hair, String weight, String height, String eyes,
+                          String reputation, String privilege, String responsibility, String focuses, String determination,
+                          String values, String talents, String attacks, String equipment, String stress,
+                          String maxStress, String resistance, String notesAndAwards, String injuries, String academy, String career, String event1, String event2) {
+        this.modificationTimestamp = modificationTimestamp;
         this.id = id;
         this.userId = userId;
         this.characterName = characterName;
@@ -119,7 +110,7 @@ public class CharacterSheet implements java.io.Serializable{
         this.attacks = attacks;
         this.equipment = equipment;
         this.stress = stress;
-        this.currentStress = currentStress;
+
         this.maxStress = maxStress;
         this.resistance = resistance;
         this.notesAndAwards = notesAndAwards;
@@ -127,8 +118,6 @@ public class CharacterSheet implements java.io.Serializable{
         this.academy = academy;
         this.career = career;
         this.event1 = event1;
-        this.event2 = event2;
-;
     }
 
 
@@ -151,9 +140,9 @@ public class CharacterSheet implements java.io.Serializable{
     public void setUserId(String userId) { this.userId = userId; }
 
 
-    public long getCreationTimestamp() { return creationTimestamp; }
+    public long getModificationTimestamp() { return modificationTimestamp; }
 
-    public void setCreationTimestamp(long creationTimestamp) { this.creationTimestamp = creationTimestamp; }
+    public void setModificationTimestamp(long modificationTimestamp) { this.modificationTimestamp = modificationTimestamp; }
 
     public String getCharacterName() {
         return characterName;
@@ -219,107 +208,107 @@ public class CharacterSheet implements java.io.Serializable{
         this.traits = traits;
     }
 
-    public int getControl() {
+    public String getControl() {
         return control;
     }
 
-    public void setControl(int control) {
+    public void setControl(String control) {
         this.control = control;
     }
 
-    public int getFitness() {
+    public String getFitness() {
         return fitness;
     }
 
-    public void setFitness(int fitness) {
+    public void setFitness(String fitness) {
         this.fitness = fitness;
     }
 
-    public int getPresence() {
+    public String getPresence() {
         return presence;
     }
 
-    public void setPresence(int presence) {
+    public void setPresence(String presence) {
         this.presence = presence;
     }
 
-    public int getDaring() {
+    public String getDaring() {
         return daring;
     }
 
-    public void setDaring(int daring) {
+    public void setDaring(String daring) {
         this.daring = daring;
     }
 
-    public int getInsight() {
+    public String getInsight() {
         return insight;
     }
 
-    public void setInsight(int insight) {
+    public void setInsight(String insight) {
         this.insight = insight;
     }
 
-    public int getReason() {
+    public String getReason() {
         return reason;
     }
 
-    public void setReason(int reason) {
+    public void setReason(String reason) {
         this.reason = reason;
     }
 
-    public int getCommand() {
+    public String getCommand() {
         return command;
     }
 
-    public void setCommand(int command) {
+    public void setCommand(String command) {
         this.command = command;
     }
 
-    public int getSecurity() {
+    public String getSecurity() {
         return security;
     }
 
-    public void setSecurity(int security) {
+    public void setSecurity(String security) {
         this.security = security;
     }
 
-    public int getScience() {
+    public String getScience() {
         return science;
     }
 
-    public void setScience(int science) {
+    public void setScience(String science) {
         this.science = science;
     }
 
-    public int getConn() {
+    public String getConn() {
         return conn;
     }
 
-    public void setConn(int conn) {
+    public void setConn(String conn) {
         this.conn = conn;
     }
 
-    public int getEngineering() {
+    public String getEngineering() {
         return engineering;
     }
 
-    public void setEngineering(int engineering) {
+    public void setEngineering(String engineering) {
         this.engineering = engineering;
     }
 
-    public int getMedicine() {
+    public String getMedicine() {
         return medicine;
     }
 
-    public void setMedicine(int medicine) {
+    public void setMedicine(String medicine) {
         this.medicine = medicine;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
@@ -339,19 +328,19 @@ public class CharacterSheet implements java.io.Serializable{
         this.hair = hair;
     }
 
-    public int getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 
-    public int getHeight() {
+    public String getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(String height) {
         this.height = height;
     }
 
@@ -363,27 +352,27 @@ public class CharacterSheet implements java.io.Serializable{
         this.eyes = eyes;
     }
 
-    public int getReputation() {
+    public String getReputation() {
         return reputation;
     }
 
-    public void setReputation(int reputation) {
+    public void setReputation(String reputation) {
         this.reputation = reputation;
     }
 
-    public int getPrivilege() {
+    public String getPrivilege() {
         return privilege;
     }
 
-    public void setPrivilege(int privilege) {
+    public void setPrivilege(String privilege) {
         this.privilege = privilege;
     }
 
-    public int getResponsibility() {
+    public String getResponsibility() {
         return responsibility;
     }
 
-    public void setResponsibility(int responsibility) {
+    public void setResponsibility(String responsibility) {
         this.responsibility = responsibility;
     }
 
@@ -395,11 +384,11 @@ public class CharacterSheet implements java.io.Serializable{
         this.focuses = focuses;
     }
 
-    public int getDetermination() {
+    public String getDetermination() {
         return determination;
     }
 
-    public void setDetermination(int determination) {
+    public void setDetermination(String determination) {
         this.determination = determination;
     }
 
@@ -437,35 +426,27 @@ public class CharacterSheet implements java.io.Serializable{
 
 
     // Getters para los atributos calculados
-    public int getStress() {
+    public String getStress() {
         return stress;
     }
 
-    public void setStress(int stress) {
+    public void setStress(String stress) {
         this.stress = stress;
     }
 
-    public int getCurrentStress() {
-        return currentStress;
-    }
-
-    public void setCurrentStress(int currentStress) {
-        this.currentStress = currentStress;
-    }
-
-    public int getMaxStress() {
+    public String getMaxStress() {
         return maxStress;
     }
 
-    public void setMaxStress(int maxStress) {
+    public void setMaxStress(String maxStress) {
         this.maxStress = maxStress;
     }
 
-    public int getResistance() {
+    public String getResistance() {
         return resistance;
     }
 
-    public void setResistance(int resistance) {
+    public void setResistance(String resistance) {
         this.resistance = resistance;
     }
 
@@ -509,11 +490,4 @@ public class CharacterSheet implements java.io.Serializable{
         this.event1 = event1;
     }
 
-    public String getEvent2() {
-        return event2;
-    }
-
-    public void setEvent2(String event2) {
-        this.event2 = event2;
-    }
 }

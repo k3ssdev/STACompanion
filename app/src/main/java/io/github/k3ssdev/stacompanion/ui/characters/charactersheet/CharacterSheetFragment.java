@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -79,6 +80,9 @@ public class CharacterSheetFragment extends Fragment {
 
         // Get the character sheet from the ViewModel
         CharacterSheet characterSheet = mViewModel.getCharacterSheetLiveData().getValue();
+
+        // Get the data from the views
+        characterSheet.setCharacterName(((EditText) rootView.findViewById(R.id.editTextCharacterName)).getText().toString());
 
 
 

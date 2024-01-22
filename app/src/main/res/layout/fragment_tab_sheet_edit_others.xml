@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="?attr/actionBarSize"
-        tools:context=".ui.characters.charactersheet.OthersFragment">
+        tools:context=".ui.characters.charactersheet.EditableOthersFragment">
 
         <GridLayout
             android:layout_width="match_parent"
@@ -77,13 +77,16 @@
                     android:textStyle="bold"
                     android:paddingHorizontal="16sp"/>
 
-                <TextView
+                <EditText
+                    android:id="@+id/pronouns_edit_text"
                     android:layout_marginTop="5sp"
                     android:layout_marginLeft="5sp"
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(othersViewModel.characterSheetLiveData.pronouns)}"/>
+                    android:inputType="text"
+                    tools:ignore="LabelFor"
+                    android:text="@{othersViewModel.characterSheetLiveData.pronouns}"/>
             </LinearLayout>
 
 
@@ -103,13 +106,16 @@
                     android:textStyle="bold"
                     android:paddingHorizontal="16sp"/>
 
-                <TextView
+                <EditText
+                    android:id="@+id/age_edit_text"
                     android:layout_marginTop="5sp"
                     android:layout_marginLeft="5sp"
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(othersViewModel.characterSheetLiveData.age)}"/>
+                    android:inputType="number"
+                    tools:ignore="LabelFor"
+                    android:text="@{othersViewModel.characterSheetLiveData.age}"/>
             </LinearLayout>
 
             <!-- Skin -->
@@ -129,12 +135,15 @@
                     android:textStyle="bold"
                     android:paddingHorizontal="16sp"/>
 
-                <TextView
+                <EditText
+                    android:id="@+id/skin_edit_text"
                     android:layout_marginTop="5sp"
                     android:layout_marginLeft="5sp"
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
+                    tools:ignore="LabelFor"
                     android:text="@{othersViewModel.characterSheetLiveData.skin}"/>
 
             </LinearLayout>
@@ -156,12 +165,15 @@
                     android:textStyle="bold"
                     android:paddingHorizontal="16sp"/>
 
-                <TextView
+                <EditText
+                    android:id="@+id/hair_edit_text"
                     android:layout_marginTop="5sp"
                     android:layout_marginLeft="5sp"
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
+                    tools:ignore="LabelFor"
                     android:text="@{othersViewModel.characterSheetLiveData.hair}"/>
 
             </LinearLayout>
@@ -183,13 +195,16 @@
                     android:textStyle="bold"
                     android:paddingHorizontal="16sp"/>
 
-                <TextView
+                <EditText
+                    android:id="@+id/weight_edit_text"
                     android:layout_marginTop="5sp"
                     android:layout_marginLeft="5sp"
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(othersViewModel.characterSheetLiveData.weight)}"/>
+                    android:inputType="number"
+                    tools:ignore="LabelFor"
+                    android:text="@{othersViewModel.characterSheetLiveData.weight}"/>
 
             </LinearLayout>
 
@@ -210,13 +225,16 @@
                     android:textStyle="bold"
                     android:paddingHorizontal="16sp"/>
 
-                <TextView
+                <EditText
+                    android:id="@+id/height_edit_text"
                     android:layout_marginTop="5sp"
                     android:layout_marginLeft="5sp"
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(othersViewModel.characterSheetLiveData.height)}"/>
+                    android:inputType="number"
+                    tools:ignore="LabelFor"
+                    android:text="@{othersViewModel.characterSheetLiveData.height}"/>
 
             </LinearLayout>
 
@@ -237,12 +255,15 @@
                     android:textStyle="bold"
                     android:paddingHorizontal="16sp"/>
 
-                <TextView
+                <EditText
+                    android:id="@+id/eyes_edit_text"
                     android:layout_marginTop="5sp"
                     android:layout_marginLeft="5sp"
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
+                    tools:ignore="LabelFor"
                     android:text="@{othersViewModel.characterSheetLiveData.eyes}"/>
 
             </LinearLayout>
@@ -287,12 +308,15 @@
                     android:textStyle="bold"
                     android:paddingHorizontal="16sp"/>
 
-                <TextView
+                <EditText
+                    android:id="@+id/event1_edit_text"
                     android:layout_marginTop="5sp"
                     android:layout_marginLeft="5sp"
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    tools:ignore="LabelFor"
                     android:text="@{othersViewModel.characterSheetLiveData.event1}"/>
 
             </LinearLayout>
@@ -314,22 +338,19 @@
                     android:textStyle="bold"
                     android:paddingHorizontal="16sp"/>
 
-                <TextView
+                <EditText
+                    android:id="@+id/notes_and_awards_edit_text"
                     android:layout_marginTop="5sp"
                     android:layout_marginLeft="5sp"
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    tools:ignore="LabelFor"
                     android:text="@{othersViewModel.characterSheetLiveData.notesAndAwards}"/>
 
             </LinearLayout>
-
-
-
-
         </GridLayout>
-
     </ScrollView>
-
 </layout>
 

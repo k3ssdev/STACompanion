@@ -81,36 +81,215 @@ public class CharacterSheetFragment extends Fragment {
         // Create a new CharacterSheet object
         CharacterSheet characterSheet = new CharacterSheet();
 
+
         // Get the data from the EditText fields and set it in the CharacterSheet object
         EditText editTextCharacterName = rootView.findViewById(R.id.editTextCharacterName);
-        characterSheet.setCharacterName(editTextCharacterName.getText().toString());
+        if (editTextCharacterName != null) {
+            characterSheet.setCharacterName(editTextCharacterName.getText().toString());
+        }
 
         EditText editTextSpecies = rootView.findViewById(R.id.editTextSpecies);
-        characterSheet.setSpecies(editTextSpecies.getText().toString());
+        if (editTextSpecies != null) {
+            characterSheet.setSpecies(editTextSpecies.getText().toString());
+        }
 
         EditText editTextRank = rootView.findViewById(R.id.editTextRank);
-        characterSheet.setRank(editTextRank.getText().toString());
+        if (editTextRank != null) {
+            characterSheet.setRank(editTextRank.getText().toString());
+        }
 
         EditText editTextEnvironment = rootView.findViewById(R.id.editTextEnvironment);
-        characterSheet.setEnvironment(editTextEnvironment.getText().toString());
+        if (editTextEnvironment != null) {
+            characterSheet.setEnvironment(editTextEnvironment.getText().toString());
+        }
 
         EditText editTextUpbringing = rootView.findViewById(R.id.editTextUpbringing);
-        characterSheet.setUpbringing(editTextUpbringing.getText().toString());
+        if (editTextUpbringing != null) {
+            characterSheet.setUpbringing(editTextUpbringing.getText().toString());
+        }
 
         EditText editTextAssignment = rootView.findViewById(R.id.editTextAssignment);
-        characterSheet.setAssignment(editTextAssignment.getText().toString());
+        if (editTextAssignment != null) {
+            characterSheet.setAssignment(editTextAssignment.getText().toString());
+        }
 
         EditText editTextAcademy = rootView.findViewById(R.id.editTextAcademy);
-        characterSheet.setAcademy(editTextAcademy.getText().toString());
+        if (editTextAcademy != null) {
+            characterSheet.setAcademy(editTextAcademy.getText().toString());
+        }
 
         EditText editTextCareer = rootView.findViewById(R.id.editTextCareer);
-        characterSheet.setCareer(editTextCareer.getText().toString());
+        if (editTextCareer != null) {
+            characterSheet.setCareer(editTextCareer.getText().toString());
+        }
 
         EditText editTextTraits = rootView.findViewById(R.id.editTextTraits);
-        characterSheet.setTraits(editTextTraits.getText().toString());
+        if (editTextTraits != null) {
+            characterSheet.setTraits(editTextTraits.getText().toString());
+        }
 
         EditText editTextValues = rootView.findViewById(R.id.editTextValues);
-        characterSheet.setValues(editTextValues.getText().toString());
+        if (editTextValues != null) {
+            characterSheet.setValues(editTextValues.getText().toString());
+        }
+
+        EditText editTextPronouns = rootView.findViewById(R.id.pronouns_edit_text);
+        if (editTextPronouns != null) {
+            characterSheet.setPronouns(editTextPronouns.getText().toString());
+        }
+
+        EditText editTextAge = rootView.findViewById(R.id.age_edit_text);
+        if (editTextAge != null) {
+            characterSheet.setAge(editTextAge.getText().toString());
+        }
+
+        EditText editTextSkin = rootView.findViewById(R.id.skin_edit_text);
+        if (editTextSkin != null) {
+            characterSheet.setSkin(editTextSkin.getText().toString());
+        }
+
+        EditText editTextHair = rootView.findViewById(R.id.hair_edit_text);
+        if (editTextHair != null) {
+            characterSheet.setHair(editTextHair.getText().toString());
+        }
+
+        EditText editTextWeight = rootView.findViewById(R.id.weight_edit_text);
+        if (editTextWeight != null) {
+            characterSheet.setWeight(editTextWeight.getText().toString());
+        }
+
+        EditText editTextHeight = rootView.findViewById(R.id.height_edit_text);
+        if (editTextHeight != null) {
+            characterSheet.setHeight(editTextHeight.getText().toString());
+        }
+
+        EditText editTextEyes = rootView.findViewById(R.id.eyes_edit_text);
+        if (editTextEyes != null) {
+            characterSheet.setEyes(editTextEyes.getText().toString());
+        }
+
+        EditText editTextEvent1 = rootView.findViewById(R.id.event1_edit_text);
+        if (editTextEvent1 != null) {
+            characterSheet.setEvent1(editTextEvent1.getText().toString());
+        }
+
+        EditText editTextNotesAndAwards = rootView.findViewById(R.id.notes_and_awards_edit_text);
+        if (editTextNotesAndAwards != null) {
+            characterSheet.setNotesAndAwards(editTextNotesAndAwards.getText().toString());
+        }
+
+        EditText editTextControl = rootView.findViewById(R.id.editTextControl);
+        if (editTextControl != null) {
+            characterSheet.setControl(editTextControl.getText().toString());
+        }
+
+        EditText editTextFitness = rootView.findViewById(R.id.editTextFitness);
+        if (editTextFitness != null) {
+            characterSheet.setFitness(editTextFitness.getText().toString());
+        }
+
+        EditText editTextPresence = rootView.findViewById(R.id.editTextPresence);
+        if (editTextPresence != null) {
+            characterSheet.setPresence(editTextPresence.getText().toString());
+        }
+
+        EditText editTextDaring = rootView.findViewById(R.id.editTextDaring);
+        if (editTextDaring != null) {
+            characterSheet.setDaring(editTextDaring.getText().toString());
+        }
+
+        EditText editTextInsight = rootView.findViewById(R.id.editTextInsight);
+        if (editTextInsight != null) {
+            characterSheet.setInsight(editTextInsight.getText().toString());
+        }
+
+        EditText editTextReason = rootView.findViewById(R.id.editTextReason);
+        if (editTextReason != null) {
+            characterSheet.setReason(editTextReason.getText().toString());
+        }
+
+        EditText editTextCommand = rootView.findViewById(R.id.editTextCommand);
+        if (editTextCommand != null) {
+            characterSheet.setCommand(editTextCommand.getText().toString());
+        }
+
+        EditText editTextSecurity = rootView.findViewById(R.id.editTextSecurity);
+        if (editTextSecurity != null) {
+            characterSheet.setSecurity(editTextSecurity.getText().toString());
+        }
+
+        EditText editTextScience = rootView.findViewById(R.id.editTextScience);
+        if (editTextScience != null) {
+            characterSheet.setScience(editTextScience.getText().toString());
+        }
+
+        EditText editTextConn = rootView.findViewById(R.id.editTextConn);
+        if (editTextConn != null) {
+            characterSheet.setConn(editTextConn.getText().toString());
+        }
+
+        EditText editTextEngineering = rootView.findViewById(R.id.editTextEngineering);
+        if (editTextEngineering != null) {
+            characterSheet.setEngineering(editTextEngineering.getText().toString());
+        }
+
+        EditText editTextMedicine = rootView.findViewById(R.id.editTextMedicine);
+        if (editTextMedicine != null) {
+            characterSheet.setMedicine(editTextMedicine.getText().toString());
+        }
+
+        EditText editTextStress = rootView.findViewById(R.id.stressEditText);
+        if (editTextStress != null) {
+            characterSheet.setStress(editTextStress.getText().toString());
+        }
+
+        EditText editTextMaxStress = rootView.findViewById(R.id.maxStressEditText);
+        if (editTextMaxStress != null) {
+            characterSheet.setMaxStress(editTextMaxStress.getText().toString());
+        }
+
+        EditText editTextResistance = rootView.findViewById(R.id.resistanceEditText);
+        if (editTextResistance != null) {
+            characterSheet.setResistance(editTextResistance.getText().toString());
+        }
+
+
+
+        EditText editTextInjuries = rootView.findViewById(R.id.injuriesEditText);
+        if (editTextInjuries != null) {
+            characterSheet.setInjuries(editTextInjuries.getText().toString());
+        }
+
+        EditText editTextReputation = rootView.findViewById(R.id.reputationEditText);
+        if (editTextReputation != null) {
+            characterSheet.setReputation(editTextReputation.getText().toString());
+        }
+
+        EditText editTextPrivilege = rootView.findViewById(R.id.privilegeEditText);
+        if (editTextPrivilege != null) {
+            characterSheet.setPrivilege(editTextPrivilege.getText().toString());
+        }
+
+        EditText editTextResponsibility = rootView.findViewById(R.id.responsibilityEditText);
+        if (editTextResponsibility != null) {
+            characterSheet.setResponsibility(editTextResponsibility.getText().toString());
+        }
+
+        EditText editTextDetermination = rootView.findViewById(R.id.determinationEditText);
+        if (editTextDetermination != null) {
+            characterSheet.setDetermination(editTextDetermination.getText().toString());
+        }
+
+        EditText editTextAttacks = rootView.findViewById(R.id.attacksEditText);
+        if (editTextAttacks != null) {
+            characterSheet.setAttacks(editTextAttacks.getText().toString());
+        }
+
+        EditText editTextEquipment = rootView.findViewById(R.id.equipmentEditText);
+        if (editTextEquipment != null) {
+            characterSheet.setEquipment(editTextEquipment.getText().toString());
+        }
+
 
         // Save the data in the Firebase Realtime Database
         mViewModel.saveCharacterSheetToDatabase(userId, characterId, characterSheet);
@@ -235,19 +414,18 @@ public class CharacterSheetFragment extends Fragment {
                     }
                 case 2:
                     if (editMode) {
-                        return SkillsFragment.newInstance(userId, characterId);
+                        return EditableSkillsFragment.newInstance(userId, characterId);
                     } else {
                         return SkillsFragment.newInstance(userId, characterId);
                     }
                 case 3:
                     if (editMode) {
-                        return OthersFragment.newInstance(userId, characterId);
+                        return EditableOthersFragment.newInstance(userId, characterId);
                     } else {
                         return OthersFragment.newInstance(userId, characterId);
                     }
-                default:
-                    return null;
             }
+            return DataTabFragment.newInstance(userId, characterId);
         }
 
 

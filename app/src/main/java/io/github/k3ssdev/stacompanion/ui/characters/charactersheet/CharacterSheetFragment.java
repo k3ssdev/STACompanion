@@ -7,7 +7,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -78,39 +77,10 @@ public class CharacterSheetFragment extends Fragment {
         String userId = getArguments().getString("userId");
         String characterId = getArguments().getString("characterId");
 
-        // Create a new CharacterSheet object
-        CharacterSheet characterSheet = new CharacterSheet();
+        // Get the character sheet from the ViewModel
+        CharacterSheet characterSheet = mViewModel.getCharacterSheetLiveData().getValue();
 
-        // Get the data from the EditText fields and set it in the CharacterSheet object
-        EditText editTextCharacterName = rootView.findViewById(R.id.editTextCharacterName);
-        characterSheet.setCharacterName(editTextCharacterName.getText().toString());
 
-        EditText editTextSpecies = rootView.findViewById(R.id.editTextSpecies);
-        characterSheet.setSpecies(editTextSpecies.getText().toString());
-
-        EditText editTextRank = rootView.findViewById(R.id.editTextRank);
-        characterSheet.setRank(editTextRank.getText().toString());
-
-        EditText editTextEnvironment = rootView.findViewById(R.id.editTextEnvironment);
-        characterSheet.setEnvironment(editTextEnvironment.getText().toString());
-
-        EditText editTextUpbringing = rootView.findViewById(R.id.editTextUpbringing);
-        characterSheet.setUpbringing(editTextUpbringing.getText().toString());
-
-        EditText editTextAssignment = rootView.findViewById(R.id.editTextAssignment);
-        characterSheet.setAssignment(editTextAssignment.getText().toString());
-
-        EditText editTextAcademy = rootView.findViewById(R.id.editTextAcademy);
-        characterSheet.setAcademy(editTextAcademy.getText().toString());
-
-        EditText editTextCareer = rootView.findViewById(R.id.editTextCareer);
-        characterSheet.setCareer(editTextCareer.getText().toString());
-
-        EditText editTextTraits = rootView.findViewById(R.id.editTextTraits);
-        characterSheet.setTraits(editTextTraits.getText().toString());
-
-        EditText editTextValues = rootView.findViewById(R.id.editTextValues);
-        characterSheet.setValues(editTextValues.getText().toString());
 
         // Save the data in the Firebase Realtime Database
         mViewModel.saveCharacterSheetToDatabase(userId, characterId, characterSheet);

@@ -7,6 +7,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -67,5 +69,28 @@ public class CharacterSheetViewModel extends ViewModel {
     // TODO: Implementar este método para que devuelva el nombre del personaje.
     public CharSequence getCharacterName() {
         return null;
+    }
+
+    public void saveCharacterSheetToDatabase(String userId, String characterId, CharacterSheet characterSheet) {
+        // Referencia a la base de datos.
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
+
+        // Guarda la hoja de personaje en la base de datos.
+        dbRef.child("users").child(userId).child("characterSheets").child(characterId)
+                .setValue(characterSheet)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Si la hoja de personaje se guarda con éxito, registra un mensaje.
+                        Log.d(TAG, "CharacterSheet saved to database: " + characterSheet);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Si la hoja de personaje no se guarda, registra el error.
+                        Log.d(TAG, "Failed to save CharacterSheet to database", e);
+                    }
+                });
     }
 }

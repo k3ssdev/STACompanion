@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,20 +30,106 @@ public class CharacterSheetFragment extends Fragment {
 
     private CharacterSheetViewModel mViewModel;
 
+    private boolean editMode = false;
+
     // Este método crea una nueva instancia del fragmento de la hoja de personaje.
-    public static CharacterSheetFragment newInstance(String userId, String characterId) {
+    public static CharacterSheetFragment newInstance(String userId, String characterId, boolean editMode) {
         CharacterSheetFragment fragment = new CharacterSheetFragment();
         Bundle args = new Bundle();
         args.putString("userId", userId);
         args.putString("characterId", characterId);
+        args.putBoolean("editMode", editMode);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        int itemId = item.getItemId();
+        if (itemId == R.id.action_edit) {
+            // Abre el fragmento de edición de la hoja de personaje
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, CharacterSheetFragment.newInstance(getArguments().getString("userId"), getArguments().getString("characterId"), true))
+                    .addToBackStack(null)
+                    .commit();
+            return true;
+        } else if (itemId == R.id.action_save) {
+
+            saveData();
+
+            // Vuelve al modo normal
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, CharacterSheetFragment.newInstance(getArguments().getString("userId"), getArguments().getString("characterId"), false))
+                    .addToBackStack(null)
+                    .commit();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void saveData() {
+        // Get the root view of the fragment
+        View rootView = getView();
+        if (rootView == null) {
+            return;
+        }
+
+        // Get userId and characterId from the arguments
+        String userId = getArguments().getString("userId");
+        String characterId = getArguments().getString("characterId");
+
+        // Create a new CharacterSheet object
+        CharacterSheet characterSheet = new CharacterSheet();
+
+        // Get the data from the EditText fields and set it in the CharacterSheet object
+        EditText editTextCharacterName = rootView.findViewById(R.id.editTextCharacterName);
+        characterSheet.setCharacterName(editTextCharacterName.getText().toString());
+
+        EditText editTextSpecies = rootView.findViewById(R.id.editTextSpecies);
+        characterSheet.setSpecies(editTextSpecies.getText().toString());
+
+        EditText editTextRank = rootView.findViewById(R.id.editTextRank);
+        characterSheet.setRank(editTextRank.getText().toString());
+
+        EditText editTextEnvironment = rootView.findViewById(R.id.editTextEnvironment);
+        characterSheet.setEnvironment(editTextEnvironment.getText().toString());
+
+        EditText editTextUpbringing = rootView.findViewById(R.id.editTextUpbringing);
+        characterSheet.setUpbringing(editTextUpbringing.getText().toString());
+
+        EditText editTextAssignment = rootView.findViewById(R.id.editTextAssignment);
+        characterSheet.setAssignment(editTextAssignment.getText().toString());
+
+        EditText editTextAcademy = rootView.findViewById(R.id.editTextAcademy);
+        characterSheet.setAcademy(editTextAcademy.getText().toString());
+
+        EditText editTextCareer = rootView.findViewById(R.id.editTextCareer);
+        characterSheet.setCareer(editTextCareer.getText().toString());
+
+        EditText editTextTraits = rootView.findViewById(R.id.editTextTraits);
+        characterSheet.setTraits(editTextTraits.getText().toString());
+
+        EditText editTextValues = rootView.findViewById(R.id.editTextValues);
+        characterSheet.setValues(editTextValues.getText().toString());
+
+
+
+
+
+        // Save the data in the Firebase Realtime Database
+        mViewModel.saveCharacterSheetToDatabase(userId, characterId, characterSheet);
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true); // Indica que este fragmento tiene un menú de opciones
+
+        if (getArguments() != null) {
+            editMode = getArguments().getBoolean("editMode", false);
+        }
     }
 
     @Override
@@ -53,11 +140,13 @@ public class CharacterSheetFragment extends Fragment {
 
     @Override
     public void onPrepareOptionsMenu(@NonNull Menu menu) {
-        MenuItem item = menu.findItem(R.id.action_edit);
-        if (item != null) {
-            item.setVisible(true); // Muestra el ítem de menú "edit"
-        }
         super.onPrepareOptionsMenu(menu);
+        MenuItem itemEdit = menu.findItem(R.id.action_edit);
+        MenuItem itemSave = menu.findItem(R.id.action_save);
+        if (itemEdit != null && itemSave != null) {
+            itemEdit.setVisible(!editMode);
+            itemSave.setVisible(editMode);
+        }
     }
 
     // Este método se llama para inflar el diseño del fragmento.
@@ -87,7 +176,7 @@ public class CharacterSheetFragment extends Fragment {
         }
 
         // Establece el título de la barra de herramientas con el nombre del personaje
-         mViewModel.getCharacterSheetLiveData().observe(getViewLifecycleOwner(), new Observer<CharacterSheet>() {
+        mViewModel.getCharacterSheetLiveData().observe(getViewLifecycleOwner(), new Observer<CharacterSheet>() {
             @Override
             public void onChanged(@Nullable final CharacterSheet characterSheet) {
                 // Actualiza la interfaz de usuario, en este caso, establece el título de la barra de aplicaciones.
@@ -97,13 +186,16 @@ public class CharacterSheetFragment extends Fragment {
             }
         });
 
-
-
         // Configura el ViewPager y TabLayout
         ViewPager viewPager = view.findViewById(R.id.view_pager);
         TabLayout tabLayout = view.findViewById(R.id.tab_layout);
         viewPager.setAdapter(new CharacterSheetPagerAdapter(getChildFragmentManager(), userId, characterId));
         tabLayout.setupWithViewPager(viewPager);
+
+        // Muestra el botón de volver si no estás en modo de edición
+        if (!editMode && getActivity() != null && getActivity() instanceof AppCompatActivity) {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         return view;
     }
@@ -128,24 +220,43 @@ public class CharacterSheetFragment extends Fragment {
             this.characterId = characterId;
         }
 
-        // Este método devuelve el fragmento correspondiente a la posición dada.
+
         @NonNull
-        // Este método devuelve el fragmento correspondiente a la posición dada.
+        // Este método devuelve el fragmento correspondiente a la posición
         @Override
         public Fragment getItem(int position) {
+
             switch (position) {
                 case 0:
-                    return DataTabFragment.newInstance(userId, characterId);
+                    if (editMode) {
+                        return EditableDataTabFragment.newInstance(userId, characterId);
+                    } else {
+                        return DataTabFragment.newInstance(userId, characterId);
+                    }
                 case 1:
-                    return StatusFragment.newInstance(userId, characterId);
+                    if (editMode) {
+                        return StatusFragment.newInstance(userId, characterId);
+                    } else {
+                        return StatusFragment.newInstance(userId, characterId);
+                    }
                 case 2:
-                    return SkillsFragment.newInstance(userId, characterId);
+                    if (editMode) {
+                        return SkillsFragment.newInstance(userId, characterId);
+                    } else {
+                        return SkillsFragment.newInstance(userId, characterId);
+                    }
                 case 3:
-                    return OthersFragment.newInstance(userId, characterId);
+                    if (editMode) {
+                        return OthersFragment.newInstance(userId, characterId);
+                    } else {
+                        return OthersFragment.newInstance(userId, characterId);
+                    }
                 default:
                     return null;
             }
         }
+
+
 
         // Este método devuelve el número total de páginas.
         @Override

@@ -68,7 +68,7 @@ public class CharactersFragment extends Fragment {
         adapter.setOnItemClickListener(sheetDetails -> {
             // Crear una nueva instancia de CharacterSheetFragment
             String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            CharacterSheetFragment characterSheetFragment = CharacterSheetFragment.newInstance(userId, sheetDetails.getId());
+            CharacterSheetFragment characterSheetFragment = CharacterSheetFragment.newInstance(userId, sheetDetails.getId(), false);
             Bundle args = new Bundle();
             args.putString("userId", userId);
             args.putString("characterId", sheetDetails.getId());

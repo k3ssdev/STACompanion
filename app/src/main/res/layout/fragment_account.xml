@@ -5,8 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.settings.SettingsFragment"
-    android:paddingBottom="?attr/actionBarSize"
-    >
+
+    android:fillViewport="true"
+    android:layout_marginBottom="?attr/actionBarSize">
+
 
     <TextView
         android:id="@+id/userName"

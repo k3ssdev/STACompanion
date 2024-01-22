@@ -30,7 +30,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="?attr/actionBarSize"
+        android:fillViewport="true"
+        android:layout_marginBottom="?attr/actionBarSize"
         tools:context=".ui.characters.charactersheet.DataTabFragment">
 
         <GridLayout

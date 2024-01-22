@@ -128,7 +128,7 @@ public class CharacterSheet implements java.io.Serializable{
         this.career = career;
         this.event1 = event1;
         this.event2 = event2;
-;
+
     }
 
 

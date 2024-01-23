@@ -1,8 +1,10 @@
 package io.github.k3ssdev.stacompanion.data;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
@@ -11,7 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import io.github.k3ssdev.stacompanion.R;
 import io.github.k3ssdev.stacompanion.ui.characters.CharactersFragment;
@@ -19,6 +23,10 @@ import io.github.k3ssdev.stacompanion.ui.characters.CharactersFragment;
 // Esta clase es un adaptador para el RecyclerView en CharactersFragment.
 // Implementa Filterable para permitir la búsqueda de personajes.
 public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFragmentAdapter.ViewHolder> implements Filterable {
+
+    private List<CharacterSheet> selectedItems = new ArrayList<>();
+
+    private boolean isMultiSelectionEnabled = false;
     private final List<CharacterSheet> characterSheets;
     private List<CharacterSheet> characterSheetsFull;
 
@@ -77,6 +85,7 @@ public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFrag
     }
 
     // Método para vincular los datos de la hoja de personaje con el ViewHolder.
+/*
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CharacterSheet sheet = characterSheets.get(position);
@@ -88,6 +97,51 @@ public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFrag
                 listener.onItemClick(sheet);
             }
         });
+    }
+*/
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        CharacterSheet sheet = characterSheets.get(position);
+        holder.characterNameTextView.setText(sheet.getCharacterName());
+        holder.speciesTextView.setText(sheet.getSpecies());
+
+        holder.checkBox.setOnCheckedChangeListener(null);
+        holder.checkBox.setChecked(selectedItems.contains(sheet));
+
+        holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                selectedItems.add(sheet);
+            } else {
+                selectedItems.remove(sheet);
+            }
+        });
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(sheet);
+            }
+        });
+
+        holder.itemView.setOnLongClickListener(v -> {
+            if (isMultiSelectionEnabled && !selectedItems.isEmpty()) {
+                // If multi-selection mode is enabled and there are selected items, clear the selection
+                selectedItems.clear();
+                isMultiSelectionEnabled = false;
+            } else {
+                // Otherwise, enable multi-selection mode and select the current item
+                isMultiSelectionEnabled = true;
+                selectedItems.add(characterSheets.get(position));
+            }
+            notifyDataSetChanged();
+            return true;
+        });
+
+        if (isMultiSelectionEnabled) {
+            holder.checkBox.setVisibility(View.VISIBLE);
+        } else {
+            holder.checkBox.setVisibility(View.GONE);
+        }
     }
 
     // Método para limpiar la lista de hojas de personajes.
@@ -108,15 +162,25 @@ public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFrag
         notifyDataSetChanged();
     }
 
-    // ViewHolder que contiene las vistas para cada elemento en el RecyclerView.
+    public List<CharacterSheet> getSelectedItems() {
+        return selectedItems;
+    }
+
+    public void clearSelectedItems() {
+        selectedItems.clear();
+        notifyDataSetChanged();
+    }
+
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView characterNameTextView;
         TextView speciesTextView;
+        CheckBox checkBox;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             characterNameTextView = itemView.findViewById(R.id.characterName);
             speciesTextView = itemView.findViewById(R.id.species);
+            checkBox = itemView.findViewById(R.id.checkBox);
         }
     }
 

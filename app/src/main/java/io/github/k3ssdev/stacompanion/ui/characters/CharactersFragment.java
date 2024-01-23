@@ -26,9 +26,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.github.k3ssdev.stacompanion.R;
 import io.github.k3ssdev.stacompanion.data.CharacterFragmentAdapter;
@@ -42,6 +45,7 @@ public class CharactersFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private CharacterFragmentAdapter adapter;
+    private List<CharacterSheet> selectedSheets = new ArrayList<>();
     private View view;
     private CharacterSheet sheet;
 
@@ -145,22 +149,28 @@ public class CharactersFragment extends Fragment {
         }
 
         if (item.getItemId() == R.id.action_delete) {
-            // Preguntar al usuario si está seguro de que quiere eliminar el personaje en popup
+            // Preguntar al usuario si está seguro de que quiere eliminar los personajes seleccionados en un popup
             new AlertDialog.Builder(getContext())
-                    .setTitle("Eliminar personaje")
-                    .setMessage("¿Estás seguro de que quieres eliminar este personaje?")
+                    .setTitle("Eliminar personajes")
+                    .setMessage("¿Estás seguro de que quieres eliminar los personajes seleccionados?")
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            // Si el usuario confirma, eliminar el personaje de la base de datos
-                            deleteCharacterSheet(sheet);
+                            // Si el usuario confirma, eliminar los personajes seleccionados de la base de datos
+                            selectedSheets = adapter.getSelectedItems(); // Actualizar selectedSheets con los elementos seleccionados del adaptador
+                            deleteCharacterSheets(selectedSheets);
+                            adapter.clearSelectedItems(); // Limpiar los elementos seleccionados del adaptador
                         }
                     })
                     .setNegativeButton(android.R.string.no, null)
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
+
             return true;
         }
+
+
         return super.onOptionsItemSelected(item);
+
     }
 
     // Este método establece la conexión con la base de datos y recupera los datos de los personajes.
@@ -209,6 +219,16 @@ public class CharactersFragment extends Fragment {
         ref.child(sheet.getId()).removeValue();
     }
 
+    // Metodo para eliminar varias hojas de personaje de la base de datos
+// Metodo para eliminar varias hojas de personaje de la base de datos
+    public void deleteCharacterSheets(List<CharacterSheet> sheets) {
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users/" + userId + "/characterSheets");
+
+        for (CharacterSheet sheet : sheets) {
+            ref.child(sheet.getId()).removeValue();
+        }
+    }
 
     // Editar un personaje
     public void editCharacterSheet(CharacterSheet sheet) {

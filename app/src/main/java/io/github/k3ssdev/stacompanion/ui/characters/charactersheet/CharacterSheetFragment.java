@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -151,7 +152,10 @@ public class CharacterSheetFragment extends Fragment {
         mViewModel = new ViewModelProvider(this).get(CharacterSheetViewModel.class);
 
         // Establece un título predeterminado o indicador de carga
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Cargando...");
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle("Cargando...");
+        }
 
         // Recupera el ID del usuario y del personaje del Bundle
         String userId = null;

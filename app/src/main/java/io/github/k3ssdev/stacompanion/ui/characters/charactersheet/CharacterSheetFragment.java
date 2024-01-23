@@ -86,6 +86,8 @@ public class CharacterSheetFragment extends Fragment {
 
         characterSheet.setStress(Integer.parseInt(((EditText) rootView.findViewById(R.id.editTextStress)).getText().toString()));
 
+        characterSheet.setControl(Integer.parseInt(((EditText) rootView.findViewById(R.id.editTextControl)).getText().toString()));
+
 
 
         // Save the data in the Firebase Realtime Database

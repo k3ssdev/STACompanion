@@ -68,6 +68,35 @@
                         android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.stress)}" />
                 </LinearLayout>
 
+                <!-- control -->
+
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:layout_row="0"
+                    android:layout_marginTop="16sp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/control"
+                        android:textStyle="bold"
+                        android:paddingHorizontal="16sp"/>
+
+                    <EditText
+                        android:id="@+id/editTextControl"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginLeft="5sp"
+                        android:paddingHorizontal="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.control)}" />
+
+                </LinearLayout>
+
                 <!-- Max Stress -->
                 <LinearLayout
                     android:layout_width="0sp"
@@ -81,7 +110,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingHorizontal="16sp"
-                        android:text="@string/max_stress"
+                        android:text="@string/control"
                         android:textStyle="bold" />
 
                     <EditText
@@ -90,7 +119,7 @@
                         android:paddingHorizontal="16sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.maxStress)}" />
+                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.control)}" />
                 </LinearLayout>
 
                 <!-- Resistance -->

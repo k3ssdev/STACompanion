@@ -33,7 +33,7 @@ public class CharacterSheetFragment extends Fragment {
 
     private static final int REQUEST_CODE = 1;
     private CharacterSheetViewModel mViewModel;
-
+    ActionBar actionBar;
     private boolean editMode = false;
 
     // Este método crea una nueva instancia del fragmento de la hoja de personaje.
@@ -61,30 +61,9 @@ public class CharacterSheetFragment extends Fragment {
             return super.onOptionsItemSelected(item);
         }
     }
-/*    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        int itemId = item.getItemId();
-        if (itemId == R.id.action_edit) {
-            // Abre el fragmento de edición de la hoja de personaje
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, CharacterSheetFragment.newInstance(getArguments().getString("userId"), getArguments().getString("characterId"), true))
-                    .addToBackStack(null)
-                    .commit();
-            return true;
-        } else if (itemId == R.id.action_save) {
-            saveData();
-            // Vuelve al modo normal
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, CharacterSheetFragment.newInstance(getArguments().getString("userId"), getArguments().getString("characterId"), false))
-                    .addToBackStack(null)
-                    .commit();
-            return true;
-        } else {
-            return super.onOptionsItemSelected(item);
-        }
-    }*/
 
+//DEPRECATED
+/*
     private void saveData() {
         // Get the root view of the fragment
         View rootView = getView();
@@ -111,6 +90,7 @@ public class CharacterSheetFragment extends Fragment {
         // Save the data in the Firebase Realtime Database
         mViewModel.saveCharacterSheetToDatabase(userId, characterId, characterSheet);
     }
+*/
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -127,6 +107,38 @@ public class CharacterSheetFragment extends Fragment {
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.character_sheet_toolbar_menu, menu); // Infla el menú
         super.onCreateOptionsMenu(menu, inflater);
+
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+        //muestra el titulo de la barra de herramientas
+        actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null) {
+            // Habilita el titulo de la barra de herramientas solo en CharacterSheetFragment
+            actionBar.setDisplayShowTitleEnabled(true);
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (actionBar != null) {
+            // Habilita el titulo de la barra de herramientas solo en CharacterSheetFragment
+            actionBar.setDisplayShowTitleEnabled(false);
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (actionBar != null) {
+            // Habilita el titulo de la barra de herramientas solo en CharacterSheetFragment
+            actionBar.setDisplayShowTitleEnabled(false);
+        }
+
     }
 
     @Override
@@ -186,11 +198,6 @@ public class CharacterSheetFragment extends Fragment {
         TabLayout tabLayout = view.findViewById(R.id.tab_layout);
         viewPager.setAdapter(new CharacterSheetPagerAdapter(getChildFragmentManager(), userId, characterId));
         tabLayout.setupWithViewPager(viewPager);
-
-        // Muestra el botón de volver si no estás en modo de edición
-//        if (!editMode && getActivity() != null && getActivity() instanceof AppCompatActivity) {
-//            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        }
 
         return view;
     }

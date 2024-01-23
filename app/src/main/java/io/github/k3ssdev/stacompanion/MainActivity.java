@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
+            // color title light_gray day theme /white dark theme
+            toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+
         } else {
             throw new RuntimeException("Toolbar not found in layout");
         }
@@ -45,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
+
+
+
 
     // Vincula la barra de aplicaciones con el controlador de navegación
     @Override

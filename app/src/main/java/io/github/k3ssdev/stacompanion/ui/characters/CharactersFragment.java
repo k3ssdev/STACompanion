@@ -2,6 +2,9 @@ package io.github.k3ssdev.stacompanion.ui.characters;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -115,6 +119,7 @@ public class CharactersFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
+
     // Este método se llama para inflar el menú de opciones.
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
@@ -177,8 +182,14 @@ public class CharactersFragment extends Fragment {
             return true;
         }
 
+        // Si se selecciona la opción de eliminar, preguntar al usuario si está seguro de que quiere eliminar los personajes seleccionados
         if (item.getItemId() == R.id.action_delete) {
-            // Preguntar al usuario si está seguro de que quiere eliminar los personajes seleccionados en un popup
+            Drawable icon = ContextCompat.getDrawable(getContext(), android.R.drawable.ic_dialog_alert); // Obtener el icono de alerta
+            if (icon != null) { // Si el icono no es nulo, establecer el color del filtro
+                icon.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(getContext(), R.color.google_red), PorterDuff.Mode.SRC_IN));
+            }
+
+            // Mostrar un diálogo de alerta para confirmar la eliminación de los personajes seleccionados
             new AlertDialog.Builder(getContext())
                     .setTitle("Eliminar personajes")
                     .setMessage("¿Estás seguro de que quieres eliminar los personajes seleccionados?")
@@ -191,15 +202,13 @@ public class CharactersFragment extends Fragment {
                         }
                     })
                     .setNegativeButton(android.R.string.no, null)
-                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setIcon(icon)
                     .show();
 
             return true;
         }
 
-
         return super.onOptionsItemSelected(item);
-
     }
 
     // Este método establece la conexión con la base de datos y recupera los datos de los personajes.

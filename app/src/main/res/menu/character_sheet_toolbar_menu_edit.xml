@@ -2,10 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <item
+        android:id="@+id/action_delete"
+        android:icon="@drawable/baseline_delete_forever_24"
+        android:title="@string/remove_sheet"
+        app:showAsAction="ifRoom"/>
+
+
     <item
         android:id="@+id/action_save"
         android:icon="@drawable/outline_file_save_24"
         android:title="@string/edit"
         app:showAsAction="ifRoom"/>
+
 
 </menu>

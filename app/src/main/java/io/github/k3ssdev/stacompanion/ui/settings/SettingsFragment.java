@@ -31,11 +31,19 @@ public class SettingsFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        requireActivity().setTitle("");
+    }
+
     // Este método se llama para inflar el diseño del fragmento.
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         SettingsViewModel notificationsViewModel =
                 new ViewModelProvider(this).get(SettingsViewModel.class);
+
+        requireActivity().setTitle("");
 
         binding = io.github.k3ssdev.stacompanion.databinding.FragmentAccountBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

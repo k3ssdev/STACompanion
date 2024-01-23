@@ -35,10 +35,24 @@ public class DiceFragment extends Fragment {
     private TextView textViewDiceResult;
     private ImageView imageViewDice;
 
+
+    // Este método se llama cuando se crea el fragmento.
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        requireActivity().setTitle("");
+    }
     // Este método se llama para inflar el diseño del fragmento.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dice, container, false);
+
+        requireActivity().setTitle("");
 
         // Inicialización de los elementos de la interfaz de usuario.
         editTextNumberOfDiceD6 = view.findViewById(R.id.editTextNumberOfDiceD6);

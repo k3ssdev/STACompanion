@@ -13,6 +13,6 @@
     <color name="grey">#808080</color>
     <color name="light_grey">#AAAAAA</color>
     <color name="sta_blue">#009AE7</color>
-
+    <color name="toolbar_title_color">#FFFFFFFF</color>
 
 </resources>

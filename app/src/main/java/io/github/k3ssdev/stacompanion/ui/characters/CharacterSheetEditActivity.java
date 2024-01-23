@@ -72,12 +72,30 @@ public class CharacterSheetEditActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_save) {
-            // Handle save action here
-            CharacterSheet modifiedCharacterSheet = getModifiedCharacterSheet();
-            // Save modifiedCharacterSheet in the database
+            // Obtén la hoja de personaje actual
+            CharacterSheet currentCharacterSheet = viewModel.getCharacterSheetLiveData().getValue();
+
+            // Comprueba si la hoja de personaje no es nula
+            if (currentCharacterSheet != null) {
+                // Obtén el nuevo valor del EditText
+                String newCharacterName = characterNameEditText.getText().toString();
+
+                // Establece el nuevo valor en la hoja de personaje
+                currentCharacterSheet.setCharacterName(newCharacterName);
+
+                // Guarda la hoja de personaje modificada en la base de datos
+                String userId = getIntent().getExtras().getString("userId");
+                String characterId = getIntent().getExtras().getString("characterId");
+                viewModel.saveCharacterSheetToDatabase(userId, characterId, currentCharacterSheet);
+
+                // Refresca UI y Finaliza la actividad
+                setResult(RESULT_OK);
+                finish();
+
+            }
+
             return true;
         } else if (id == android.R.id.home) {
-            // Handle back action here
             finish();
             return true;
         }

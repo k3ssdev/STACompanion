@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -41,7 +42,31 @@ public class DataTabFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
 
+        // Recuperar el ID del usuario y del personaje del Bundle
+        String userId = null;
+        String characterId = null;
+        if (getArguments() != null) {
+            userId = getArguments().getString("userId");
+            characterId = getArguments().getString("characterId");
+        }
+
+        // Usar el ID del usuario y del personaje para recuperar los detalles del personaje
+        if (userId != null && characterId != null) {
+            viewModel.getCharacterSheetFromDatabase(userId, characterId);
+
+        }
+
+        viewModel.getCharacterSheetLiveData().observe(this, characterSheet -> {
+            // Actualiza la interfaz de usuario, en este caso, establece el título de la barra de aplicaciones.
+            if (characterSheet != null) {
+                ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(characterSheet.getCharacterName());
+            }
+        });
+    }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {

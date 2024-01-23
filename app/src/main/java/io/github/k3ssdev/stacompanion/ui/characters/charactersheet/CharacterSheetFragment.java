@@ -119,6 +119,7 @@ public class CharacterSheetFragment extends Fragment {
         if (getArguments() != null) {
             editMode = getArguments().getBoolean("editMode", false);
         }
+
     }
 
     @Override

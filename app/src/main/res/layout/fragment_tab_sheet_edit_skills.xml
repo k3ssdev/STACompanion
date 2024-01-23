@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="skillsViewModel"
+            type="io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetViewModel" />
+    </data>
+
+    <!--
+        Datos
+        characterName, species, environment, rank, upbringing, assignment, academy, career , traits
+
+        Estado y equipo
+        stress, currentStress, maxStress, resistance,
+
+        attacks, equipment, injuries,reputation, privilege, responsibility, focuses, determination
+
+        Atributos y Disciplinas
+        control, fitness, presence, daring, insight,reason
+        command, security, science, conn, engineering, medicine
+        values, talents
+
+        Apariencia y otros
+        age, skin, hair, weight, height, eyes,notesAndAwards, event1, event2&ndash;&gt;
+    -->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:layout_marginBottom="?attr/actionBarSize"
+            tools:context=".ui.characters.charactersheet.EditableSkillsFragment">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:columnCount="2"
+                android:layout_marginHorizontal="16sp"
+                android:padding="16sp">
+
+                <!-- Control -->
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:layout_row="0"
+                    android:layout_marginTop="16sp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/control"
+                        android:textStyle="bold"
+                        android:paddingHorizontal="16sp"/>
+
+                    <EditText
+                        android:id="@+id/editTextControl"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginLeft="5sp"
+                        android:paddingHorizontal="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{String.valueOf(skillsViewModel.characterSheetLiveData.control)}" />
+                </LinearLayout>
+
+             
+            </GridLayout>
+        </ScrollView>
+</layout>

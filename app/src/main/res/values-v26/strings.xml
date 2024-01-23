@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="data">Datos</string>
+    <string name="abilities">Habilidades</string>
+    <string name="talents">Talentos</string>
+    <string name="status">Estado</string>
+    <string name="background">Trasfondo</string>
+    <string name="events">Eventos</string>
+</resources>

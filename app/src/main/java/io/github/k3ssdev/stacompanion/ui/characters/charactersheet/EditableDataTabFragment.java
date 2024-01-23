@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import io.github.k3ssdev.stacompanion.R;
-import io.github.k3ssdev.stacompanion.databinding.FragmentTabSheetEditDataBinding;
+//import io.github.k3ssdev.stacompanion.databinding.FragmentTabSheetEditDataBinding;
 import io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetViewModel;
 
 // Esta clase representa el fragmento de datos en la aplicación.
@@ -57,11 +57,11 @@ public class EditableDataTabFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
     
-    @Override
+/*    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         // Utilizar Data Binding para inflar la vista
-        FragmentTabSheetEditDataBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tab_sheet_edit_data, container, false);
+        //FragmentTabSheetEditDataBinding binding = DataBindingUtil.inflate(inflater, R.layout.activity_character_sheet_edit, container, false);
 
         // Ocultar boton de volver
 //        if (getActivity() != null && getActivity() instanceof AppCompatActivity) {
@@ -96,7 +96,7 @@ public class EditableDataTabFragment extends Fragment {
 
         // Devolver la vista raíz
         return binding.getRoot();
-    }
+    }*/
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

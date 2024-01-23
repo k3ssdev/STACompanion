@@ -28,6 +28,8 @@
         <activity android:name=".MainActivity">
             <!-- Add any intent filters if needed -->
         </activity>
+        <activity android:name="io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetEditActivity" />
+
 
     </application>
 

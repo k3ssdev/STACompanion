@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -19,18 +20,23 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
 
     // Este método se llama cuando se crea la actividad.
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Infla el diseño para esta actividad
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Configura la barra de navegación inferior
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+        } else {
+            throw new RuntimeException("Toolbar not found in layout");
+        }
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
-        // Configura la barra de aplicaciones con el controlador de navegación
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();

@@ -14,5 +14,6 @@
         <!-- Customize your theme here. -->
 
         <item name="android:autofilledHighlight">@android:color/transparent</item>
+
     </style>
 </resources>

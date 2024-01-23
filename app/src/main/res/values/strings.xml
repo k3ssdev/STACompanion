@@ -68,4 +68,10 @@
     <string name="others">Otros</string>
     <string name="sort">A-Z</string>
     <string name="edit">Editar</string>
+    <string name="data">Datos</string>
+    <string name="abilities">Habilidades</string>
+    <string name="talents">Talentos</string>
+    <string name="status">Estado</string>
+    <string name="background">Trasfondo</string>
+    <string name="events">Eventos</string>
 </resources>

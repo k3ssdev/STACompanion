@@ -1,5 +1,6 @@
 package io.github.k3ssdev.stacompanion.ui.characters.charactersheet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,11 +24,13 @@ import com.google.android.material.tabs.TabLayout;
 
 import io.github.k3ssdev.stacompanion.R;
 import io.github.k3ssdev.stacompanion.data.CharacterSheet;
+import io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetEditActivity;
 import io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetViewModel;
 
 // Esta clase representa el fragmento de la hoja de personaje en la aplicación.
 public class CharacterSheetFragment extends Fragment {
 
+    private static final int REQUEST_CODE = 1;
     private CharacterSheetViewModel mViewModel;
 
     private boolean editMode = false;
@@ -44,6 +47,20 @@ public class CharacterSheetFragment extends Fragment {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.action_edit) {
+            // Abre la nueva actividad de edición de la hoja de personaje
+            Intent intent = new Intent(getActivity(), CharacterSheetEditActivity.class);
+            intent.putExtra("userId", getArguments().getString("userId"));
+            intent.putExtra("characterId", getArguments().getString("characterId"));
+            startActivityForResult(intent, REQUEST_CODE);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
+/*    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         int itemId = item.getItemId();
@@ -65,7 +82,7 @@ public class CharacterSheetFragment extends Fragment {
         } else {
             return super.onOptionsItemSelected(item);
         }
-    }
+    }*/
 
     private void saveData() {
         // Get the root view of the fragment
@@ -201,13 +218,13 @@ public class CharacterSheetFragment extends Fragment {
             switch (position) {
                 case 0:
                     if (editMode) {
-                        return EditableDataTabFragment.newInstance(userId, characterId);
+                        return DataTabFragment.newInstance(userId, characterId);
                     } else {
                         return DataTabFragment.newInstance(userId, characterId);
                     }
                 case 1:
                     if (editMode) {
-                        return EditableStatusFragment.newInstance(userId, characterId);
+                        return StatusFragment.newInstance(userId, characterId);
                     } else {
                         return StatusFragment.newInstance(userId, characterId);
                     }

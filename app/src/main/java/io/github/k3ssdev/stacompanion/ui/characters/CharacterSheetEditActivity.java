@@ -172,7 +172,8 @@ public class CharacterSheetEditActivity extends AppCompatActivity {
                 currentCharacterSheet.setEyes(binding.editTextEyes.getText().toString());
                 currentCharacterSheet.setHeight(Integer.parseInt(binding.editTextHeight.getText().toString()));
                 currentCharacterSheet.setWeight(Integer.parseInt(binding.editTextWeight.getText().toString()));
-
+                currentCharacterSheet.setEvent1(binding.editTextEvents.getText().toString());
+                currentCharacterSheet.setNotesAndAwards(binding.editTextNotesAndAwards.getText().toString());
     }
 
 }

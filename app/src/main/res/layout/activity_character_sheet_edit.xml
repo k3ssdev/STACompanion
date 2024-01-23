@@ -100,6 +100,7 @@
                     android:layout_marginLeft="5sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:text="@{viewModel.characterSheetLiveData.characterName}" />
             </LinearLayout>
 
@@ -124,6 +125,7 @@
                     android:layout_marginLeft="5sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:text="@{viewModel.characterSheetLiveData.species}" />
             </LinearLayout>
 
@@ -148,6 +150,7 @@
                     android:layout_marginLeft="5sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:text="@{viewModel.characterSheetLiveData.rank}" />
             </LinearLayout>
 
@@ -172,6 +175,7 @@
                     android:layout_marginLeft="5sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:text="@{viewModel.characterSheetLiveData.environment}" />
             </LinearLayout>
 
@@ -197,6 +201,7 @@
                     android:layout_marginLeft="5sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:text="@{viewModel.characterSheetLiveData.upbringing}" />
 
             </LinearLayout>
@@ -223,6 +228,7 @@
                     android:layout_marginLeft="5sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:text="@{viewModel.characterSheetLiveData.assignment}" />
 
             </LinearLayout>
@@ -249,6 +255,7 @@
                     android:layout_marginLeft="5sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:text="@{viewModel.characterSheetLiveData.academy}" />
 
             </LinearLayout>
@@ -275,6 +282,7 @@
                     android:layout_marginLeft="5sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:text="@{viewModel.characterSheetLiveData.career}" />
 
             </LinearLayout>
@@ -300,6 +308,7 @@
                     android:layout_marginLeft="5sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:text="@{viewModel.characterSheetLiveData.traits}" />
 
             </LinearLayout>
@@ -327,6 +336,7 @@
                     android:layout_marginLeft="5sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:text="@{viewModel.characterSheetLiveData.values}" />
 
             </LinearLayout>
@@ -347,6 +357,7 @@
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="16sp"
                     android:text="@string/attributes"
+                    android:inputType="number"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textStyle="bold" />
 
@@ -375,6 +386,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:text="@{String.valueOf(viewModel.characterSheetLiveData.control)}" />
             </LinearLayout>
 
@@ -402,6 +414,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:text="@{String.valueOf(viewModel.characterSheetLiveData.fitness)}" />
 
             </LinearLayout>
@@ -430,6 +443,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:text="@{String.valueOf(viewModel.characterSheetLiveData.presence)}" />
 
             </LinearLayout>
@@ -458,6 +472,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:text="@{String.valueOf(viewModel.characterSheetLiveData.daring)}" />
 
             </LinearLayout>
@@ -486,6 +501,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:text="@{String.valueOf(viewModel.characterSheetLiveData.insight)}" />
 
             </LinearLayout>
@@ -514,6 +530,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:text="@{String.valueOf(viewModel.characterSheetLiveData.reason)}" />
 
             </LinearLayout>
@@ -563,6 +580,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:text="@{String.valueOf(viewModel.characterSheetLiveData.command)}" />
 
             </LinearLayout>
@@ -591,6 +609,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:text="@{String.valueOf(viewModel.characterSheetLiveData.security)}" />
 
             </LinearLayout>
@@ -619,6 +638,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:text="@{String.valueOf(viewModel.characterSheetLiveData.science)}" />
 
             </LinearLayout>
@@ -647,6 +667,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:text="@{String.valueOf(viewModel.characterSheetLiveData.conn)}" />
 
             </LinearLayout>
@@ -675,6 +696,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:text="@{String.valueOf(viewModel.characterSheetLiveData.engineering)}" />
 
             </LinearLayout>
@@ -703,6 +725,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:text="@{String.valueOf(viewModel.characterSheetLiveData.medicine)}" />
 
             </LinearLayout>
@@ -732,6 +755,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:text="@{viewModel.characterSheetLiveData.values}" />
 
             </LinearLayout>
@@ -761,6 +785,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:text="@{viewModel.characterSheetLiveData.talents}" />
 
             </LinearLayout>
@@ -919,6 +944,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
                     android:text="@{viewModel.characterSheetLiveData.attacks}" />
 
             </LinearLayout>
@@ -948,6 +974,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
                     android:text="@{viewModel.characterSheetLiveData.equipment}" />
 
             </LinearLayout>
@@ -977,6 +1004,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:text="@{viewModel.characterSheetLiveData.injuries}" />
 
             </LinearLayout>
@@ -1097,6 +1125,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:text="@{viewModel.characterSheetLiveData.focuses}" />
 
             </LinearLayout>
@@ -1206,7 +1235,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:text="@{String.valueOf(viewModel.characterSheetLiveData.skin)}" />
 
             </LinearLayout>
@@ -1235,7 +1264,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:text="@{String.valueOf(viewModel.characterSheetLiveData.hair)}" />
 
             </LinearLayout>
@@ -1264,7 +1293,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:text="@{String.valueOf(viewModel.characterSheetLiveData.eyes)}" />
 
             </LinearLayout>
@@ -1293,7 +1322,7 @@
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
+                    android:inputType="number"
                     android:text="@{String.valueOf(viewModel.characterSheetLiveData.height)}" />
 
             </LinearLayout>
@@ -1373,7 +1402,10 @@
                     android:layout_marginLeft="5sp"
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:text="@{viewModel.characterSheetLiveData.notesAndAwards}" />
+                    />
 
             </LinearLayout>
 
@@ -1401,7 +1433,9 @@
                     android:layout_marginLeft="5sp"
                     android:paddingHorizontal="16sp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:text="@{viewModel.characterSheetLiveData.event1}" />
 
             </LinearLayout>
 

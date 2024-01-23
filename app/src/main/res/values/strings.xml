@@ -65,7 +65,7 @@
     <string name="skin">Piel</string>
     <string name="pronoouns">Pronombres</string>
     <string name="others">Otros</string>
-    <string name="sort">A-Z</string>
+    <string name="sort">Ordenar</string>
     <string name="edit">Editar</string>
     <string name="data">Datos</string>
     <string name="abilities">Habilidades</string>
@@ -74,4 +74,5 @@
     <string name="background">Trasfondo</string>
     <string name="events">Eventos</string>
     <string name="remove_sheet">Eliminar hoja</string>
+    <string name="title_home">Personajes</string>
 </resources>

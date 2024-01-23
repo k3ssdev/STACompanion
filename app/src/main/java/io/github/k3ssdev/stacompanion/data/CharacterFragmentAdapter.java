@@ -46,6 +46,12 @@ public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFrag
         this.characterSheetsFull = new ArrayList<>(this.characterSheets);
     }*/
 
+    // Método para obtener la lista de hojas de personajes completa.
+    public void resetFilter() {
+        characterSheets.clear();
+        characterSheets.addAll(characterSheetsFull);
+        notifyDataSetChanged();
+    }
 
     // Implementación de los métodos de Filterable para filtrar la lista de personajes.
     @Override
@@ -79,7 +85,6 @@ public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFrag
                 if (results.values != null) {
                     characterSheets.addAll((List<? extends CharacterSheet>) results.values);
                 }
-                characterSheetsFull = new ArrayList<>(characterSheets); // Actualizar characterSheetsFull
                 notifyDataSetChanged();
             }
         };

@@ -136,6 +136,14 @@ public class CharactersFragment extends Fragment {
                 return false;
             }
         });
+
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                adapter.resetFilter();
+                return false;
+            }
+        });
     }
 
     // Este método se llama cuando se selecciona un elemento del menú de opciones.

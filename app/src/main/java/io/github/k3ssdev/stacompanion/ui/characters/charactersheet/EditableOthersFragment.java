@@ -1,6 +1,5 @@
 package io.github.k3ssdev.stacompanion.ui.characters.charactersheet;
 
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,18 +14,18 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import io.github.k3ssdev.stacompanion.R;
-import io.github.k3ssdev.stacompanion.databinding.FragmentTabSheetEditStatusBinding;
+import io.github.k3ssdev.stacompanion.databinding.FragmentTabSheetEditOthersBinding;
 import io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetViewModel;
 
-public class EditableStatusFragment extends Fragment {
+public class EditableOthersFragment extends Fragment {
 
     private CharacterSheetViewModel viewModel;
 
-    public EditableStatusFragment() {
+    public EditableOthersFragment() {
     }
 
-    public static EditableStatusFragment newInstance(String userId, String characterId) {
-        EditableStatusFragment fragment = new EditableStatusFragment();
+    public static EditableOthersFragment newInstance(String userId, String characterId) {
+        EditableOthersFragment fragment = new EditableOthersFragment();
         Bundle args = new Bundle();
         args.putString("userId", userId);
         args.putString("characterId", characterId);
@@ -56,14 +55,7 @@ public class EditableStatusFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        FragmentTabSheetEditStatusBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tab_sheet_edit_status, container, false);
-
-        // Ocultar boton de volver
-//        if (getActivity() != null && getActivity() instanceof AppCompatActivity) {
-//            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-//        }
-
-
+        FragmentTabSheetEditOthersBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tab_sheet_edit_others, container, false);
         // Comprobar si la vinculación es nula
         if (binding == null) {
             throw new RuntimeException("¡Ocurrió un error de Data Binding!");
@@ -73,7 +65,7 @@ public class EditableStatusFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(CharacterSheetViewModel.class);
 
         // Establecer el ViewModel en su binding
-        binding.setStatusViewModel(viewModel);
+        binding.setOthersViewModel(viewModel);
         binding.setLifecycleOwner(this);
 
         // Recuperar el ID del usuario y del personaje del Bundle

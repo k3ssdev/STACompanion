@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="othersViewModel"
+            type="io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetViewModel" />
+    </data>
+
+    <!--
+        Datos
+        characterName, species, environment, rank, upbringing, assignment, academy, career , traits
+
+        Estado y equipo
+        stress, currentStress, maxStress, resistance,
+
+        attacks, equipment, injuries,reputation, privilege, responsibility, focuses, determination
+
+        Atributos y Disciplinas
+        control, fitness, presence, daring, insight,reason
+        command, security, science, conn, engineering, medicine
+        values, talents
+
+        Apariencia y otros
+        age, skin, hair, weight, height, eyes,notesAndAwards, event1, event2&ndash;&gt;
+    -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="?attr/actionBarSize"
+        tools:context=".ui.characters.charactersheet.EditableOthersFragment">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:columnCount="2"
+            android:layout_marginHorizontal="16sp"
+            android:padding="16sp">
+
+            <!-- Titulo bloque atributos-->
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_columnSpan="2"
+                android:orientation="vertical"
+                android:layout_row="0"
+                android:layout_marginTop="16sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="16sp"
+                    android:text="@string/appearance"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- Pronouns -->
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_row="0"
+                android:layout_marginTop="16sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pronoouns"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="16sp"/>
+
+                <EditText
+                    android:id="@+id/pronouns_edit_text"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:paddingHorizontal="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    tools:ignore="LabelFor"
+                    android:text="@{othersViewModel.characterSheetLiveData.pronouns}"/>
+            </LinearLayout>
+
+
+            <!-- Age -->
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_row="0"
+                android:layout_marginTop="16sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/age"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="16sp"/>
+
+                <EditText
+                    android:id="@+id/age_edit_text"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:paddingHorizontal="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    tools:ignore="LabelFor"
+                    android:text="@{othersViewModel.characterSheetLiveData.age}"/>
+            </LinearLayout>
+
+            <!-- Skin -->
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_row="0"
+                android:layout_marginTop="16sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/skin"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="16sp"/>
+
+                <EditText
+                    android:id="@+id/skin_edit_text"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:paddingHorizontal="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    tools:ignore="LabelFor"
+                    android:text="@{othersViewModel.characterSheetLiveData.skin}"/>
+
+            </LinearLayout>
+
+            <!-- Hair -->
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_row="0"
+                android:layout_marginTop="16sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hair"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="16sp"/>
+
+                <EditText
+                    android:id="@+id/hair_edit_text"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:paddingHorizontal="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    tools:ignore="LabelFor"
+                    android:text="@{othersViewModel.characterSheetLiveData.hair}"/>
+
+            </LinearLayout>
+
+            <!-- Weight -->
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_row="0"
+                android:layout_marginTop="16sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/weight"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="16sp"/>
+
+                <EditText
+                    android:id="@+id/weight_edit_text"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:paddingHorizontal="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    tools:ignore="LabelFor"
+                    android:text="@{othersViewModel.characterSheetLiveData.weight}"/>
+
+            </LinearLayout>
+
+            <!-- Height -->
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_row="0"
+                android:layout_marginTop="16sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/height"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="16sp"/>
+
+                <EditText
+                    android:id="@+id/height_edit_text"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:paddingHorizontal="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    tools:ignore="LabelFor"
+                    android:text="@{othersViewModel.characterSheetLiveData.height}"/>
+
+            </LinearLayout>
+
+            <!-- Eyes -->
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:layout_row="0"
+                android:layout_marginTop="16sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/eyes"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="16sp"/>
+
+                <EditText
+                    android:id="@+id/eyes_edit_text"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:paddingHorizontal="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    tools:ignore="LabelFor"
+                    android:text="@{othersViewModel.characterSheetLiveData.eyes}"/>
+
+            </LinearLayout>
+
+            <!-- Titulo bloque otros-->
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_columnSpan="2"
+                android:orientation="vertical"
+                android:layout_row="0"
+                android:layout_marginTop="32sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="16sp"
+                    android:text="@string/others"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- Event 1 -->
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_columnSpan="2"
+                android:orientation="vertical"
+                android:layout_row="0"
+                android:layout_marginTop="16sp"
+                android:layout_marginBottom="16sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/event_1"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="16sp"/>
+
+                <EditText
+                    android:id="@+id/event1_edit_text"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:paddingHorizontal="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    tools:ignore="LabelFor"
+                    android:text="@{othersViewModel.characterSheetLiveData.event1}"/>
+
+            </LinearLayout>
+            <!-- Notes and Awards -->
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_columnSpan="2"
+                android:orientation="vertical"
+                android:layout_row="0"
+                android:layout_marginTop="16sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/notes_and_awards"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="16sp"/>
+
+                <EditText
+                    android:id="@+id/notes_and_awards_edit_text"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:paddingHorizontal="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    tools:ignore="LabelFor"
+                    android:text="@{othersViewModel.characterSheetLiveData.notesAndAwards}"/>
+
+            </LinearLayout>
+        </GridLayout>
+    </ScrollView>
+</layout>
+

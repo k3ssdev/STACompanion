@@ -10,6 +10,7 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -32,11 +33,19 @@ public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFrag
 
     private CharactersFragment.OnItemClickListener listener;
 
+    private final Fragment fragment;
+
     // Constructor que inicializa la lista de hojas de personajes.
-    public CharacterFragmentAdapter(ArrayList<CharacterSheet> characterSheets) {
+    public CharacterFragmentAdapter(ArrayList<CharacterSheet> characterSheets, Fragment fragment) {
         this.characterSheets = characterSheets != null ? characterSheets : new ArrayList<>();
         this.characterSheetsFull = new ArrayList<>(this.characterSheets);
+        this.fragment = fragment;
     }
+/*    public CharacterFragmentAdapter(ArrayList<CharacterSheet> characterSheets) {
+        this.characterSheets = characterSheets != null ? characterSheets : new ArrayList<>();
+        this.characterSheetsFull = new ArrayList<>(this.characterSheets);
+    }*/
+
 
     // Implementación de los métodos de Filterable para filtrar la lista de personajes.
     @Override
@@ -85,21 +94,6 @@ public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFrag
     }
 
     // Método para vincular los datos de la hoja de personaje con el ViewHolder.
-/*
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        CharacterSheet sheet = characterSheets.get(position);
-        holder.characterNameTextView.setText(sheet.getCharacterName());
-        holder.speciesTextView.setText(sheet.getSpecies());
-
-        holder.itemView.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onItemClick(sheet);
-            }
-        });
-    }
-*/
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CharacterSheet sheet = characterSheets.get(position);
@@ -118,22 +112,36 @@ public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFrag
         });
 
         holder.itemView.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onItemClick(sheet);
+            if (isMultiSelectionEnabled) {
+                // Toggle the state of the item
+                if (selectedItems.contains(sheet)) {
+                    selectedItems.remove(sheet);
+                } else {
+                    selectedItems.add(sheet);
+                }
+                notifyItemChanged(position);
+            } else {
+                if (listener != null) {
+                    listener.onItemClick(sheet);
+                }
             }
+            // Invalidate the options menu after changing the state
+            fragment.requireActivity().invalidateOptionsMenu();
         });
 
         holder.itemView.setOnLongClickListener(v -> {
-            if (isMultiSelectionEnabled && !selectedItems.isEmpty()) {
-                // If multi-selection mode is enabled and there are selected items, clear the selection
+            if (isMultiSelectionEnabled && selectedItems.contains(sheet)) {
+                // If multi-selection mode is enabled and the current item is selected, clear the selection
                 selectedItems.clear();
                 isMultiSelectionEnabled = false;
             } else {
                 // Otherwise, enable multi-selection mode and select the current item
                 isMultiSelectionEnabled = true;
-                selectedItems.add(characterSheets.get(position));
+                selectedItems.add(sheet);
             }
             notifyDataSetChanged();
+            // Invalidate the options menu after changing the state
+            fragment.requireActivity().invalidateOptionsMenu();
             return true;
         });
 
@@ -143,6 +151,8 @@ public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFrag
             holder.checkBox.setVisibility(View.GONE);
         }
     }
+
+
 
     // Método para limpiar la lista de hojas de personajes.
     public void clearCharacterSheets() {
@@ -169,6 +179,10 @@ public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFrag
     public void clearSelectedItems() {
         selectedItems.clear();
         notifyDataSetChanged();
+    }
+
+    public boolean isMultiSelectionEnabled() {
+        return isMultiSelectionEnabled;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

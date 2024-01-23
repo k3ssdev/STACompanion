@@ -49,10 +49,31 @@ public class CharactersFragment extends Fragment {
     private View view;
     private CharacterSheet sheet;
 
+    private boolean isMultiSelectionEnabled = false;
+
     // Esta interfaz define un método para manejar los clics en los elementos de la lista.
     public interface OnItemClickListener {
         void onItemClick(CharacterSheet sheet);
     }
+
+    @Override
+    public void onPrepareOptionsMenu(@NonNull Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+
+        MenuItem addItem = menu.findItem(R.id.action_add);
+        MenuItem deleteItem = menu.findItem(R.id.action_delete);
+
+        isMultiSelectionEnabled = adapter.isMultiSelectionEnabled();
+
+        if (isMultiSelectionEnabled) {
+            addItem.setVisible(false);
+            deleteItem.setVisible(true);
+        } else {
+            addItem.setVisible(true);
+            deleteItem.setVisible(false);
+        }
+    }
+
 
     // Este método se llama para inflar el diseño del fragmento.
     @Override
@@ -68,7 +89,7 @@ public class CharactersFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        adapter = new CharacterFragmentAdapter(new ArrayList<>());
+        adapter = new CharacterFragmentAdapter(new ArrayList<>(), this);
         recyclerView.setAdapter(adapter);
 
         adapter.setOnItemClickListener(sheetDetails -> {

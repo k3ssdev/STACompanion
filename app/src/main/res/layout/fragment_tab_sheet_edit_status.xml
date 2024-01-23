@@ -58,14 +58,13 @@
                         android:paddingHorizontal="16sp"/>
 
                     <EditText
-                        android:id="@+id/stressEditText"
                         android:layout_marginTop="5sp"
                         android:layout_marginLeft="5sp"
                         android:paddingHorizontal="16sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         
-                        android:text="@{statusViewModel.characterSheetLiveData.stress}" />
+                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.stress)}" />
                 </LinearLayout>
 
                 <!-- Max Stress -->
@@ -85,13 +84,12 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/maxStressEditText"
                         android:layout_marginTop="5sp"
                         android:layout_marginLeft="5sp"
                         android:paddingHorizontal="16sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{statusViewModel.characterSheetLiveData.maxStress}" />
+                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.maxStress)}" />
                 </LinearLayout>
 
                 <!-- Resistance -->
@@ -111,14 +109,13 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/resistanceEditText"
                         android:layout_marginTop="5sp"
                         android:layout_marginLeft="5sp"
                         android:paddingHorizontal="16sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         
-                        android:text="@{statusViewModel.characterSheetLiveData.resistance}" />
+                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.resistance)}" />
                 </LinearLayout>
 
 
@@ -140,14 +137,13 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/injuriesEditText"
                         android:layout_marginTop="5sp"
                         android:layout_marginLeft="5sp"
                         android:paddingHorizontal="16sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         
-                        android:text="@{statusViewModel.characterSheetLiveData.injuries}" />`
+                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.injuries)}" />
 
                 </LinearLayout>
 
@@ -169,14 +165,13 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/reputationEditText"
                         android:layout_marginTop="5sp"
                         android:layout_marginLeft="5sp"
                         android:paddingHorizontal="16sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         
-                        android:text="@{statusViewModel.characterSheetLiveData.reputation}" />
+                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.reputation)}" />
 
                 </LinearLayout>
 
@@ -198,14 +193,13 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/privilegeEditText"
                         android:layout_marginTop="5sp"
                         android:layout_marginLeft="5sp"
                         android:paddingHorizontal="16sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         
-                        android:text="@{statusViewModel.characterSheetLiveData.privilege}" />
+                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.privilege)}" />
 
                 </LinearLayout>
 
@@ -227,14 +221,13 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/responsibilityEditText"
                         android:layout_marginTop="5sp"
                         android:layout_marginLeft="5sp"
                         android:paddingHorizontal="16sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         
-                        android:text="@{statusViewModel.characterSheetLiveData.responsibility}" />
+                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.responsibility)}" />
 
                 </LinearLayout>
 
@@ -256,14 +249,13 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/determinationEditText"
                         android:layout_marginTop="5sp"
                         android:layout_marginLeft="5sp"
                         android:paddingHorizontal="16sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         
-                        android:text="@{statusViewModel.characterSheetLiveData.determination}" />
+                        android:text="@{String.valueOf(statusViewModel.characterSheetLiveData.determination)}" />
 
                 </LinearLayout>
 
@@ -286,14 +278,13 @@
                         android:paddingHorizontal="16sp"/>
 
                     <EditText
-                        android:id="@+id/attacksEditText"
                         android:layout_marginTop="5sp"
                         android:layout_marginLeft="5sp"
                         android:paddingHorizontal="16sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         
-                        tools:text="@{statusViewModel.characterSheetLiveData.attacks}" />
+                        tools:text="@{String.valueOf(statusViewModel.characterSheetLiveData.attacks)}" />
 
                 </LinearLayout>
 
@@ -317,13 +308,12 @@
                         android:paddingHorizontal="16sp"/>
 
                     <EditText
-                        android:id="@+id/equipmentEditText"
                         android:layout_marginTop="5sp"
                         android:layout_marginLeft="5sp"
                         android:paddingHorizontal="16sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:text="@{statusViewModel.characterSheetLiveData.equipment}" />
+                        tools:text="@{String.valueOf(statusViewModel.characterSheetLiveData.equipment)}" />
 
                 </LinearLayout>
 

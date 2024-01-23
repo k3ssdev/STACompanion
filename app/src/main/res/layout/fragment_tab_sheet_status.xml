@@ -31,7 +31,6 @@
             android:layout_height="match_parent"
             android:fillViewport="true"
             android:layout_marginBottom="?attr/actionBarSize"
-
             tools:context=".ui.characters.charactersheet.StatusFragment">
 
             <GridLayout

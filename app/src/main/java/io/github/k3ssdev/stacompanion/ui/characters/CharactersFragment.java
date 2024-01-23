@@ -132,8 +132,6 @@ public class CharactersFragment extends Fragment {
             newCharacter.setId(newId);
             newCharacter.setUserId(userId);
 
-
-
             newCharacter.setCharacterName("Nombre del personaje");
             newCharacter.setPronouns("Pronombres");
             newCharacter.setSpecies("Especie");

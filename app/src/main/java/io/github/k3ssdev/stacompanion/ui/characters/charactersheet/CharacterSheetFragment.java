@@ -85,6 +85,7 @@ public class CharacterSheetFragment extends Fragment {
         characterSheet.setCharacterName(((EditText) rootView.findViewById(R.id.editTextCharacterName)).getText().toString());
 
 
+
         // Save the data in the Firebase Realtime Database
         mViewModel.saveCharacterSheetToDatabase(userId, characterId, characterSheet);
     }
@@ -208,18 +209,19 @@ public class CharacterSheetFragment extends Fragment {
                     }
                 case 2:
                     if (editMode) {
-                        return EditableSkillsFragment.newInstance(userId, characterId);
+                        return SkillsFragment.newInstance(userId, characterId);
                     } else {
                         return SkillsFragment.newInstance(userId, characterId);
                     }
                 case 3:
                     if (editMode) {
-                        return EditableOthersFragment.newInstance(userId, characterId);
+                        return OthersFragment.newInstance(userId, characterId);
                     } else {
                         return OthersFragment.newInstance(userId, characterId);
                     }
+                default:
+                    return null;
             }
-            return DataTabFragment.newInstance(userId, characterId);
         }
 
 

@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import io.github.k3ssdev.stacompanion.R;
+import io.github.k3ssdev.stacompanion.databinding.ActivityCharacterSheetEditBinding;
 import io.github.k3ssdev.stacompanion.databinding.FragmentTabSheetDataBinding;
 import io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetViewModel;
 
@@ -21,6 +22,8 @@ public class DataTabFragment extends Fragment {
 
     // ViewModel para este fragmento
     private CharacterSheetViewModel viewModel;
+
+
 
     // Constructor vacío requerido
     public DataTabFragment() {

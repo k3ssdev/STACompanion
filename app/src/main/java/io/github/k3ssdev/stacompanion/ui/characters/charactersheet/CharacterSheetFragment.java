@@ -139,6 +139,7 @@ public class CharacterSheetFragment extends Fragment {
         }
     }
 
+
     // Este método se llama para inflar el diseño del fragmento.
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -194,7 +195,8 @@ public class CharacterSheetFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        // TODO: Usa el ViewModel
+
+
     }
 
     // Esta clase representa el adaptador de páginas para la hoja de personaje.

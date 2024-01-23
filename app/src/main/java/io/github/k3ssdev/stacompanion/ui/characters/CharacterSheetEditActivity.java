@@ -3,6 +3,9 @@ package io.github.k3ssdev.stacompanion.ui.characters;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +15,7 @@ import android.widget.EditText;
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -121,9 +125,13 @@ public class CharacterSheetEditActivity extends AppCompatActivity {
 
             return true;
         } else if (id == R.id.action_delete) {
-            // Aquí va tu código para borrar
-            // Por ejemplo, puedes mostrar un diálogo de confirmación antes de borrar
+            // Muestra un diálogo de confirmación para eliminar el personaje
+            Drawable icon = ContextCompat.getDrawable(this, android.R.drawable.ic_dialog_alert); // Obtener el icono de alerta
+            if (icon != null) { // Si el icono no es nulo, establecer el color del filtro
+                icon.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(this, R.color.google_red), PorterDuff.Mode.SRC_IN));
+            }
             new AlertDialog.Builder(this)
+                    .setIcon(icon) // Establecer el icono
                     .setTitle("Eliminar personaje")
                     .setMessage("¿Estás seguro de que quieres eliminar este personaje?")
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
@@ -135,6 +143,7 @@ public class CharacterSheetEditActivity extends AppCompatActivity {
                     })
                     .setNegativeButton(android.R.string.no, null)
                     .show();
+
             return true;
         } else if (id == android.R.id.home) {
             finish();

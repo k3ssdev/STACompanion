@@ -8,4 +8,6 @@
     <string name="events">Eventos</string>
     <string name="remove_sheet">Eliminar hoja</string>
     <string name="title_home">Personajes</string>
+    <string name="email">Email</string>
+    <string name="account">Cuenta</string>
 </resources>

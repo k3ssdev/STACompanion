@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="volver">volver</string>
-    <string name="contrasena">contrasena</string>
+    <string name="volver">Volver</string>
+    <string name="contrasena">Contraseña</string>
     <string name="usuario">usuario</string>
     <string name="timestamp">timestamp</string>
-    <string name="Login">login</string>
+    <string name="Login">Iniciar sesión</string>
     <string name="img">img</string>
     <string name="app_name">STA Companion</string>
 
@@ -15,13 +15,12 @@
     <string name="sign_out">Cerrar Sesión</string>
     <string name="delete_account">Eliminar Cuenta</string>
     <string name="registro">Registrarse</string>
-    <string name="add_sheet">añadir ficha</string>
-    <string name="search">buscar</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="add_sheet">Añadir hoja</string>
+    <string name="search">Buscar</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="stress">Estrés</string>
     <string name="determination">Determinación</string>
-    <string name="focuses">Focus</string>
+    <string name="focuses">Foco</string>
     <string name="responsibility">Responsabilidad</string>
     <string name="privilege">Privilegio</string>
     <string name="reputation">Reputación</string>
@@ -74,4 +73,5 @@
     <string name="status">Estado</string>
     <string name="background">Trasfondo</string>
     <string name="events">Eventos</string>
+    <string name="remove_sheet">Eliminar hoja</string>
 </resources>

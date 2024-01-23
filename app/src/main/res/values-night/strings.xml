@@ -6,4 +6,5 @@
     <string name="status">Estado</string>
     <string name="background">Trasfondo</string>
     <string name="events">Eventos</string>
+    <string name="remove_sheet">Eliminar hoja</string>
 </resources>

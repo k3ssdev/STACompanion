@@ -20,7 +20,13 @@
         android:id="@+id/action_add"
         android:icon="@drawable/baseline_add_24"
         android:title="@string/add_sheet"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction=""/>
+
+    <item
+        android:id="@+id/action_delete"
+        android:icon="@drawable/baseline_delete_forever_24"
+        android:title="@string/remove_sheet"
+        app:showAsAction=""/>
 
 
 

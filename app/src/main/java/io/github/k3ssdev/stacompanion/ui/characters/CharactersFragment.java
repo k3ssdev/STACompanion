@@ -1,5 +1,7 @@
 package io.github.k3ssdev.stacompanion.ui.characters;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -133,63 +135,29 @@ public class CharactersFragment extends Fragment {
             newCharacter.setUserId(userId);
 
             newCharacter.setCharacterName("Nombre del personaje");
-            newCharacter.setPronouns("Pronombres");
             newCharacter.setSpecies("Especie");
-
-            /*
-            // Establecer los valores del personaje
-            newCharacter.setId(newId);
-            newCharacter.setUserId(userId);
             newCharacter.setCreationTimestamp(System.currentTimeMillis());
-            newCharacter.setCharacterName("Uhura");
-            newCharacter.setPronouns("She/Her");
-            newCharacter.setSpecies("Human");
-            newCharacter.setEnvironment("Earth");
-            newCharacter.setRank("Lieutenant");
-            newCharacter.setUpbringing("Scientific");
-            newCharacter.setAssignment("Communications Officer");
-            newCharacter.setTraits("Linguist");
-            newCharacter.setAge(28);
-            newCharacter.setSkin("Dark");
-            newCharacter.setHair("Black");
-            newCharacter.setWeight(60);
-            newCharacter.setHeight(170);
-            newCharacter.setEyes("Brown");
-            newCharacter.setControl(5);
-            newCharacter.setFitness(5);
-            newCharacter.setPresence(5);
-            newCharacter.setDaring(5);
-            newCharacter.setInsight(5);
-            newCharacter.setReason(5);
-            newCharacter.setCommand(5);
-            newCharacter.setSecurity(5);
-            newCharacter.setScience(5);
-            newCharacter.setConn(5);
-            newCharacter.setEngineering(5);
-            newCharacter.setMedicine(5);
-            newCharacter.setDetermination(5);
-            newCharacter.setReputation(5);
-            newCharacter.setPrivilege(5);
-            newCharacter.setResponsibility(5);
-            newCharacter.setFocuses("Linguistics");
-            newCharacter.setValues("Duty");
-            newCharacter.setTalents("Communications Expert");
-            newCharacter.setAttacks("Phaser");
-            newCharacter.setEquipment("Communicator");
-            newCharacter.setStress(10);
-            newCharacter.setCurrentStress(5);
-            newCharacter.setMaxStress(15);
-            newCharacter.setResistance(5);
-            newCharacter.setNotesAndAwards("Starfleet Medal of Honor");
-            newCharacter.setInjuries("None");
-            newCharacter.setAcademy("Starfleet Academy");
-            newCharacter.setCareer("Starfleet Officer");
-            newCharacter.setEvent1("First Contact");
-            newCharacter.setEvent2("Promotion to Lieutenant");
-            */
+
 
             // Añadir la hoja de personaje a la base de datos
             addCharacterSheet(newCharacter);
+            return true;
+        }
+
+        if (item.getItemId() == R.id.action_delete) {
+            // Preguntar al usuario si está seguro de que quiere eliminar el personaje en popup
+            new AlertDialog.Builder(getContext())
+                    .setTitle("Eliminar personaje")
+                    .setMessage("¿Estás seguro de que quieres eliminar este personaje?")
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Si el usuario confirma, eliminar el personaje de la base de datos
+                            deleteCharacterSheet(sheet);
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, null)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -230,6 +198,15 @@ public class CharactersFragment extends Fragment {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users/" + userId + "/characterSheets");
         ref.child(sheet.getId()).setValue(sheet);
+    }
+
+
+    // Metodo para eliminar un personaje de la base de datos
+    public void deleteCharacterSheet(CharacterSheet sheet) {
+        this.sheet = sheet;
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users/" + userId + "/characterSheets");
+        ref.child(sheet.getId()).removeValue();
     }
 
 

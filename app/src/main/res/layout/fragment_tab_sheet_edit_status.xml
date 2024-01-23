@@ -58,6 +58,7 @@
                         android:paddingHorizontal="16sp"/>
 
                     <EditText
+                        android:id="@+id/editTextStress"
                         android:layout_marginTop="5sp"
                         android:layout_marginLeft="5sp"
                         android:paddingHorizontal="16sp"

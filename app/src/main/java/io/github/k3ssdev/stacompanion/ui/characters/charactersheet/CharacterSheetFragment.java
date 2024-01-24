@@ -1,7 +1,13 @@
 package io.github.k3ssdev.stacompanion.ui.characters.charactersheet;
 
+import static io.github.k3ssdev.stacompanion.util.PdfUtil.createCharacterSheetPdf;
+
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -9,11 +15,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -23,15 +31,19 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.io.File;
+
 import io.github.k3ssdev.stacompanion.R;
 import io.github.k3ssdev.stacompanion.data.CharacterSheet;
 import io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetEditActivity;
 import io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetViewModel;
+import io.github.k3ssdev.stacompanion.util.PdfUtil;
 
 // Esta clase representa el fragmento de la hoja de personaje en la aplicación.
 public class CharacterSheetFragment extends Fragment {
 
-    private static final int REQUEST_CODE = 1;
+    private static final int WRITE_REQUEST_CODE = 1;
+    private static final int PERMISSION_GRANTED = 1;
     private CharacterSheetViewModel mViewModel;
     ActionBar actionBar;
     private boolean editMode = false;
@@ -48,6 +60,45 @@ public class CharacterSheetFragment extends Fragment {
     }
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case WRITE_REQUEST_CODE: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Permiso concedido, puedes proceder a guardar el archivo PDF
+
+                } else {
+                    // Permiso denegado, muestra un mensaje al usuario
+                    Toast.makeText(getContext(), "Permiso denegado para escribir en el almacenamiento externo.", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+            // Aquí puedes manejar otros casos de 'case' si tienes más permisos que solicitar
+
+        }
+    }
+
+    private void openFileChooser() {
+        Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("application/pdf");
+        intent.putExtra(Intent.EXTRA_TITLE, "CharacterSheet.pdf");
+        startActivityForResult(intent, WRITE_REQUEST_CODE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent resultData) {
+        if (requestCode == WRITE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            if (resultData != null) {
+                Uri uri = resultData.getData();
+                createCharacterSheetPdf(getContext(), uri, mViewModel.getCharacterSheetLiveData().getValue());
+            }
+        }
+    }
+
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.action_edit) {
@@ -55,7 +106,35 @@ public class CharacterSheetFragment extends Fragment {
             Intent intent = new Intent(getActivity(), CharacterSheetEditActivity.class);
             intent.putExtra("userId", getArguments().getString("userId"));
             intent.putExtra("characterId", getArguments().getString("characterId"));
-            startActivityForResult(intent, REQUEST_CODE);
+            startActivityForResult(intent, WRITE_REQUEST_CODE);
+            return true;
+        } else if (itemId == R.id.action_export_pdf) {
+            // Define el nombre del archivo PDF
+            String fileName = "myFile.pdf";
+            // Crea un archivo en el directorio público "Documents" del almacenamiento externo
+            File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), fileName);
+            String filePath = file.getAbsolutePath();
+
+            // Obtiene la hoja de personaje actual
+            CharacterSheet characterSheet = mViewModel.getCharacterSheetLiveData().getValue();
+
+            // Crea el PDF
+            //createCharacterSheetPdf(getContext(), filePath, characterSheet);
+            openFileChooser();
+
+/*            // Crea un Intent para compartir el archivo PDF
+            Uri fileUri = FileProvider.getUriForFile(
+                    getContext(),
+                    getContext().getApplicationContext().getPackageName() + ".provider",
+                    file
+            );
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+            shareIntent.putExtra(Intent.EXTRA_STREAM, fileUri);
+            shareIntent.setType("application/pdf");
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivity(Intent.createChooser(shareIntent, "Share PDF"));*/
+
             return true;
         } else {
             return super.onOptionsItemSelected(item);

@@ -11,6 +11,7 @@ android {
         enable = true
     }
 
+
     defaultConfig {
         applicationId = "io.github.k3ssdev.stacompanion"
         minSdk = 26
@@ -36,6 +37,18 @@ android {
     }
     buildFeatures {
         viewBinding = true
+    }
+
+    packagingOptions {
+        exclude("META-INF/DEPENDENCIES")
+        exclude("META-INF/LICENSE")
+        exclude("META-INF/LICENSE.txt")
+        exclude("META-INF/LICENSE.md")
+        exclude("META-INF/LICENSE-notice.md")
+        exclude("META-INF/license.txt")
+        exclude("META-INF/NOTICE")
+        exclude("META-INF/NOTICE.txt")
+        exclude("META-INF/notice.txt")
     }
 }
 
@@ -72,7 +85,7 @@ dependencies {
     implementation("com.google.firebase:firebase-database:20.3.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.media3:media3-common:1.2.1")
-
+    implementation("com.itextpdf:itextg:5.5.10" )
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

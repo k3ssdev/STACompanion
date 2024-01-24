@@ -2,10 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <item
+        android:id="@+id/action_export_pdf"
+        android:icon="@drawable/baseline_picture_as_pdf_24"
+        android:title="@string/export_to_pdf"
+        app:showAsAction="ifRoom"/>
+
     <item
         android:id="@+id/action_edit"
         android:icon="@drawable/baseline_edit_24"
         android:title="@string/edit"
         app:showAsAction="ifRoom"/>
+
+
 
 </menu>

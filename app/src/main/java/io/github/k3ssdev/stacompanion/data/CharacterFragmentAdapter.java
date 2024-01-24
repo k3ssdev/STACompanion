@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -46,6 +48,28 @@ public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFrag
         this.characterSheetsFull = new ArrayList<>(this.characterSheets);
     }*/
 
+    public void setMultiSelectionEnabled(boolean isEnabled) {
+        isMultiSelectionEnabled = isEnabled;
+    }
+    public void sortByName() {
+        Collections.sort(characterSheets, new Comparator<CharacterSheet>() {
+            @Override
+            public int compare(CharacterSheet cs1, CharacterSheet cs2) {
+                return cs1.getCharacterName().compareToIgnoreCase(cs2.getCharacterName());
+            }
+        });
+        notifyDataSetChanged();
+    }
+
+    public void sortByCreationDate() {
+        Collections.sort(characterSheets, new Comparator<CharacterSheet>() {
+            @Override
+            public int compare(CharacterSheet cs1, CharacterSheet cs2) {
+                return Long.compare(cs2.getCreationTimestamp(), cs1.getCreationTimestamp());
+            }
+        });
+        notifyDataSetChanged();
+    }
     // Método para obtener la lista de hojas de personajes completa.
     public void resetFilter() {
         characterSheets.clear();

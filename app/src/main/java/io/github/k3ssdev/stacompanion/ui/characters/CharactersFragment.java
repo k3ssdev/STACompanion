@@ -47,6 +47,7 @@ public class CharactersFragment extends Fragment {
 
     private static final String TAG = "CharactersFragment";
 
+    private boolean isSortedByName = true;
     private RecyclerView recyclerView;
     private CharacterFragmentAdapter adapter;
     private List<CharacterSheet> selectedSheets = new ArrayList<>();
@@ -208,6 +209,15 @@ public class CharactersFragment extends Fragment {
             return true;
         }
 
+        if (isSortedByName) {
+            adapter.sortByCreationDate();
+            isSortedByName = false;
+        } else {
+            adapter.sortByName();
+            isSortedByName = true;
+        }
+        //return true;
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -266,6 +276,14 @@ public class CharactersFragment extends Fragment {
         for (CharacterSheet sheet : sheets) {
             ref.child(sheet.getId()).removeValue();
         }
+
+        // Desactivar la multiselección
+        adapter.setMultiSelectionEnabled(false);
+        // Limpiar los elementos seleccionados
+        adapter.clearSelectedItems();
+        // Actualizar el menú
+        getActivity().invalidateOptionsMenu();
+
     }
 
     // Editar un personaje

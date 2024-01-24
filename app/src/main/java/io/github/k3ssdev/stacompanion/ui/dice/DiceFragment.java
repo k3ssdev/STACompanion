@@ -74,7 +74,11 @@ public class DiceFragment extends Fragment {
     }
 
     private void resetView() {
-        // Add your reset logic here
+        editTextNumberOfDiceD6.setText("0");
+        editTextNumberOfDiceD20.setText("0");
+        textViewDiceResult.setText("");
+        diceResultsList.clear();
+        diceResultAdapter.updateData(diceResultsList);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

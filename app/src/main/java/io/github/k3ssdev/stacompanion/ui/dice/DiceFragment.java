@@ -31,7 +31,9 @@ public class DiceFragment extends Fragment {
     private Button buttonPlusD6;
     private Button buttonMinusD20;
     private Button buttonPlusD20;
-    private Button buttonRollDice;
+    private Button buttonRollDice6;
+
+    private Button buttonRollDice20;
     private TextView textViewDiceResult;
     private ImageView imageViewDice;
 
@@ -61,12 +63,27 @@ public class DiceFragment extends Fragment {
         buttonPlusD6 = view.findViewById(R.id.buttonPlusD6);
         buttonMinusD20 = view.findViewById(R.id.buttonMinusD20);
         buttonPlusD20 = view.findViewById(R.id.buttonPlusD20);
-        buttonRollDice = view.findViewById(R.id.buttonRollDice);
+        // boton es un imageview
+        ImageView buttonRollDice6 = (ImageView) view.findViewById(R.id.buttonRollDice6);
+        buttonRollDice6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 rollDice();
+            }
+        });
+        ImageView buttonRollDice20 = (ImageView) view.findViewById(R.id.buttonRollDice20);
+        buttonRollDice6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rollDice();
+            }
+        });
+
         textViewDiceResult = view.findViewById(R.id.textViewDiceResult);
         imageViewDice = view.findViewById(R.id.imageViewDice);
 
         // Configuración de los listeners de los botones.
-        buttonRollDice.setOnClickListener(new View.OnClickListener() {
+        buttonRollDice6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 rollDice();

@@ -5,18 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="top"
+    android:gravity="center"
     android:paddingBottom="30dp"
     tools:context=".ui.settings.SettingsFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_margin="16dp"
         app:cardCornerRadius="21dp"
         app:cardElevation="20dp"
-        android:orientation="vertical"
         android:background="@drawable/custom_edittext">
 
         <!-- Contenedor para D6 -->
@@ -37,17 +35,10 @@
                 android:layout_height="wrap_content"
                 android:text="D6"
                 android:textAlignment="center"
-                android:layout_gravity="center"
-                android:paddingHorizontal="20dp"
-                android:layout_marginEnd="15dp"
+
+                android:layout_marginEnd="10dp"
                 android:textSize="26sp"
                 android:textStyle="bold" />
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/buttonMinusD6"
@@ -74,7 +65,6 @@
                     android:layout_height="48dp"
                     android:text="+"
                     android:textSize="24sp" />
-                </LinearLayout>
 
             <ImageView
                 android:id="@+id/buttonRollDice6"
@@ -84,6 +74,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
                 android:src="@drawable/baseline_casino_24"
+
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -114,16 +105,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="D20"
-                android:layout_gravity="center"
-            android:paddingHorizontal="20dp"
+                android:layout_marginEnd="10dp"
                 android:textSize="26sp"
                 android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
 
                 <Button
                     android:id="@+id/buttonMinusD20"
@@ -152,8 +136,6 @@
                     android:text="+"
                     android:textSize="24sp" />
 
-                </LinearLayout>
-
             <ImageView
                 android:id="@+id/buttonRollDice20"
                 android:clickable="true"
@@ -177,7 +159,7 @@
         app:cardElevation="20dp"
         android:background="@drawable/custom_edittext">
 
-        <!-- Contenedor para resultado -->
+        <!-- Contenedor para D100 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -187,7 +169,9 @@
             android:paddingHorizontal="20dp"
             android:paddingVertical="10dp">
 
+            <!-- Contenedor para resutaldos -->
 
+            <!-- Contenedor para resultado -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

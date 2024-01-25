@@ -183,6 +183,7 @@ public class CharacterSheetEditActivity extends AppCompatActivity {
         // Establece los nuevos valores en la hoja de personaje
         currentCharacterSheet.setCreationTimestamp(System.currentTimeMillis());
         currentCharacterSheet.setCharacterName(binding.editTextCharacterName.getText().toString());
+        currentCharacterSheet.setPlayerName(binding.editTextPlayerName.getText().toString());
         currentCharacterSheet.setSpecies(binding.editTextSpecies.getText().toString());
         currentCharacterSheet.setRank(binding.editTextRank.getText().toString());
         currentCharacterSheet.setEnvironment(binding.editTextEnvironment.getText().toString());

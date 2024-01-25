@@ -435,8 +435,7 @@ WIP
 
 - [X] `► Create, edit, and delete character sheets.`
 - [ ] `► Create, edit, and delete ship sheets.`
-- [ ] `► Assign specific game attributes to each sheet.`
-- [ ] `► Add detailed notes and descriptions for each sheet.`
+- [X] `► Display character sheet information in a tabbed layout.`
 - [ ] `► Include images for both player and ship sheets.`
 
 ### Skill Rolls:
@@ -446,8 +445,8 @@ WIP
 
 ### Export to PDF:
 
-- [ ] `► Generate PDF files of sheets in the official game format.`
-- [ ] `► Include all relevant information in the PDF, such as attributes, skills, and notes.`
+- [X] `► Generate PDF files of sheets in the official game format.`
+- [X] `► Include all relevant information in the PDF, such as attributes, skills, and notes.`
 
 
 ---

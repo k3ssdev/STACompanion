@@ -51,6 +51,7 @@ public class PdfUtil {
             addTextAtCoordinates(cb, characterSheet.getTraits(), 222.2f, reader.getPageSize(1).getHeight() - 139.0f);
 
             // Página 1, Atributos
+
             addTextAtCoordinates(cb, String.valueOf(characterSheet.getControl()), 213.0f, reader.getPageSize(1).getHeight() - 245.0f);
             addTextAtCoordinates(cb, String.valueOf(characterSheet.getDaring()), 291.0f, reader.getPageSize(1).getHeight() - 245.0f);
             addTextAtCoordinates(cb, String.valueOf(characterSheet.getPresence()), 369.0f, reader.getPageSize(1).getHeight() - 245.0f);
@@ -122,6 +123,9 @@ public class PdfUtil {
 
     // Metodo para añadir texto en un PDF en las coordenadas x e y
     private static void addTextAtCoordinates(PdfContentByte cb, String text, float x, float y) throws IOException {
+        if (text == null) {
+            text = ""; // Evita que se añada null al PDF y falle la exportación
+        }
         cb.beginText();
         cb.showTextAligned(PdfContentByte.ALIGN_LEFT, text, x, y, 0);
         cb.endText();

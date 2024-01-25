@@ -34,7 +34,7 @@ public class PdfUtil {
             //BaseFont bf = BaseFont.createFont();
             BaseFont bf = BaseFont.createFont("assets/Stardate81316-aolE.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             cb.setColorFill(BaseColor.BLACK);
-            cb.setFontAndSize(bf, 12);
+            cb.setFontAndSize(bf, 13);
 
             // Añade datps del personaje al PDF con las coordenadas x e y
 
@@ -86,10 +86,23 @@ public class PdfUtil {
             // Página 2
             PdfContentByte cb2 = stamper.getOverContent(2);
             cb2.setColorFill(BaseColor.BLACK);
-            cb2.setFontAndSize(bf, 12);
+            cb2.setFontAndSize(bf, 13);
 
             // Página 2, Apariencia
             addTextAtCoordinates(cb2, String.valueOf(characterSheet.getAge()), 67.0f, reader.getPageSize(1).getHeight() - 67.0f);
+            addTextAtCoordinates(cb2, String.valueOf(characterSheet.getPronouns()), 169.0f, reader.getPageSize(1).getHeight() - 67.0f);
+            addTextAtCoordinates(cb2, String.valueOf(characterSheet.getHeight()),282.0f , reader.getPageSize(1).getHeight() - 67.0f);
+            addTextAtCoordinates(cb2, String.valueOf(characterSheet.getWeight()), 391.0f, reader.getPageSize(1).getHeight() - 67.0f);
+            addTextAtCoordinates(cb2, String.valueOf(characterSheet.getHair()), 103.0f, reader.getPageSize(1).getHeight() - 84.0f);
+            addTextAtCoordinates(cb2, String.valueOf(characterSheet.getEyes()), 33.0f, reader.getPageSize(1).getHeight() - 103.0f);
+            addTextAtCoordinates(cb2, String.valueOf(characterSheet.getSkin()), 33.0f, reader.getPageSize(1).getHeight() - 122.0f);
+
+            // Página 2, Otros datos
+            addTextAtCoordinates(cb2, String.valueOf(characterSheet.getReputation()), 170.0f, reader.getPageSize(1).getHeight() - 518.0f);
+            addTextAtCoordinates(cb2, String.valueOf(characterSheet.getPrivilege()), 170.0f, reader.getPageSize(1).getHeight() - 542.0f);
+            addTextAtCoordinates(cb2, String.valueOf(characterSheet.getResponsibility()), 170.0f, reader.getPageSize(1).getHeight() - 566.0f);
+            addTextAtCoordinates(cb2, String.valueOf(characterSheet.getNotesAndAwards()), 33.0f, reader.getPageSize(1).getHeight() - 607.0f);
+            addTextAtCoordinates(cb2, String.valueOf(characterSheet.getEvent1()), 217.0f, reader.getPageSize(1).getHeight() - 607.0f);
 
             stamper.close();
             reader.close();

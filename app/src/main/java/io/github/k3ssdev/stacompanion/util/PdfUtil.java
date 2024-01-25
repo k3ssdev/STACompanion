@@ -4,12 +4,18 @@ import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfStamper;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.OutputStream;
 
 import io.github.k3ssdev.stacompanion.data.CharacterSheet;
@@ -18,34 +24,39 @@ public class PdfUtil {
 
     public static void createCharacterSheetPdf(Context context, Uri uri, CharacterSheet characterSheet) {
         try {
+            // Abre el archivo PDF con InputStream y crea un PdfReader
+            //PdfReader reader = new PdfReader("path/to/STA_personaje.pdf");
+            InputStream inputStream = context.getAssets().open("STA_personaje.pdf");
+            PdfReader reader = new PdfReader(inputStream);
 
-            // TODO: Abrir documento PDF hoja de personaje
-            // Create a new PDF document
-            Document document = new Document();
+            // Crea un PdfStamper con el PdfReader y un OutputStream
+            PdfStamper stamper = new PdfStamper(reader, context.getContentResolver().openOutputStream(uri));
 
-            // Write the PDF document to a file
-            OutputStream outputStream = context.getContentResolver().openOutputStream(uri);
-            PdfWriter.getInstance(document, outputStream);
+            // Obtiene el PdfContentByte del PdfStamper para escribir en el PDF
+            PdfContentByte cb = stamper.getOverContent(1);
+            BaseFont bf = BaseFont.createFont();
 
-            // Abre el documento PDF
-            document.open();
+            // Cambia el color y el tamaño de la fuente
+            cb.setColorFill(BaseColor.BLACK);
+            cb.setFontAndSize(bf, 10);
 
-            // TODO: Agregar texto al documento PDF en las coordenadas (x, y)
-            // Add text to the PDF document
-            document.add(new Paragraph("Character Name: " + characterSheet.getCharacterName()));
-            document.add(new Paragraph("Species: " + characterSheet.getSpecies()));
+            // Añade el nombre del personaje al PDF con las coordenadas x e y
+            String text = characterSheet.getCharacterName();
+            float x = 222.2f;
+            float y = reader.getPageSize(1).getHeight() - 67.0f;
+            cb.beginText();
+            cb.showTextAligned(PdfContentByte.ALIGN_LEFT, text, x, y, 0);
+            cb.endText();
 
-            // Close the PDF document
-            document.close();
+            // Cierra el PdfStamper
+            stamper.close();
 
-            // Check if the file was created
-            if (outputStream != null) {
-                outputStream.close();
-            }
+            // Cierra el PdfReader
+            reader.close();
 
         } catch (Exception e) {
             e.printStackTrace();
-            Log.e("PdfUtil", "Error creating PDF file");
+            Log.e("PdfUtil", "Error al crear el PDF");
         }
     }
 }

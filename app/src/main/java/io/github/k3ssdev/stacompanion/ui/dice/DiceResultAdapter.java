@@ -23,6 +23,7 @@ public class DiceResultAdapter extends RecyclerView.Adapter<DiceResultAdapter.Di
         this.diceResults = diceResults;
     }
 
+    // Este método se llama cuando se crea un nuevo ViewHolder.
     @NonNull
     @Override
     public DiceResultViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,21 +32,22 @@ public class DiceResultAdapter extends RecyclerView.Adapter<DiceResultAdapter.Di
         return new DiceResultViewHolder(imageView);
     }
 
+    // Este método se llama cuando se enlaza un ViewHolder.
     @Override
     public void onBindViewHolder(@NonNull DiceResultViewHolder holder, int position) {
         DiceResult diceResult = diceResults.get(position);
         holder.imageView.setImageResource(diceResult.getDrawable());
 
-        // Calculate size in pixels
+        // Calcular el tamaño de la imagen
         int dpValue = 68; // replace with your value
         float d = holder.itemView.getContext().getResources().getDisplayMetrics().density;
         int sizeInPixels = (int)(dpValue * d); // size in pixels
 
-        // Set the size of the ImageView
+        // Cambiar el tamaño de la imagen
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(sizeInPixels, sizeInPixels);
         holder.imageView.setLayoutParams(layoutParams);
 
-        // Start the animation
+        // Realizar animación de rotación
         Animation rotateAnimation = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.rotate_animation);
         holder.imageView.startAnimation(rotateAnimation);
 
@@ -73,7 +75,7 @@ public class DiceResultAdapter extends RecyclerView.Adapter<DiceResultAdapter.Di
     }
 
     private int getDiceDrawable(int diceResult) {
-        // Implement this method to return the correct drawable resource based on the dice result
+        // TODO: Implementar método
         return diceResult;
     }
 

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LegalActivity extends AppCompatActivity {
 
+    // TODO: implementar la actividad de visualización de los documentos legales
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

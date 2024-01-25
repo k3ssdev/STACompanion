@@ -38,6 +38,7 @@ public class SettingsFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
     }
 
+    // Este método se llama cuando el fragmento se hace visible para el usuario.
     @Override
     public void onResume() {
         super.onResume();
@@ -81,6 +82,7 @@ public class SettingsFragment extends Fragment {
 
         });
 
+        // Configurar el botón de eliminar cuenta
         Drawable icon = ContextCompat.getDrawable(getContext(), android.R.drawable.ic_dialog_alert); // Obtener el icono de alerta
         if (icon != null) { // Si el icono no es nulo, establecer el color del filtro
             icon.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(getContext(), R.color.google_red), PorterDuff.Mode.SRC_IN));

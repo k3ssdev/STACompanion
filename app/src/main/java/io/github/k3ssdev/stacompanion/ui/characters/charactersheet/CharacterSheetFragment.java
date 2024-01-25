@@ -75,6 +75,7 @@ public class CharacterSheetFragment extends Fragment {
         }
     }
 
+    // Este método abre un selector de archivos para guardar el archivo PDF
     private void openFileChooser() {
         Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -83,6 +84,7 @@ public class CharacterSheetFragment extends Fragment {
         startActivityForResult(intent, WRITE_REQUEST_CODE);
     }
 
+    // Este método se llama cuando el usuario ha seleccionado un archivo para guardar el PDF
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent resultData) {
         if (requestCode == WRITE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
@@ -94,6 +96,7 @@ public class CharacterSheetFragment extends Fragment {
     }
 
 
+    // Este método se llama cuando se ha creado el menú de opciones.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
@@ -118,55 +121,13 @@ public class CharacterSheetFragment extends Fragment {
             //createCharacterSheetPdf(getContext(), filePath, characterSheet);
             openFileChooser();
 
-/*            // Crea un Intent para compartir el archivo PDF
-            Uri fileUri = FileProvider.getUriForFile(
-                    getContext(),
-                    getContext().getApplicationContext().getPackageName() + ".provider",
-                    file
-            );
-            Intent shareIntent = new Intent();
-            shareIntent.setAction(Intent.ACTION_SEND);
-            shareIntent.putExtra(Intent.EXTRA_STREAM, fileUri);
-            shareIntent.setType("application/pdf");
-            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            startActivity(Intent.createChooser(shareIntent, "Share PDF"));*/
-
             return true;
         } else {
             return super.onOptionsItemSelected(item);
         }
     }
 
-//DEPRECATED
-/*
-    private void saveData() {
-        // Get the root view of the fragment
-        View rootView = getView();
-        if (rootView == null) {
-            return;
-        }
-
-        // Get userId and characterId from the arguments
-        String userId = getArguments().getString("userId");
-        String characterId = getArguments().getString("characterId");
-
-        // Get the character sheet from the ViewModel
-        CharacterSheet characterSheet = mViewModel.getCharacterSheetLiveData().getValue();
-
-        // Get the data from the views
-        characterSheet.setCharacterName(((EditText) rootView.findViewById(R.id.editTextCharacterName)).getText().toString());
-
-        characterSheet.setStress(Integer.parseInt(((EditText) rootView.findViewById(R.id.editTextStress)).getText().toString()));
-
-        characterSheet.setControl(Integer.parseInt(((EditText) rootView.findViewById(R.id.editTextControl)).getText().toString()));
-
-
-
-        // Save the data in the Firebase Realtime Database
-        mViewModel.saveCharacterSheetToDatabase(userId, characterId, characterSheet);
-    }
-*/
-
+//    // Este método se llama cuando se ha creado el menú de opciones.
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -187,7 +148,6 @@ public class CharacterSheetFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
         //muestra el titulo de la barra de herramientas
         actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
@@ -216,6 +176,7 @@ public class CharacterSheetFragment extends Fragment {
 
     }
 
+    // Este método se llama cuando se ha creado el menú de opciones.
     @Override
     public void onPrepareOptionsMenu(@NonNull Menu menu) {
         super.onPrepareOptionsMenu(menu);

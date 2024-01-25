@@ -23,6 +23,7 @@ public class SkillsFragment extends Fragment {
     public SkillsFragment() {
     }
 
+    // Este método crea una nueva instancia de SkillsFragment.
     public static SkillsFragment newInstance(String userId, String characterId) {
         SkillsFragment fragment = new SkillsFragment();
         Bundle args = new Bundle();
@@ -37,9 +38,11 @@ public class SkillsFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    // Este método crea la vista de SkillsFragment.
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        // Inflar el diseño de la interfaz de usuario para este fragmento y hacer el data binding.
         FragmentTabSheetSkillsBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tab_sheet_skills, container, false);
 
         if (binding == null) {
@@ -51,6 +54,7 @@ public class SkillsFragment extends Fragment {
         binding.setSkillsViewModel(viewModel);
         binding.setLifecycleOwner(this);
 
+        // Comprobar si se han pasado argumentos a este fragmento.
         String userId = null;
         String characterId = null;
         if (getArguments() != null) {
@@ -64,7 +68,6 @@ public class SkillsFragment extends Fragment {
 
         viewModel.getCharacterSheetLiveData().observe(getViewLifecycleOwner(), characterSheet -> {
             // Actualizar la interfaz de usuario aquí con la nueva hoja de personaje
-            // Esto actualizará automáticamente el TextView con el nombre del personaje cuando los datos cambien
         });
 
 

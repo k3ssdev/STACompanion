@@ -65,7 +65,7 @@ public class CharacterSheet implements java.io.Serializable{
 
     private long creationTimestamp;
 
-    // Métodos para calcular los atributos
+    // TODO: IMPLEMENTAR. Métodos para calcular los atributos
     public void calculateStress() {
         this.stress = this.fitness + this.security;
     }

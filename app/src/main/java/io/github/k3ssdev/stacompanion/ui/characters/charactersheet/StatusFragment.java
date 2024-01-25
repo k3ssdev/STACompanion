@@ -23,6 +23,7 @@ public class StatusFragment extends Fragment {
     public StatusFragment() {
     }
 
+    // Este método crea una nueva instancia de StatusFragment.
     public static StatusFragment newInstance(String userId, String characterId) {
         StatusFragment fragment = new StatusFragment();
         Bundle args = new Bundle();
@@ -37,9 +38,11 @@ public class StatusFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    // Este método crea la vista de StatusFragment.
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        // Inflar el diseño de la interfaz de usuario para este fragmento y hacer el data binding.
         FragmentTabSheetStatusBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tab_sheet_status, container, false);
 
         if (binding == null) {
@@ -51,6 +54,7 @@ public class StatusFragment extends Fragment {
         binding.setStatusViewModel(viewModel);
         binding.setLifecycleOwner(this);
 
+        // Comprobar si se han pasado argumentos a este fragmento.
         String userId = null;
         String characterId = null;
         if (getArguments() != null) {
@@ -64,11 +68,10 @@ public class StatusFragment extends Fragment {
 
         viewModel.getCharacterSheetLiveData().observe(getViewLifecycleOwner(), characterSheet -> {
             // Actualizar la interfaz de usuario aquí con la nueva hoja de personaje
-            // Esto actualizará automáticamente el TextView con el nombre del personaje cuando los datos cambien
+
         });
 
-
-        // devuelve vista de status fragment
+        // Devuelve vista de status fragment
         return binding.getRoot();
     }
 }

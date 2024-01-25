@@ -1,5 +1,7 @@
 package io.github.k3ssdev.stacompanion.data;
 
+
+// TODO: IMPLEMENTAR. Esta clase representa las configuraciones de la hoja de personaje.
 public class SheetSettings {
 
     private final int normalMilestones;

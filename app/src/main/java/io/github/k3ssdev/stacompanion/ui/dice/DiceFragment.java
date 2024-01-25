@@ -29,8 +29,10 @@ import java.util.Random;
 import io.github.k3ssdev.stacompanion.R;
 
 
+// Esta clase representa el fragmento de dados en la aplicación.
 public class DiceFragment extends Fragment {
 
+    // Variables
     private RecyclerView diceResultRecyclerView;
     private DiceResultAdapter diceResultAdapter;
     private final List<DiceResult> diceResultsList = new ArrayList<>();
@@ -50,17 +52,21 @@ public class DiceFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    // Este método se llama cuando el fragmento se hace visible para el usuario.
     @Override
     public void onResume() {
         super.onResume();
         requireActivity().setTitle("");
     }
+
+    // Este método se llama cuando se crea el fragmento.
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.dice_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
+    // Acciones de los elementos del menú
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -73,6 +79,7 @@ public class DiceFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
+    // Este método se llama para inflar el diseño del fragmento.
     private void resetView() {
         editTextNumberOfDiceD6.setText("0");
         editTextNumberOfDiceD20.setText("0");
@@ -80,6 +87,8 @@ public class DiceFragment extends Fragment {
         diceResultsList.clear();
         diceResultAdapter.updateData(diceResultsList);
     }
+
+    // Este método se llama para inflar el diseño del fragmento.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -106,25 +115,21 @@ public class DiceFragment extends Fragment {
 
         diceResultRecyclerView = view.findViewById(R.id.diceResultRecyclerView);
 
-        // Use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
+        // Mejora el rendimiento
         diceResultRecyclerView.setHasFixedSize(true);
 
-        // Use a linear layout manager
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        //diceResultRecyclerView.setLayoutManager(layoutManager);
-        //diceResultRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-
-        int numberOfColumns = 4; // replace with your desired number of columns
+        // Usar grid layout manager
+        int numberOfColumns = 4;
         diceResultRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), numberOfColumns));
 
-        int spaceInPixels = 12; // replace with your desired space in pixels
+        int spaceInPixels = 12;
         diceResultRecyclerView.addItemDecoration(new SpaceItemDecoration(spaceInPixels));
 
-        // Specify an adapter
+        // Especificar un adaptador
         diceResultAdapter = new DiceResultAdapter(diceResultsList);
         diceResultRecyclerView.setAdapter(diceResultAdapter);
 
+        // Obtener referencias a los elementos de la interfaz de usuario
         editTextNumberOfDiceD6 = view.findViewById(R.id.editTextNumberOfDiceD6);
         editTextNumberOfDiceD20 = view.findViewById(R.id.editTextNumberOfDiceD20);
         buttonMinusD6 = view.findViewById(R.id.buttonMinusD6);
@@ -136,6 +141,7 @@ public class DiceFragment extends Fragment {
         textViewDiceResult = view.findViewById(R.id.textViewDiceResult);
 
 
+        // Listener para los botones
         buttonRollDice6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -181,6 +187,7 @@ public class DiceFragment extends Fragment {
         return view;
     }
 
+    // Metodo para restar dados al pool
     private void decreaseNumberOfDice(EditText editText) {
         int currentValue = Integer.parseInt(editText.getText().toString());
         if (currentValue >= 1) {
@@ -188,11 +195,13 @@ public class DiceFragment extends Fragment {
         }
     }
 
+    // Metodo para sumar dados al pool
     private void increaseNumberOfDice(EditText editText) {
         int currentValue = Integer.parseInt(editText.getText().toString());
         editText.setText(String.valueOf(currentValue + 1));
     }
 
+    // Metodo para lanzar dados de 6 caras
     private void rollDice6() {
         textViewDiceResult.setText("");
         int numberOfDiceD6 = getNumberOfDice(editTextNumberOfDiceD6);
@@ -200,6 +209,7 @@ public class DiceFragment extends Fragment {
         animateDiceRoll();
     }
 
+    // Metodo para lanzar dados de 20 caras
     private void rollDice20() {
         textViewDiceResult.setText("");
         int numberOfDiceD20 = getNumberOfDice(editTextNumberOfDiceD20);
@@ -207,6 +217,8 @@ public class DiceFragment extends Fragment {
         animateDiceRoll();
     }
 
+
+    // Este método devuelve el número de dados a lanzar.
     private int getNumberOfDice(EditText editText) {
         try {
             return Integer.parseInt(editText.getText().toString());
@@ -215,16 +227,17 @@ public class DiceFragment extends Fragment {
         }
     }
 
+    // Este método lanza un dado de un tipo específico y muestra el resultado en la interfaz de usuario.
     private void rollSingleDiceType(int diceType, int numberOfDice, String diceTypeName) {
-        //StringBuilder resultText = new StringBuilder("Resultados " + diceTypeName + ": \n");
-
+        // Crear un StringBuilder para almacenar el texto del resultado
         StringBuilder resultText = new StringBuilder("Resultados " +  "\n");
 
         Random random = new Random();
 
-        // Clear previous dice results
+        // Limpiar la lista de resultados de dados
         diceResultsList.clear();
 
+        // Lanzar el dado y evaluar el resultado
         for (int i = 0; i < numberOfDice; i++) {
             int diceResult = random.nextInt(diceType) + 1;
             int diceDrawable = 0;
@@ -255,19 +268,22 @@ public class DiceFragment extends Fragment {
                 resultText.append(diceResult);
             }
 
+            // Agregar el resultado a la lista de resultados de dados
             diceResultsList.add(new DiceResult(diceResult, diceDrawable));
             resultText.append(", ");
         }
 
+        // Mostrar el resultado en la interfaz de usuario
         resultText.delete(resultText.length() - 2, resultText.length());
         textViewDiceResult.append(resultText.toString());
 
-        // Update the RecyclerView
+        // Actualizar RecyclerView
         diceResultAdapter.updateData(diceResultsList);
 
         Log.d("DiceFragment", "rollSingleDiceType: " + diceTypeName + diceResultsList);
     }
 
+    // Este método agrega una animación de rotación a la imagen del dado de 6 caras.
     private void animateDiceRoll() {
         Animation rotateAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.rotate_animation);
 
@@ -280,7 +296,7 @@ public class DiceFragment extends Fragment {
         }, diceRollDelay);
     }
 
-    // Este método agrega una animación de rotación a la imagen del dado de 6 caras.
+    // Este método sirve para obtener drawable del dado de 6 caras.
     private int getDice6Drawable(int diceResult) {
         switch (diceResult) {
             case 1:
@@ -298,7 +314,7 @@ public class DiceFragment extends Fragment {
         }
     }
 
-    // Este método agrega una animación de rotación a la imagen del dado de 20 caras.
+    // Este método sirve para obtener drawable del dado de 20 caras.
     private int getDice20Drawable(int diceResult) {
         switch (diceResult) {
             case 1:
@@ -346,6 +362,7 @@ public class DiceFragment extends Fragment {
         }
     }
 
+    // Interrumpir la animación de rotación
     private void stopDiceAnimation() {
         buttonRollDice6.clearAnimation();
         buttonRollDice20.clearAnimation();

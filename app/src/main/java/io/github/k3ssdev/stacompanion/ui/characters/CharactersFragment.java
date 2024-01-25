@@ -61,6 +61,7 @@ public class CharactersFragment extends Fragment {
         void onItemClick(CharacterSheet sheet);
     }
 
+    // Este método se llama cuando se crea el menú de opciones.
     @Override
     public void onPrepareOptionsMenu(@NonNull Menu menu) {
         super.onPrepareOptionsMenu(menu);
@@ -68,6 +69,7 @@ public class CharactersFragment extends Fragment {
         MenuItem addItem = menu.findItem(R.id.action_add);
         MenuItem deleteItem = menu.findItem(R.id.action_delete);
 
+        // Comprobar si la multiselección está activada
         isMultiSelectionEnabled = adapter.isMultiSelectionEnabled();
 
         if (isMultiSelectionEnabled) {
@@ -209,6 +211,7 @@ public class CharactersFragment extends Fragment {
             return true;
         }
 
+        // Si se selecciona la opción de ordenar, cambiar el orden de la lista
         if (isSortedByName) {
             adapter.sortByCreationDate();
             isSortedByName = false;
@@ -228,6 +231,7 @@ public class CharactersFragment extends Fragment {
                 .getReference("users/" + userId + "/characterSheets");
 
 
+        // Este evento se llama cuando se añade un nuevo personaje a la base de datos.
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

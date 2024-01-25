@@ -43,10 +43,6 @@ public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFrag
         this.characterSheetsFull = new ArrayList<>(this.characterSheets);
         this.fragment = fragment;
     }
-/*    public CharacterFragmentAdapter(ArrayList<CharacterSheet> characterSheets) {
-        this.characterSheets = characterSheets != null ? characterSheets : new ArrayList<>();
-        this.characterSheetsFull = new ArrayList<>(this.characterSheets);
-    }*/
 
     public void setMultiSelectionEnabled(boolean isEnabled) {
         isMultiSelectionEnabled = isEnabled;
@@ -140,6 +136,7 @@ public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFrag
             }
         });
 
+        // Cambiar el color de fondo del elemento si está seleccionado
         holder.itemView.setOnClickListener(v -> {
             if (isMultiSelectionEnabled) {
                 // Toggle the state of the item

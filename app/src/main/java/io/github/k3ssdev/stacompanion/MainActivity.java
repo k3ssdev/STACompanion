@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
 
     // Este método se llama cuando se crea la actividad.
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,13 +31,14 @@ public class MainActivity extends AppCompatActivity {
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
-            // color title light_gray day theme /white dark theme
+            // Cambia el color del texto de la barra de aplicaciones
             toolbar.setTitleTextColor(getResources().getColor(R.color.white));
 
         } else {
             throw new RuntimeException("Toolbar not found in layout");
         }
 
+        // Vincula la barra de aplicaciones con el controlador de navegación
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(

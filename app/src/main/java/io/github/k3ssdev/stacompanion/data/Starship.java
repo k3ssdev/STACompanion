@@ -1,5 +1,6 @@
 package io.github.k3ssdev.stacompanion.data;
 
+// TODO: IMPLEMENTAR. Esta clase representa una nave estelar.
 public class Starship {
 
     // Atributos

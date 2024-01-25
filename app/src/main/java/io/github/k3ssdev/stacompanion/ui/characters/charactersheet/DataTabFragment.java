@@ -24,7 +24,6 @@ public class DataTabFragment extends Fragment {
     private CharacterSheetViewModel viewModel;
 
 
-
     // Constructor vacío requerido
     public DataTabFragment() {
         // Constructor público vacío requerido
@@ -112,7 +111,6 @@ public class DataTabFragment extends Fragment {
         // Observar el characterSheetLiveData
         viewModel.getCharacterSheetLiveData().observe(getViewLifecycleOwner(), characterSheet -> {
             // Actualizar la interfaz de usuario aquí con la nueva hoja de personaje
-            // Esto actualizará automáticamente el TextView con el nombre del personaje cuando los datos cambien
         });
     }
 }

@@ -26,12 +26,13 @@ public class PdfUtil {
 
     public static void createCharacterSheetPdf(Context context, Uri uri, CharacterSheet characterSheet) {
         try {
+            // Crea el archivo PDF
             InputStream inputStream = context.getAssets().open("STA_personaje.pdf");
             PdfReader reader = new PdfReader(inputStream);
             PdfStamper stamper = new PdfStamper(reader, context.getContentResolver().openOutputStream(uri));
 
+            // Crea el objeto PdfContentByte para escribir en el PDF pagina 1
             PdfContentByte cb = stamper.getOverContent(1);
-            //BaseFont bf = BaseFont.createFont();
             BaseFont bf = BaseFont.createFont("assets/Stardate81316-aolE.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             cb.setColorFill(BaseColor.BLACK);
             cb.setFontAndSize(bf, 13);
@@ -83,7 +84,7 @@ public class PdfUtil {
             addTextAtCoordinates(cb, String.valueOf(characterSheet.getAttacks()), 210.0f, reader.getPageSize(1).getHeight() - 653.0f);
             addTextAtCoordinates(cb, String.valueOf(characterSheet.getEquipment()), 402.0f, reader.getPageSize(1).getHeight() - 678.0f);
 
-            // Página 2
+            // Crea el objeto PdfContentByte para escribir en el PDF pagina 2
             PdfContentByte cb2 = stamper.getOverContent(2);
             cb2.setColorFill(BaseColor.BLACK);
             cb2.setFontAndSize(bf, 13);
@@ -119,6 +120,7 @@ public class PdfUtil {
         }
     }
 
+    // Metodo para añadir texto en un PDF en las coordenadas x e y
     private static void addTextAtCoordinates(PdfContentByte cb, String text, float x, float y) throws IOException {
         cb.beginText();
         cb.showTextAligned(PdfContentByte.ALIGN_LEFT, text, x, y, 0);

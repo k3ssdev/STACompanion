@@ -94,12 +94,14 @@ public class CharacterSheetEditActivity extends AppCompatActivity {
         return modifiedCharacterSheet;
     }
 
+    // Este método se llama cuando se crea el menú de la Toolbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.character_sheet_toolbar_menu_edit, menu);
         return true;
     }
 
+    // Este método se llama cuando se pulsa un elemento del menú de la Toolbar
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -124,12 +126,13 @@ public class CharacterSheetEditActivity extends AppCompatActivity {
             }
 
             return true;
-        } else if (id == R.id.action_delete) {
+        } else if (id == R.id.action_delete) { // Si se pulsa el botón de eliminar
             // Muestra un diálogo de confirmación para eliminar el personaje
             Drawable icon = ContextCompat.getDrawable(this, android.R.drawable.ic_dialog_alert); // Obtener el icono de alerta
             if (icon != null) { // Si el icono no es nulo, establecer el color del filtro
                 icon.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(this, R.color.google_red), PorterDuff.Mode.SRC_IN));
             }
+            // Mostrar el diálogo de confirmación
             new AlertDialog.Builder(this)
                     .setIcon(icon) // Establecer el icono
                     .setTitle("Eliminar personaje")
@@ -179,6 +182,7 @@ public class CharacterSheetEditActivity extends AppCompatActivity {
     }
 
 
+    // Este método establece los nuevos valores en la hoja de personaje
     private void updateCharacterSheet(CharacterSheet currentCharacterSheet) {
         // Establece los nuevos valores en la hoja de personaje
         currentCharacterSheet.setCreationTimestamp(System.currentTimeMillis());

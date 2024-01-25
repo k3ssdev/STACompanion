@@ -303,14 +303,14 @@ WIP
 
 - [X] `► Implement authentication system for user account management.`
 - [X] `► Securely store character and ship data in Firebase for each user.`
-- [ ] `► Implement a settings menu for viewing user's data, closing session and delete account.`
+- [X] `► Implement a settings menu for viewing user's data, closing session and delete account.`
 - [ ] `► Add a chat system between users.`
 
 ### Dice Rolling System:
 
 - [X] `► Perform rolls using special 6-sided dice used in Star Trek Adventures and 20-sided dices.`
 - [X] `► Allow selection of the number of dice to roll and display the result.`
-- [ ] `► Add animations during the dice roll.`
+- [X] `► Add animations during the dice roll.`
 
 ### Character sheets:
 

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="io.github.k3ssdev.stacompanion"
+    android:versionCode="1"
+    android:versionName="1.0">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -32,6 +35,7 @@
             <!-- Add any intent filters if needed -->
         </activity>
         <activity android:name="io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetEditActivity" />
+
 
         <provider
             android:name="androidx.core.content.FileProvider"

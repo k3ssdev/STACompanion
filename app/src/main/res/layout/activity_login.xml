@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:paddingTop="40dp"
     tools:context=".MainActivity">
 
     <ImageView
@@ -21,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
+        android:paddingBottom="40dp"
         app:cardCornerRadius="21dp"
         app:cardElevation="20dp"
         android:background="@drawable/custom_edittext">
@@ -85,6 +87,7 @@
         android:text="¿No tienes cuenta? ¡Regístrate!"
         android:textSize="14sp"
         android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
         android:id="@+id/signupText"
         android:textColor="@color/sta_blue"
         android:layout_marginBottom="20dp"/>
@@ -98,5 +101,27 @@
         app:buttonSize="wide"
         app:colorScheme="dark"
         />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:gravity="bottom"
+        >
+    <TextView
+        android:id="@+id/legalLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text= "™ &amp; © 2017 CBS Studios Inc. STAR TREK and related marks and logos are trademarks of CBS Studios Inc. All Rights Reserved."
+        android:textColor="@color/sta_blue"
+        android:clickable="true"
+        android:focusable="true"
+        android:textAlignment="center"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="14sp" />
+
+        </LinearLayout>
 
 </LinearLayout>

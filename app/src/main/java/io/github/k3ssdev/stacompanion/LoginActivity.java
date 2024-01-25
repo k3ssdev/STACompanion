@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -159,6 +160,16 @@ public class LoginActivity extends AppCompatActivity {
             // Inicia el intento de inicio de sesión
             signInLauncher.launch(signInIntent);
         });
+
+/*        TextView legalLink = findViewById(R.id.legalLink);
+        legalLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, LegalActivity.class);
+                intent.putExtra("filename", "privacy_policy.html"); // Cambia esto por el nombre del archivo que quieras mostrar
+                startActivity(intent);
+            }
+        });*/
     }
 
     /**

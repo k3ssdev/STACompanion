@@ -418,6 +418,25 @@ WIP
 
 ##  Project Roadmap
 
+### General:
+
+- [X] `► Create a splash screen.`
+- [X] `► Create a login screen.`
+- [X] `► Create a main screen with a bottom navigation bar.`
+- [X] `► Create a character sheet screen.`
+- [X] `► Create a dice rolling screen.`
+- [X] `► Create a settings screen.`
+- [X] `► Create a character sheet edit screen.`
+- [X] `► Create PDF files of character sheets.`
+- [ ] `► Add localization support for Spanish.`
+- [ ] `► Add localization support for English.`
+- [ ] `► Create a legal screen.`
+- [ ] `► Create a ship sheet screen.`
+- [ ] `► Create PDF files of ship sheets.`
+- [ ] `► Responsive design for different screen sizes.`
+- [ ] `► Landscape orientation support.`
+- [ ] `► Selectable design for different themes.`
+
 ### Firebase Integration:
 
 - [X] `► Implement authentication system for user account management.`

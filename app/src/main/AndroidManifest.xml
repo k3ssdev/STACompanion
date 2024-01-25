@@ -9,6 +9,7 @@
 
 
     <application
+        android:screenOrientation="portrait"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -22,6 +23,7 @@
 
         <activity
             android:name=".LoginActivity"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
@@ -31,10 +33,13 @@
         </activity>
 
         <!-- Add the declaration for MainActivity -->
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            >
             <!-- Add any intent filters if needed -->
         </activity>
-        <activity android:name="io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetEditActivity" />
+        <activity android:name="io.github.k3ssdev.stacompanion.ui.characters.CharacterSheetEditActivity"
+            android:screenOrientation="portrait"/>
 
 
         <provider

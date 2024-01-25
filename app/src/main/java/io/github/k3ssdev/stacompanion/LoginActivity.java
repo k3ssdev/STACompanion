@@ -126,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
         TextView buttonRegister = findViewById(R.id.signupText);
         buttonRegister.setOnClickListener(v -> {
             // Define los proveedores de inicio de sesión
-            List<AuthUI.IdpConfig> providers = Arrays.asList(
+            List<AuthUI.IdpConfig> providers = Collections.singletonList(
                     new AuthUI.IdpConfig.EmailBuilder().build()
             );
 

@@ -2,35 +2,35 @@ package io.github.k3ssdev.stacompanion.data;
 
 public class SheetSettings {
 
-    private int normalMilestones;
-    private int spotlightMilestones;
-    private int arcMilestones;
+    private final int normalMilestones;
+    private final int spotlightMilestones;
+    private final int arcMilestones;
 
-    private String sheetType;
-    private String sheetColor;
-    private String whisperType;
+    private final String sheetType;
+    private final String sheetColor;
+    private final String whisperType;
 
-    private int reputation;
-    private int privilege;
-    private int responsibility;
-    private String rank;
-    private int influence;
+    private final int reputation;
+    private final int privilege;
+    private final int responsibility;
+    private final String rank;
+    private final int influence;
 
-    private int stress;
-    private int stressBonus;
-    private int stressMax;
+    private final int stress;
+    private final int stressBonus;
+    private final int stressMax;
 
-    private int shields;
-    private int shieldsBonus;
-    private int shieldsMax;
+    private final int shields;
+    private final int shieldsBonus;
+    private final int shieldsMax;
 
-    private int powerBonus;
-    private int powerMax;
+    private final int powerBonus;
+    private final int powerMax;
 
-    private int crewBonus;
-    private int crewMax;
+    private final int crewBonus;
+    private final int crewMax;
 
-    private String notes;
+    private final String notes;
 
     // Constructor
     public SheetSettings(int normalMilestones, int spotlightMilestones, int arcMilestones,

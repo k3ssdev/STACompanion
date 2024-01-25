@@ -33,7 +33,7 @@ public class DiceFragment extends Fragment {
 
     private RecyclerView diceResultRecyclerView;
     private DiceResultAdapter diceResultAdapter;
-    private List<DiceResult> diceResultsList = new ArrayList<>();
+    private final List<DiceResult> diceResultsList = new ArrayList<>();
     private EditText editTextNumberOfDiceD6;
     private EditText editTextNumberOfDiceD20;
     private Button buttonMinusD6;
@@ -252,7 +252,7 @@ public class DiceFragment extends Fragment {
                 }
             } else if (diceType == 20) {
                 diceDrawable = getDice20Drawable(diceResult);
-                resultText.append(String.valueOf(diceResult));
+                resultText.append(diceResult);
             }
 
             diceResultsList.add(new DiceResult(diceResult, diceDrawable));

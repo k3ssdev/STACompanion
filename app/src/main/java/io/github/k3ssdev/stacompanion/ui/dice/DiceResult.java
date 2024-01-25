@@ -1,8 +1,8 @@
 package io.github.k3ssdev.stacompanion.ui.dice;
 
 public class DiceResult {
-    private int result;
-    private int drawable;
+    private final int result;
+    private final int drawable;
 
     public DiceResult(int result, int drawable) {
         this.result = result;

@@ -4,42 +4,42 @@ public class Starship {
 
     // Atributos
     private String name;
-    private String serviceDate;
-    private String missionProfile;
-    private String designation;
-    private String spaceFrame;
-    private String refit;
-    private String traits;
+    private final String serviceDate;
+    private final String missionProfile;
+    private final String designation;
+    private final String spaceFrame;
+    private final String refit;
+    private final String traits;
 
-    private int engines;
-    private int computers;
-    private int weapons;
-    private int structure;
-    private int sensors;
-    private int communication;
+    private final int engines;
+    private final int computers;
+    private final int weapons;
+    private final int structure;
+    private final int sensors;
+    private final int communication;
 
-    private int breachEngines;
-    private int breachComputers;
-    private int breachWeapons;
-    private int breachStructure;
-    private int breachSensors;
-    private int breachCommunications;
+    private final int breachEngines;
+    private final int breachComputers;
+    private final int breachWeapons;
+    private final int breachStructure;
+    private final int breachSensors;
+    private final int breachCommunications;
 
-    private int scale;
-    private int resistance;
+    private final int scale;
+    private final int resistance;
 
-    private int command;
-    private int security;
-    private int science;
-    private int conn;
-    private int engineering;
-    private int medicine;
+    private final int command;
+    private final int security;
+    private final int science;
+    private final int conn;
+    private final int engineering;
+    private final int medicine;
 
-    private String talents;
+    private final String talents;
 
-    private int power;
-    private int maxPower;
-    private int shields;
+    private final int power;
+    private final int maxPower;
+    private final int shields;
 
     // Constructor
     public Starship(String name, String serviceDate, String missionProfile, String designation, String spaceFrame,

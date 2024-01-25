@@ -27,7 +27,7 @@ import io.github.k3ssdev.stacompanion.ui.characters.CharactersFragment;
 // Implementa Filterable para permitir la búsqueda de personajes.
 public class CharacterFragmentAdapter extends RecyclerView.Adapter<CharacterFragmentAdapter.ViewHolder> implements Filterable {
 
-    private List<CharacterSheet> selectedItems = new ArrayList<>();
+    private final List<CharacterSheet> selectedItems = new ArrayList<>();
 
     private boolean isMultiSelectionEnabled = false;
     private final List<CharacterSheet> characterSheets;

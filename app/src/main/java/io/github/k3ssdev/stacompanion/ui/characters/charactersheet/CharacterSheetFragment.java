@@ -61,21 +61,17 @@ public class CharacterSheetFragment extends Fragment {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case WRITE_REQUEST_CODE: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // Permiso concedido, puedes proceder a guardar el archivo PDF
+        if (requestCode == WRITE_REQUEST_CODE) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permiso concedido, puedes proceder a guardar el archivo PDF
 
-                } else {
-                    // Permiso denegado, muestra un mensaje al usuario
-                    Toast.makeText(getContext(), "Permiso denegado para escribir en el almacenamiento externo.", Toast.LENGTH_SHORT).show();
-                }
-                return;
+            } else {
+                // Permiso denegado, muestra un mensaje al usuario
+                Toast.makeText(getContext(), "Permiso denegado para escribir en el almacenamiento externo.", Toast.LENGTH_SHORT).show();
             }
 
             // Aquí puedes manejar otros casos de 'case' si tienes más permisos que solicitar
-
         }
     }
 

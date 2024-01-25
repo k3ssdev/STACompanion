@@ -24,7 +24,7 @@ public class CharacterSheetViewModel extends ViewModel {
     private static final String TAG = "CharacterSheetViewModel";
 
     // LiveData que contiene la hoja de personaje.
-    private MutableLiveData<CharacterSheet> characterSheetLiveData = new MutableLiveData<>();
+    private final MutableLiveData<CharacterSheet> characterSheetLiveData = new MutableLiveData<>();
 
     // Este método devuelve la LiveData que contiene la hoja de personaje.
     public LiveData<CharacterSheet> getCharacterSheetLiveData() {

@@ -348,7 +348,22 @@ Each module has its own `build.gradle.kts` file for configuration and dependenci
 <details closed>
     <summary>Requirements</summary>
 
-WIP
+ - Android Studio Hedgehog
+ - Android SDK 30
+ - Android Build Tools v30.0.3
+ - Android Emulator or Android device
+ - Android 9.0 (API level 28) or higher
+ - Java 8 or higher
+ - Kotlin 1.4.32 or higher
+ - Firebase Authentication
+ - Firebase Realtime Database
+
+ - For Firebase integration, you will need to create a Firebase project and add the `google-services.json` file to the `app/src` directory. For more information, see [Add Firebase to your Android project](https://firebase.google.com/docs/android/setup).
+ - For PDF generation, you will need to add the `STA_personaje.pdf` file to the `app/src/assets` directory. This file is included in the repository.
+ - For dice rolling, you will need to add the `Stardate81316-aolE.ttf` file to the `app/src/assets` directory. This file is included in the repository.
+ - For dice rolling, you will need to add the `dice20_01.xml` to `dice20_20.xml` files to the `app/src/drawable` directory. These files are included in the repository.
+ - For dice rolling, you will need to add the `dice6_fail.xml`, `dice6_special.xml`, `dice6_success.xml`, and `dice6_success_double.xml` files to the `app/src/drawable` directory. These files are included in the repository.
+ - For dice rolling, you will need to add the `rotate_animation.xml` file to the `app/src/anim` directory. This file is included in the repository.
 
 </details>
 

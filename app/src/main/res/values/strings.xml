@@ -20,7 +20,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="stress">Estrés</string>
     <string name="determination">Determinación</string>
-    <string name="focuses">Foco</string>
+    <string name="focuses">Especialidades</string>
     <string name="responsibility">Responsabilidad</string>
     <string name="privilege">Privilegio</string>
     <string name="reputation">Reputación</string>
@@ -37,7 +37,7 @@
     <string name="education">Educación</string>
     <string name="assignment">Asignación</string>
     <string name="academy">Academia</string>
-    <string name="career">Carrera</string>
+    <string name="career">Rama</string>
     <string name="traits">Rasgos</string>
     <string name="values">Valores</string>
     <string name="control">Control</string>

@@ -193,6 +193,7 @@ public class CharacterSheetEditActivity extends AppCompatActivity {
         currentCharacterSheet.setCareer(binding.editTextCareer.getText().toString());
         currentCharacterSheet.setTraits(binding.editTextTraits.getText().toString());
         currentCharacterSheet.setValues(binding.editTextValues.getText().toString());
+        currentCharacterSheet.setFocuses(binding.editTextFocuses.getText().toString());
         currentCharacterSheet.setControl(Integer.parseInt(binding.editTextControl.getText().toString()));
         currentCharacterSheet.setFitness(Integer.parseInt(binding.editTextFitness.getText().toString()));
         currentCharacterSheet.setPresence(Integer.parseInt(binding.editTextPresence.getText().toString()));
@@ -205,7 +206,6 @@ public class CharacterSheetEditActivity extends AppCompatActivity {
         currentCharacterSheet.setConn(Integer.parseInt(binding.editTextConn.getText().toString()));
         currentCharacterSheet.setEngineering(Integer.parseInt(binding.editTextEngineering.getText().toString()));
         currentCharacterSheet.setMedicine(Integer.parseInt(binding.editTextMedicine.getText().toString()));
-        currentCharacterSheet.setValues(binding.editTextValues.getText().toString());
         currentCharacterSheet.setTalents(binding.editTextTalents.getText().toString());
         currentCharacterSheet.setStress(Integer.parseInt(binding.editTextStress.getText().toString()));
         currentCharacterSheet.setMaxStress(Integer.parseInt(binding.editTextMaxStress.getText().toString()));

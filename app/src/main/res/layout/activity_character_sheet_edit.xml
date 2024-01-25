@@ -346,9 +346,9 @@
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:orientation="vertical"
-                android:layout_row="1"
-                android:layout_marginTop="16sp"
-                >
+                android:layout_row="0"
+                android:layout_columnSpan="2"
+                android:layout_marginTop="16sp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -364,6 +364,62 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:text="@{viewModel.characterSheetLiveData.values}" />
+
+            </LinearLayout>
+
+            <!-- Talents -->
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_row="0"
+                android:layout_columnSpan="2"
+                android:orientation="vertical"
+                android:layout_marginTop="16sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/talents"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editTextTalents"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:text="@{viewModel.characterSheetLiveData.talents}" />
+
+            </LinearLayout>
+
+            <!-- Focuses -->
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_row="0"
+                android:layout_columnSpan="2"
+                android:orientation="vertical"
+                android:layout_marginTop="16sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/focuses"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editTextFocuses"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:text="@{viewModel.characterSheetLiveData.focuses}" />
 
             </LinearLayout>
 
@@ -756,65 +812,6 @@
 
             </LinearLayout>
 
-            <!-- Values -->
-
-            <LinearLayout
-                android:layout_width="0sp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:layout_row="1"
-                android:layout_columnSpan="2"
-                android:layout_marginTop="16sp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/values"
-                    android:textStyle="bold"
-                    android:paddingHorizontal="16sp"/>
-
-                <EditText
-                    android:id="@+id/editTextValues2"
-                    android:layout_marginTop="5sp"
-                    android:layout_marginLeft="5sp"
-                    android:paddingHorizontal="16sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:text="@{viewModel.characterSheetLiveData.values}" />
-
-            </LinearLayout>
-
-            <!-- Talents -->
-
-            <LinearLayout
-                android:layout_width="0sp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:layout_row="1"
-                android:layout_columnSpan="2"
-                android:layout_marginTop="16sp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/talents"
-                    android:textStyle="bold"
-                    android:paddingHorizontal="16sp"/>
-
-                <EditText
-                    android:id="@+id/editTextTalents"
-                    android:layout_marginTop="5sp"
-                    android:layout_marginLeft="5sp"
-                    android:paddingHorizontal="16sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:text="@{viewModel.characterSheetLiveData.talents}" />
-
-            </LinearLayout>
 
             <!-- Titulo bloque estado-->
 
@@ -1126,35 +1123,6 @@
 
             </LinearLayout>
 
-            <!-- Focuses -->
-
-            <LinearLayout
-                android:layout_width="0sp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:layout_row="2"
-                android:layout_columnSpan="2"
-                android:layout_marginTop="16sp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/focuses"
-                    android:textStyle="bold"
-                    android:paddingHorizontal="16sp"/>
-
-                <EditText
-                    android:id="@+id/editTextFocuses"
-                    android:layout_marginTop="5sp"
-                    android:layout_marginLeft="5sp"
-                    android:paddingHorizontal="16sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:text="@{viewModel.characterSheetLiveData.focuses}" />
-
-            </LinearLayout>
 
             <!-- Determination -->
 

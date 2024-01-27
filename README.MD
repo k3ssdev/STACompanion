@@ -43,6 +43,8 @@
 
 STA Companion App is a companion application for Android devices for the Star Trek Adventures tabletop RPG. It allows players to manage their characters and starships, perform special dice rolls, and export their character and starship sheets to PDF.
 
+This project was conceived as the capstone for the CFGS Multiplatform Application Development course. It leverages Firebase for user authentication and data storage, serving as a practical exploration of Google's APIs.
+
 <details closed>
     <summary>Screenshots</summary>
 
@@ -343,7 +345,7 @@ Each module has its own `build.gradle.kts` file for configuration and dependenci
 
 ---
 
-##  Getting Started
+## Getting Started
 
 <details closed>
     <summary>Requirements</summary>
@@ -358,12 +360,22 @@ Each module has its own `build.gradle.kts` file for configuration and dependenci
  - Firebase Authentication
  - Firebase Realtime Database
 
- - For Firebase integration, you will need to create a Firebase project and add the `google-services.json` file to the `app/src` directory. For more information, see [Add Firebase to your Android project](https://firebase.google.com/docs/android/setup).
+
  - For PDF generation, you will need to add the `STA_personaje.pdf` file to the `app/src/assets` directory. This file is included in the repository.
  - For dice rolling, you will need to add the `Stardate81316-aolE.ttf` file to the `app/src/assets` directory. This file is included in the repository.
  - For dice rolling, you will need to add the `dice20_01.xml` to `dice20_20.xml` files to the `app/src/drawable` directory. These files are included in the repository.
  - For dice rolling, you will need to add the `dice6_fail.xml`, `dice6_special.xml`, `dice6_success.xml`, and `dice6_success_double.xml` files to the `app/src/drawable` directory. These files are included in the repository.
  - For dice rolling, you will need to add the `rotate_animation.xml` file to the `app/src/anim` directory. This file is included in the repository.
+
+
+ - For Firebase integration, you will need to create a Firebase project and add the `google-services.json` file to the `app/src` directory. For more information, see [Add Firebase to your Android project](https://firebase.google.com/docs/android/setup).
+- You will need to fill in the `keys.xml` file located in the `app/src/res/values` directory with your Firebase server client ID and Firebase database URL. The file should look like this:
+
+```xml
+<resources>
+    <string name="server_client_id">YOUR_SERVER_CLIENT_ID</string>
+    <string name="firebase_database_url">YOUR_FIREBASE_DATABASE_URL</string>
+</resources>
 
 </details>
 

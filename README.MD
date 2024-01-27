@@ -37,7 +37,6 @@
 > - [ License](#-license)
 > - [ Acknowledgments](#-acknowledgments)
 
----
 
 ---
 

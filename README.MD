@@ -30,12 +30,14 @@
 > - [ Modules](#-modules)
 > - [ Getting Started](#-getting-started)
     >   - [ Installation](#-installation)
->   - [ Running STACompanion](#-running-STACompanion)
+    >   - [ Running STACompanion](#-running-STACompanion)
 >   - [ Tests](#-tests)
 > - [ Project Roadmap](#-project-roadmap)
 > - [ Contributing](#-contributing)
 > - [ License](#-license)
 > - [ Acknowledgments](#-acknowledgments)
+
+---
 
 ---
 

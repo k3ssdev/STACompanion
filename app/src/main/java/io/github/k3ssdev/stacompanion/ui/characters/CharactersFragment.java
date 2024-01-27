@@ -227,8 +227,7 @@ public class CharactersFragment extends Fragment {
     // Este método establece la conexión con la base de datos y recupera los datos de los personajes.
     private void setupDatabaseConnection() {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference ref = FirebaseDatabase.getInstance("https://stacompanion-a1286-default-rtdb.europe-west1.firebasedatabase.app/")
-                .getReference("users/" + userId + "/characterSheets");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users/" + userId + "/characterSheets");
 
 
         // Este evento se llama cuando se añade un nuevo personaje a la base de datos.

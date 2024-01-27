@@ -556,5 +556,3 @@ This application is provided "as is" and "as available" without any warranties o
 All references to "Star Trek" and "Holocubierta" in this application and its documentation are used for identification and reference purposes only and do not intend to infringe on the rights of CBS Studios or Holocubierta.
 
 [**Return**](##-Quick-Links)
-
----

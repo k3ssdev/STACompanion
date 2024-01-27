@@ -499,13 +499,12 @@ WIP
 
 ---
 
-##  Contributing
+##  Feedback
 
-Contributions are welcome! Here are several ways you can contribute:
+Your feedback is important to us. Please use the following resources to provide feedback:
 
-- **[Submit Pull Requests](https://github/k3ssdev/STACompanion/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
-- **[Join the Discussions](https://github/k3ssdev/STACompanion/discussions)**: Share your insights, provide feedback, or ask questions.
-- **[Report Issues](https://github/k3ssdev/STACompanion/issues)**: Submit bugs found or log feature requests for Stacompanion.
+- **[Join the Discussions](https://github.com/k3ssdev/STACompanion/discussions)**: Share your insights, provide feedback, or ask questions.
+- **[Report Issues](https://github.com/k3ssdev/STACompanion/issues)**: Submit bugs found or log feature requests for STA Companion.
 
 <details closed>
     <summary>Contributing Guidelines</summary>

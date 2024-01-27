@@ -376,6 +376,7 @@ Each module has its own `build.gradle.kts` file for configuration and dependenci
     <string name="server_client_id">YOUR_SERVER_CLIENT_ID</string>
     <string name="firebase_database_url">YOUR_FIREBASE_DATABASE_URL</string>
 </resources>
+```
 
 </details>
 

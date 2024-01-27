@@ -541,10 +541,18 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-##  Acknowledgments
+## Credits
 
-- List any resources, contributors, inspiration, etc. here. WIP
-
-[**Return**](##-Quick-Links)
+The character sheet used in this application is the version edited by Holocubierta for Spain. You can find the original character sheet at the following link: [Character Sheet - Holocubierta](https://holocubierta.com/descargas/rol/STA/STA_personaje.pdf)
 
 ---
+
+## Legal Notice
+
+The Star Trek Adventures character sheet used in this application is owned by Holocubierta. This application is an unofficial project and is not affiliated with or endorsed by Holocubierta.
+
+This application is provided "as is" and "as available" without any warranties of any kind. The developers of this application are not liable for any damages or harm arising from its use.
+
+All references to "Star Trek" and "Holocubierta" in this application and its documentation are used for identification and reference purposes only and do not intend to infringe on the rights of CBS Studios or Holocubierta.
+
+[**Return**](##-Quick-Links)

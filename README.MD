@@ -56,6 +56,7 @@ This project was conceived as the capstone for the CFGS Multiplatform Applicatio
         <img src="images/stacompanion_screenshot_2.jpg" alt="Screenshot 2" style="max-height: 200px;">
         <img src="images/stacompanion_screenshot_3.jpg" alt="Screenshot 3" style="max-height: 200px;">
     </div>
+
 </details>
 
 

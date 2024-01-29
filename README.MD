@@ -49,8 +49,8 @@ This project was conceived as the capstone for the CFGS Multiplatform Applicatio
 <details closed>
     <summary>Screenshots</summary>
 
-        <img src="images/screenshot_01.jpg" alt="Screenshot 1" style="max-height: 100px;">
-        <img src="images/screenshot_01.jpg" alt="Screenshot 2" style="max-height: 100px;">
+<img src="images/screenshot_01.jpg" alt="Screenshot 1" style="max-height: 100px;">
+<img src="images/screenshot_01.jpg" alt="Screenshot 2" style="max-height: 100px;">
 <img src="images/screenshot_03.jpg" alt="Screenshot 3" style="max-height: 100px;">
 <img src="images/screenshot_04.jpg" alt="Screenshot 4" style="max-height: 100px;">
 <img src="images/screenshot_05.jpg" alt="Screenshot 5" style="max-height: 100px;">

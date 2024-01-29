@@ -49,15 +49,15 @@ This project was conceived as the capstone for the CFGS Multiplatform Applicatio
 <details closed>
     <summary>Screenshots</summary>
 
-</br>
+    </br>
 
-![stacompanion_screenshot_1](images/stacompanion_screenshot_1.jpg)
-
-![stacompanion_screenshot_2](images/stacompanion_screenshot_2.jpg)
-
-![stacompanion_screenshot_3](images/stacompanion_screenshot_3.jpg)
-
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+        <img src="images/stacompanion_screenshot_1.jpg" alt="Screenshot 1" style="max-height: 200px;">
+        <img src="images/stacompanion_screenshot_2.jpg" alt="Screenshot 2" style="max-height: 200px;">
+        <img src="images/stacompanion_screenshot_3.jpg" alt="Screenshot 3" style="max-height: 200px;">
+    </div>
 </details>
+
 
 ---
 

@@ -49,12 +49,16 @@ This project was conceived as the capstone for the CFGS Multiplatform Applicatio
 <details closed>
     <summary>Screenshots</summary>
 
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-        <img src="images/stacompanion_screenshot_1.jpg" alt="Screenshot 1" style="max-height: 200px;">
-        <img src="images/stacompanion_screenshot_2.jpg" alt="Screenshot 2" style="max-height: 200px;">
-        <img src="images/stacompanion_screenshot_3.jpg" alt="Screenshot 3" style="max-height: 200px;">
-    </div>
+        <img src="images/screenshot_01.jpg" alt="Screenshot 1" style="max-height: 100px;">
+        <img src="images/screenshot_01.jpg" alt="Screenshot 2" style="max-height: 100px;">
+<img src="images/screenshot_03.jpg" alt="Screenshot 3" style="max-height: 100px;">
+<img src="images/screenshot_04.jpg" alt="Screenshot 4" style="max-height: 100px;">
+<img src="images/screenshot_05.jpg" alt="Screenshot 5" style="max-height: 100px;">
+<img src="images/screenshot_06.jpg" alt="Screenshot 6" style="max-height: 100px;">
+<img src="images/screenshot_07.jpg" alt="Screenshot 7" style="max-height: 100px;">
+<img src="images/screenshot_08.jpg" alt="Screenshot 8" style="max-height: 100px;">
+<img src="images/screenshot_09.jpg" alt="Screenshot 9" style="max-height: 100px;">
+<img src="images/screenshot_10.jpg" alt="Screenshot 10" style="max-height: 100px;">
 
 </details>
 

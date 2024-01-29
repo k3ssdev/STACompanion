@@ -49,7 +49,6 @@ This project was conceived as the capstone for the CFGS Multiplatform Applicatio
 <details closed>
     <summary>Screenshots</summary>
 
-    </br>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
         <img src="images/stacompanion_screenshot_1.jpg" alt="Screenshot 1" style="max-height: 200px;">
